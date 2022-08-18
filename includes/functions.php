@@ -10,20 +10,27 @@ function pass_crypt($string)
 /** personal function to connect with db
  * @return bool|string
  */
-function connect($dbHost,$dbUsername, $dbPassword, $dbName){
+function connect($dbHost, $dbUsername, $dbPassword, $dbName)
+{
     $db = new mysqli(
         $dbHost,
         $dbUsername,
         $dbPassword,
         $dbName
     );
-    if($db->connect_error){
+    if ($db->connect_error) {
         die("Cannot connect to database: \n"
             . $db->connect_error . "\n"
-            . $db->connect_error
-        );
+            . $db->connect_error);
     }
     return $db;
+}
+
+function escapeString($string)
+{
+    global $db;
+    $new_string = mysqli_real_escape_string($db, strtolower($string));
+    return $new_string;
 }
 
 
@@ -49,15 +56,37 @@ function userRegister(
     $blood,
     $allergy,
     $antecedant
-    ){
-        $sql = "INSERT INTO users(first_name,last_name,birth,contact,emergency_contact,email,sexe,weight,height,blood,allergy,medical_background,children,marital_status,profession,pseudo,password) VALUES ('{$fname}','{$lname}','{$birth}','{$contact}','{$emergency}','{$email}','{$sexe}','{$weight}','{$height}','{$blood}','{$allergy}','{$antecedant}','{$children}','{$marital}','{$profession}','{$pseudo}','{$password}')";
-        ;
+) {
+    $sql = "INSERT INTO users(first_name,last_name,birth,contact,emergency_contact,email,sexe,weight,height,blood,allergy,medical_background,children,marital_status,profession,pseudo,password) VALUES ('{$fname}','{$lname}','{$birth}','{$contact}','{$emergency}','{$email}','{$sexe}','{$weight}','{$height}','{$blood}','{$allergy}','{$antecedant}','{$children}','{$marital}','{$profession}','{$pseudo}','{$password}')";;
 
-        if($db->query($sql)){
-            return true;
-        }
-        else{
-            return false;
-            //return "<div class='alert alert-warning'>Error: " . $sql . "<br>" . "$db->error;</div>";
-        }
+    if ($db->query($sql)) {
+        return true;
+    } else {
+        return false;
+        //return "<div class='alert alert-warning'>Error: " . $sql . "<br>" . "$db->error;</div>";
     }
+}
+
+function pseudoExists($db, $pseudo)
+{
+    $sql = "SELECT * FROM users WHERE pseudo LIKE '%$pseudo%'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function emailExists($db, $email)
+{
+    $sql = "SELECT * FROM users WHERE email LIKE '%$email%'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}

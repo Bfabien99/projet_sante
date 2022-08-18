@@ -7,8 +7,6 @@
         DB_PASSWORD,
         DB_NAME
     );
-
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">

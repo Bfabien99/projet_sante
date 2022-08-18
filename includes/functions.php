@@ -31,7 +31,7 @@ function connect($dbHost,$dbUsername, $dbPassword, $dbName){
  * @return bool|string
  */
 function userRegister(
-    mysqli $db,
+    $db,
     $fname,
     $lname,
     $birth,
@@ -50,5 +50,14 @@ function userRegister(
     $allergy,
     $antecedant
     ){
+        $sql = "INSERT INTO users(first_name,last_name,birth,contact,emergency_contact,email,sexe,weight,height,blood,allergy,medical_background,children,marital_status,profession,pseudo,password) VALUES ('{$fname}','{$lname}','{$birth}','{$contact}','{$emergency}','{$email}','{$sexe}','{$weight}','{$height}','{$blood}','{$allergy}','{$antecedant}','{$children}','{$marital}','{$profession}','{$pseudo}','{$password}')";
+        ;
 
+        if($db->query($sql)){
+            return true;
+        }
+        else{
+            return false;
+            //return "<div class='alert alert-warning'>Error: " . $sql . "<br>" . "$db->error;</div>";
+        }
     }

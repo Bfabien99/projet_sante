@@ -1,6 +1,7 @@
 <?php
 include('includes/header.php');
 
+$success = false;
 $error = [];
 if(isset($_POST['register'])){
     if(empty($_POST['first_name'])){
@@ -102,7 +103,7 @@ if(isset($_POST['register'])){
     if(empty($_POST['password']) || strlen($_POST['password']) < 6){
         $error['password'] = "Veuillez entrer un mot de passe d'au moins 6 caractères";
     }else{
-        $password = $_POST['password'];
+        $password = pass_crypt($_POST['password']);
     }
 
     if(
@@ -124,12 +125,35 @@ if(isset($_POST['register'])){
     && !empty($allergy) 
     && !empty($antecedant)
     ){
-        echo "<script>alert('Good')</script>";
+        if(userRegister($db,
+        $fname,
+        $lname,
+        $birth,
+        $contact,
+        $sexe,
+        $email,
+        $pseudo,
+        $password,
+        $emergency,
+        $profession,
+        $marital,
+        $children,
+        $weight,
+        $height,
+        $blood,
+        $allergy,
+        $antecedant)){
+            $success = true;
+        }else{
+            $error['sqlError'] = "Impossible d'inserer les données pour l'instant... Veuillez réessayez plus tard";
+        };
+        
     }
 }
 ?>
 <div class="container">
     <h1 class='text-center'>FORMULAIRE D'ENREGISTREMENT</h1>
+    <?php if(!$success):?>
     <form action="" method="post">
         <div class="row py-1">
             <div class="col-md-8 col-lg-5 p-2 m-2">
@@ -295,6 +319,9 @@ if(isset($_POST['register'])){
 
         <input type="submit" class="btn btn-success mb-2" name="register" value="S'enregistrer">
     </form>
+    <?php else:?>
+        <h1 class="text-center alert-success"> Enregistrement éffectué avec succes, veuillez vous connecter</h1>
+    <?php endif;?>
 </div>
 <?php
 include('includes/footer.php');

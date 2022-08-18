@@ -19,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CMS PROJECT WITH EDWIN DIAZ</title>
+    <title>HEALTH PLUS</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="_css/bootstrap.min.css" rel="stylesheet">

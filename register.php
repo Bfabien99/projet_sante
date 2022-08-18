@@ -36,7 +36,7 @@ if (isset($_POST['register'])) {
 
     if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         $error['email'] = 'Veuillez entrer une adresse email valide';
-    } elseif (emailExists($db, $_POST['email'])) {
+    } elseif (emailExists($_POST['email'])) {
         $error['email'] = "Cet email existe déja, veuillez en choisr un autre";
     } else {
         $email = escapeString($_POST['email']);
@@ -104,7 +104,7 @@ if (isset($_POST['register'])) {
 
     if (empty($_POST['pseudo']) || strlen($_POST['pseudo']) < 4) {
         $error['pseudo'] = "Veuillez entrer un pseudo d'au moins 4 caractères";
-    } elseif (pseudoExists($db, $_POST['pseudo'])) {
+    } elseif (pseudoExists($_POST['pseudo'])) {
         $error['pseudo'] = "Cet pseudo existe déja, veuillez en choisr un autre";
     } else {
         $pseudo = escapeString($_POST['pseudo']);
@@ -136,7 +136,6 @@ if (isset($_POST['register'])) {
         && !empty($antecedant)
     ) {
         if (userRegister(
-            $db,
             $fname,
             $lname,
             $birth,
@@ -165,7 +164,7 @@ if (isset($_POST['register'])) {
 <div class="container">
     <h1 class='text-center'>FORMULAIRE D'ENREGISTREMENT</h1>
     <?php if (!$success) : ?>
-        <form action="" method="post">
+        <form action="" method="post" autocomplete="off">
             <div class="row py-1">
                 <div class="col-md-8 col-lg-5 p-2 m-2">
                     <legend>Information d'ordre général</legend>
@@ -231,7 +230,7 @@ if (isset($_POST['register'])) {
                     </div>
                     <div class="form-group">
                         <label for="password">Mot de passe</label>
-                        <input class="form-control" type="password" name="password" id="password" value="<?php if (isset($password)) echo $password; ?>">
+                        <input class="form-control" type="password" name="password" id="password">
                         <?php if (isset($error['password'])) : ?>
                             <p class="alert-danger rounded-2 p-1"><?php echo  $error['password']; ?></p>
                         <?php endif; ?>

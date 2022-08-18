@@ -1,3 +1,14 @@
+<?php
+    include('../includes/config.php');
+    include('../includes/functions.php');
+    $db = connect(
+        DB_HOST,
+        DB_USERNAME,
+        DB_PASSWORD,
+        DB_NAME
+    );
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +20,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CMS PROJECT WITH EDWIN DIAZ</title>
+    <title>HEALTH PLUS</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../_css/bootstrap.min.css" rel="stylesheet">

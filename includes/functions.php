@@ -38,7 +38,6 @@ function escapeString($string)
  * @return bool|string
  */
 function userRegister(
-    $db,
     $fname,
     $lname,
     $birth,
@@ -57,6 +56,7 @@ function userRegister(
     $allergy,
     $antecedant
 ) {
+    global $db;
     $sql = "INSERT INTO users(first_name,last_name,birth,contact,emergency_contact,email,sexe,weight,height,blood,allergy,medical_background,children,marital_status,profession,pseudo,password) VALUES ('{$fname}','{$lname}','{$birth}','{$contact}','{$emergency}','{$email}','{$sexe}','{$weight}','{$height}','{$blood}','{$allergy}','{$antecedant}','{$children}','{$marital}','{$profession}','{$pseudo}','{$password}')";;
 
     if ($db->query($sql)) {
@@ -67,8 +67,9 @@ function userRegister(
     }
 }
 
-function pseudoExists($db, $pseudo)
+function pseudoExists($pseudo)
 {
+    global $db;
     $sql = "SELECT * FROM users WHERE pseudo LIKE '%$pseudo%'";
     $result = $db->query($sql);
 
@@ -79,9 +80,24 @@ function pseudoExists($db, $pseudo)
     }
 }
 
-function emailExists($db, $email)
+function emailExists($email)
 {
+    global $db;
     $sql = "SELECT * FROM users WHERE email LIKE '%$email%'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function loginUser($pseudo, $password)
+{
+    global $db;
+
+    $sql = "SELECT * FROM users WHERE (email = '$pseudo' OR pseudo = '$pseudo') AND password = '$password'";
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {

@@ -3,16 +3,16 @@
 if(isset($_GET['route']) && !empty($_GET['route'])){
     switch($_GET['route']){
         case 'login':
-            include 'login_redirect.php';
+            include 'includes/login_redirect.php';
             break;
         case 'register':
-            include 'register.php';
+            include 'includes/register.php';
             break;
         default:
-            include 'home.php';
+            include 'includes/home.php';
     }
 }
 else{
-    include 'home.php';
+    include 'includes/home.php';
 }
 ?>

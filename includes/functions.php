@@ -36,11 +36,11 @@ function escapeString($string)
 ##########################
 // ALL FUNCTIONS FOR USERS
 ###########################
-        #######
-        #######
-    ###############
-        #######
-           ##
+#######
+#######
+###############
+#######
+##
 
 /** personal function to register a new user
  * @return bool|string
@@ -65,8 +65,8 @@ function userRegister(
     $antecedant
 ) {
     global $db;
-    $sql = "INSERT INTO users(first_name,last_name,birth,contact,emergency_contact,email,sexe,weight,height,blood,allergy,medical_background,children,marital_status,profession,pseudo,password) "; 
-    $sql.= "VALUES ('{$fname}','{$lname}','{$birth}','{$contact}','{$emergency}','{$email}','{$sexe}','{$weight}','{$height}','{$blood}','{$allergy}','{$antecedant}','{$children}','{$marital}','{$profession}','{$pseudo}','{$password}')";
+    $sql = "INSERT INTO users(first_name,last_name,birth,contact,emergency_contact,email,sexe,weight,height,blood,allergy,medical_background,children,marital_status,profession,pseudo,password) ";
+    $sql .= "VALUES ('{$fname}','{$lname}','{$birth}','{$contact}','{$emergency}','{$email}','{$sexe}','{$weight}','{$height}','{$blood}','{$allergy}','{$antecedant}','{$children}','{$marital}','{$profession}','{$pseudo}','{$password}')";
 
     if ($db->query($sql)) {
         return true;
@@ -78,7 +78,7 @@ function userRegister(
 
 /** personal function to update user information
  * @return bool
-*/
+ */
 function userUpdate(
     $id,
     $fname,
@@ -129,7 +129,7 @@ function userUpdate(
 
 /** personal function to verify if user pseudo doesn't exist
  * @return bool
-*/
+ */
 function pseudoExists($pseudo)
 {
     global $db;
@@ -145,7 +145,7 @@ function pseudoExists($pseudo)
 
 /** personal function to to verify if user email doesn't exist
  * @return bool
-*/
+ */
 function emailExists($email)
 {
     global $db;
@@ -188,7 +188,8 @@ function isUser($email, $pseudo)
     }
 }
 
-function getUserbyPseudo($pseudo){
+function getUserbyPseudo($pseudo)
+{
     global $db;
     $sql = "SELECT pseudo FROM users WHERE pseudo = '$pseudo'";
     $result = $db->query($sql);
@@ -201,15 +202,16 @@ function getUserbyPseudo($pseudo){
     }
 }
 
-function getAllUser(){
+function getAllUser()
+{
     global $db;
     $data = [];
 
     $sql = "SELECT * FROM users";
     $results = $db->query($sql);
 
-    if($results->num_rows > 0){
-        while($row = $results->fetch_assoc()){
+    if ($results->num_rows > 0) {
+        while ($row = $results->fetch_assoc()) {
             $data[] = $row;
         }
     }
@@ -220,11 +222,11 @@ function getAllUser(){
 ##########################
 // ALL FUNCTIONS FOR DOCTORS
 ###########################
-        #######
-        #######
-    ###############
-        #######
-           ##
+#######
+#######
+###############
+#######
+##
 
 /** personal function to register a new doctor
  * @return bool|string
@@ -244,8 +246,8 @@ function doctorRegister(
     $picture,
 ) {
     global $db;
-    $sql = "INSERT INTO doctors(first_name,last_name,fonction,sexe,description,experience,contact1,contact2,email,pseudo,password,picture) "; 
-    $sql.= "VALUES ('{$fname}','{$lname}','{$fonction}','{$sexe}','{$description}','{$experience}','{$contact1}','{$contact2}','{$email}','{$pseudo}','{$password}','{$picture}')";
+    $sql = "INSERT INTO doctors(first_name,last_name,fonction,sexe,description,experience,contact1,contact2,email,pseudo,password,picture) ";
+    $sql .= "VALUES ('{$fname}','{$lname}','{$fonction}','{$sexe}','{$description}','{$experience}','{$contact1}','{$contact2}','{$email}','{$pseudo}','{$password}','{$picture}')";
 
     if ($db->query($sql)) {
         return true;
@@ -348,7 +350,8 @@ function isDoctor($email, $pseudo)
     }
 }
 
-function getDoctorbyPseudo($pseudo){
+function getDoctorbyPseudo($pseudo)
+{
     global $db;
     $sql = "SELECT pseudo FROM doctors WHERE pseudo = '$pseudo'";
     $result = $db->query($sql);
@@ -361,17 +364,70 @@ function getDoctorbyPseudo($pseudo){
     }
 }
 
-function getAllDoctor(){
+function getAllDoctor()
+{
     global $db;
     $data = [];
 
     $sql = "SELECT * FROM doctors";
     $results = $db->query($sql);
 
-    if($results->num_rows > 0){
-        while($row = $results->fetch_assoc()){
+    if ($results->num_rows > 0) {
+        while ($row = $results->fetch_assoc()) {
             $data[] = $row;
         }
     }
     return $data;
+}
+
+
+##########################
+// ALL FUNCTIONS FOR ADMIN
+###########################
+#######
+#######
+###############
+#######
+##
+
+function loginAdmin($pseudo, $password)
+{
+    global $db;
+    $sql = "SELECT * FROM admin WHERE (email = '$pseudo' OR pseudo = '$pseudo') AND password = '$password'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        $_SESSION['hp_admin_pseudo'] = $data['pseudo'];
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isAdmin($email, $pseudo)
+{
+    global $db;
+    $sql = "SELECT * FROM admin WHERE email = '$email' AND pseudo = '$pseudo'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function getAdminbyPseudo($pseudo)
+{
+    global $db;
+    $sql = "SELECT pseudo FROM admin WHERE pseudo = '$pseudo'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
+    } else {
+        return false;
+    }
 }

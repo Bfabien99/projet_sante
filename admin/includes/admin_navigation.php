@@ -114,35 +114,29 @@
                 <a href="./"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Docteurs <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="posts_dropdown" class="collapse">
                     <li>
-                        <a href="posts.php"> View All Posts</a>
+                        <a href="posts.php"> Voir tous les Docteurs</a>
                     </li>
                     <li>
-                        <a href="#">Add Post</a> 
+                        <a href="#">Enregistrer un Docteur</a> 
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
-            </li>
-            <li class="active">
-                <a href="#"><i class="fa fa-fw fa-file"></i> Comments</a>
-            </li>
-            <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#users_dropdown"><i class="fa fa-fw fa-users"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#users_dropdown"><i class="fa fa-fw fa-users"></i> Utilisateurs <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="users_dropdown" class="collapse">
                     <li>
-                        <a href="#"> View All Users</a>
+                        <a href="#"> Voir tous les Utilisateurs</a>
                     </li>
                     <li>
-                        <a href="#">Add Post</a> 
+                        <a href="#">Enregistrer un Utilisateur</a> 
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+            <li class="active">
+                <a href="#"><i class="fa fa-fw fa-file"></i> Voir les rendez-vous</a>
             </li>
         </ul>
     </div>

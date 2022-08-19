@@ -14,7 +14,9 @@ if (isset($_POST['login'])) {
         $password = pass_crypt($_POST['password']);
     }
 
-    if (empty($_POST['identifiant']) || empty($_POST['password'])) {
+    if (!empty($_POST['code'])) {
+        $code = escapeString($_POST['code']);
+    }else{
         $error['code'] = "Veuillez votre code d'accès";
     }
 
@@ -61,7 +63,7 @@ if (isset($_POST['login'])) {
         </div>
         <div class="form-group">
             <label for="identifiant">Entrez le code</label>
-            <input type="password" class="form-control" name="code" id="code">
+            <input type="password" class="form-control" name="code" id="code" value="<?php if (isset($code)) echo $code; ?>">
             <?php if (isset($error['code'])) : ?>
                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['code']; ?></p>
             <?php endif; ?>

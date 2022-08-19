@@ -1,5 +1,6 @@
 <?php
 include('includes/header.php');
+var_dump($_SESSION);
 
 $error = [];
 if (isset($_POST['login'])) {

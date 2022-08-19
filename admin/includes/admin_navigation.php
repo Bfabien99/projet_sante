@@ -117,10 +117,10 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Docteurs <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="posts_dropdown" class="collapse">
                     <li>
-                        <a href="./?route=doctors"> Voir tous les Docteurs</a>
+                        <a href="./doctors.php"> Voir tous les Docteurs</a>
                     </li>
                     <li>
-                        <a href="./?route=doctor_register">Enregistrer un Docteur</a> 
+                        <a href="./doctors.php?source=add_doctor">Enregistrer un Docteur</a> 
                     </li>
                 </ul>
             </li>
@@ -128,10 +128,10 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#users_dropdown"><i class="fa fa-fw fa-users"></i> Utilisateurs <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="users_dropdown" class="collapse">
                     <li>
-                        <a href="./?route=users"> Voir tous les Utilisateurs</a>
+                        <a href="./users.php"> Voir tous les Utilisateurs</a>
                     </li>
                     <li>
-                        <a href="./?route=user_register">Enregistrer un Utilisateur</a> 
+                        <a href="./users.php?source=add_user">Enregistrer un Utilisateur</a> 
                     </li>
                 </ul>
             </li>

@@ -191,7 +191,7 @@ function isUser($email, $pseudo)
 function getUserbyPseudo($pseudo)
 {
     global $db;
-    $sql = "SELECT pseudo FROM users WHERE pseudo = '$pseudo'";
+    $sql = "SELECT * FROM users WHERE pseudo = '$pseudo'";
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {
@@ -354,7 +354,7 @@ function isDoctor($email, $pseudo)
 function getDoctorbyPseudo($pseudo)
 {
     global $db;
-    $sql = "SELECT pseudo FROM doctors WHERE pseudo = '$pseudo'";
+    $sql = "SELECT * FROM doctors WHERE pseudo = '$pseudo'";
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {
@@ -422,7 +422,7 @@ function isAdmin($email, $pseudo)
 function getAdminbyPseudo($pseudo)
 {
     global $db;
-    $sql = "SELECT pseudo FROM admin WHERE pseudo = '$pseudo'";
+    $sql = "SELECT * FROM admin WHERE pseudo = '$pseudo'";
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {

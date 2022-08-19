@@ -234,8 +234,9 @@ function getAllUser()
 function doctorRegister(
     $fname,
     $lname,
-    $fonction,
+    $birth,
     $sexe,
+    $fonction,
     $description,
     $experience,
     $contact1,
@@ -243,11 +244,11 @@ function doctorRegister(
     $email,
     $pseudo,
     $password,
-    $picture,
+    $picture = null,
 ) {
     global $db;
-    $sql = "INSERT INTO doctors(first_name,last_name,fonction,sexe,description,experience,contact1,contact2,email,pseudo,password,picture) ";
-    $sql .= "VALUES ('{$fname}','{$lname}','{$fonction}','{$sexe}','{$description}','{$experience}','{$contact1}','{$contact2}','{$email}','{$pseudo}','{$password}','{$picture}')";
+    $sql = "INSERT INTO doctors(first_name,last_name,birth,sexe,fonction,description,experience,contact1,contact2,email,pseudo,password,picture) ";
+    $sql .= "VALUES ('{$fname}','{$lname}','{$birth}','{$sexe}','{$fonction}','{$description}','{$experience}','{$contact1}','{$contact2}','{$email}','{$pseudo}','{$password}','{$picture}')";
 
     if ($db->query($sql)) {
         return true;

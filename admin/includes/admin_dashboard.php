@@ -45,7 +45,7 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="comments.php">
+                        <a href="./?route=doctors">
                             <div class="panel-footer">
                                 <span class="pull-left">Voir detail</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -78,7 +78,7 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="users.php">
+                        <a href="./?route=users">
                             <div class="panel-footer">
                                 <span class="pull-left">Voir detail</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

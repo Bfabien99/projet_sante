@@ -244,7 +244,7 @@ function doctorRegister(
     $email,
     $pseudo,
     $password,
-    $picture = null,
+    $picture,
 ) {
     global $db;
     $sql = "INSERT INTO doctors(first_name,last_name,birth,sexe,fonction,description,experience,contact1,contact2,email,pseudo,password,picture) ";

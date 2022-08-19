@@ -6,7 +6,7 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
 <?php
 $success = false;
 $error = [];
-$picture = "";
+
 if (isset($_POST['register'])) {
     if (empty($_POST['first_name'])) {
         $error['first_name'] = 'Veuillez entrer votre nom';
@@ -29,7 +29,12 @@ if (isset($_POST['register'])) {
     if (empty($_POST['sexe'])) {
         $error['sexe'] = 'Faîtes un choix';
     } else {
-        $sexe = escapeString($_POST['sexe']);
+        if($_POST['sexe'] == "Femme"){
+            $picture = "docteurf.png";
+        }else{
+            $picture = "docteur.png";
+        }
+        $sexe = escapeString($_POST['sexe']); 
     }
 
     if (empty($_POST['fonction'])) {
@@ -92,13 +97,6 @@ if (isset($_POST['register'])) {
         $password = pass_crypt($_POST['password']);
     }
 
-    if(!empty($sexe)){
-        if($sexe == "Homme"){
-            $picture == "docteur.png";
-        }elseif($sexe == "Femme"){
-            $picture == "docteurf.png";
-        }
-    }
 
     if (
         !empty($fname)
@@ -118,8 +116,8 @@ if (isset($_POST['register'])) {
             $fname,
             $lname,
             $birth,
-            $fonction,
             $sexe,
+            $fonction,
             $description,
             $experience,
             $contact1,

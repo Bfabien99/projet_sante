@@ -135,6 +135,9 @@
                     </li>
                 </ul>
             </li>
+            <li class="">
+                <a href="./services.php"><i class="fa fa-fw fa-file"></i>Services</a>
+            </li>
             <li class="active">
                 <a href="#"><i class="fa fa-fw fa-file"></i> Voir les rendez-vous</a>
             </li>

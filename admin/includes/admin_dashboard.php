@@ -33,10 +33,10 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                                     <?php
 
                                     $query = "SELECT * FROM doctors";
-                                    $select_all_comments = mysqli_query($db, $query);
-                                    $comment_count = mysqli_num_rows($select_all_comments);
+                                    $select_all_doctors = mysqli_query($db, $query);
+                                    $doctor_count = mysqli_num_rows($select_all_doctors);
 
-                                    echo  "<div class='huge'>{$comment_count}</div>"
+                                    echo  "<div class='huge'>{$doctor_count}</div>"
 
                                     ?>
 
@@ -45,7 +45,7 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="./?route=doctors">
+                        <a href="./doctors.php">
                             <div class="panel-footer">
                                 <span class="pull-left">Voir detail</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -78,7 +78,40 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                                 </div>
                             </div>
                         </div>
-                        <a href="./?route=users">
+                        <a href="./users.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Voir detail</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-users fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+
+                                    <?php
+
+                                    $query = "SELECT * FROM roles";
+                                    $select_all_roles = mysqli_query($db, $query);
+                                    $role_count = mysqli_num_rows($select_all_roles);
+
+                                    echo  "<div class='huge'>{$role_count}</div>"
+
+                                    ?>
+
+
+                                    <div> Service</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="./services.php">
                             <div class="panel-footer">
                                 <span class="pull-left">Voir detail</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

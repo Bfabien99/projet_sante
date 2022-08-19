@@ -5,11 +5,11 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
 ?>
 
 <?php 
-$user = getUserbyPseudo($_GET["pseudo"]); 
+$doctor = getDoctorbyPseudo($_GET["pseudo"]); 
 
-if(!$user){
+if(!$doctor){
     echo "<h4 class='alert alert-warning'>L'utilisateur <strong><< {$_GET['pseudo']} >></strong> n'est pas reconnu</h4>";
-    echo "<p><a class='btn btn-secondary' href='./users.php'>Retour</a></p>";
+    echo "<p><a class='btn btn-secondary' href='./doctors.php'>Retour</a></p>";
 }
 
 ?>

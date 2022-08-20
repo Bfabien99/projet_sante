@@ -103,7 +103,6 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                                     $role_count = mysqli_num_rows($select_all_roles);
 
                                     echo  "<div class='huge'>{$role_count}</div>"
-
                                     ?>
 
 

@@ -28,7 +28,7 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                             foreach ($users as $user) {
                         ?>
                                 <tr>
-                                    <td><a href="?pseudo=<?php echo $user['pseudo'] ?>" class="btn btn-primary p-md-1 mb-0"><img src="./../profiles/<?php echo $user['picture'] ?>" alt="<?php echo $user['first_name'] . "_" . $user['last_name'] ?>"class="img-responsive" /></a></td>
+                                    <td><a href="?pseudo=<?php echo $user['pseudo'] ?>" class="btn btn-primary p-md-1 mb-0"><img src="./../profiles/<?php echo $user['picture'] ?? "" ?>" alt="<?php echo $user['first_name'] . "_" . $user['last_name'] ?>"class="img-responsive" /></a></td>
                                     <td><?= $user['first_name'] ?></td>
                                     <td><?= $user['last_name'] ?></td>
                                     <td><?= $user['blood'] ?></td>

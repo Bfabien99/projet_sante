@@ -5,47 +5,46 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
 ?>
 <h1 class="text-center">Utilisateur enregistré</h1>
 <div class="row">
-    <?php
-    $users = getAllUser();
-    foreach ($users as $user) {
-    ?>
-       <div class="col-lg-3 col-md-6">
-            <div class="card px-2 box-shadow" style="margin:2em 0;padding:1em; background-color:white;">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="./../profiles/<?php echo $user['picture'] ?>" alt="<?php echo $user['first_name'] . "_" . $user['last_name'] ?>" class="img-responsive" />
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center font-weight-bold text-uppercase"><?php echo $user['first_name'] . " " . $user['last_name'] ?></h5>
-                    <hr class="my-2" />
-                    <p class="card-text">
-                        <table class="table">
-                            <thead>
-                               <tr>
-                                <th>
-                                    Taille
-                                </th>
-                                <th>
-                                    Poids
-                                </th>
-                                <th>
-                                    Profession
-                                </th>
-                            </tr> 
-                            </thead>
-                            <tbody>
+    <div class="col-lg-12 col-xl-11">
+        <div class="card px-2 box-shadow " style="margin:2em auto;padding:1em; background-color:white;overflow:auto;">
+            <div class="card-body">
+                <table class="table bordered hover" id="tables" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Prenoms</th>
+                            <th>Groupe Sanguin</th>
+                            <th>Taille</th>
+                            <th>Poids</th>
+                            <th>Profession</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $users = getAllUser();
+                        if ($users) {
+                            foreach ($users as $user) {
+                        ?>
                                 <tr>
-                                    <td><?php echo $user['height'] ?> Cm</td>
-                                    <td><?php echo $user['weight'] ?> Kg</td>
-                                    <td><?php echo $user['profession'] ?></td>
+                                    <td><img src="./../profiles/<?php echo $user['picture'] ?>" alt="<?php echo $user['first_name'] . "_" . $user['last_name'] ?>" class="img-responsive" /></td>
+                                    <td><?= $user['first_name'] ?></td>
+                                    <td><?= $user['last_name'] ?></td>
+                                    <td><?= $user['blood'] ?></td>
+                                    <td><?= $user['height'] ?></td>
+                                    <td><?= $user['weight'] ?></td>
+                                    <td><?= $user['profession'] ?></td>
+                                    <td><a href="?pseudo=<?php echo $user['pseudo'] ?>" class="btn btn-primary p-md-1 mb-0">Voir plus</a></td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </p>
-                    <hr class="my-4" />
-                    <p class="lead text-capitalize">Groupe Sanguin <strong><?php echo " ".$user['blood'] ?></strong></p>
-                    <a href="?pseudo=<?php echo $user['pseudo'] ?>" class="btn btn-primary p-md-1 mb-0">Voir plus</a>
-                </div>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <p class="h4 text-muted">Aucun utilisateur</p>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
         </div>
-    <?php } ?>
+    </div>
+
 </div>

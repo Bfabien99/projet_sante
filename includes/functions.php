@@ -33,6 +33,32 @@ function escapeString($string)
     return $new_string;
 }
 
+
+function cleanFile($file){
+    $allowedExtensions = array('jpg', 'jpeg', 'png');
+    if(!empty($_FILES[$file]) && ($_FILES[$file]['error'] == 0)){
+        if($_FILES[$file]['size'] <= 4000000){
+            $fileInfo = pathinfo($_FILES[$file]['name']);
+            $extension = $fileInfo['extension'];
+        }
+        else{
+            return false;
+        }
+
+        //Verifie si l'extension est valide
+        if(in_array($extension, $allowedExtensions))
+        {
+            //On stocke le fichier
+            $img = str_replace("/","",md5(time())."_".basename(str_replace([' ','/','@','#','$',"'"],['_','','','',''],$_FILES[$file]['name'])));
+            $img = str_replace(" ","",$img);
+            return $img;
+        }
+        else {
+            return false;
+        }
+    }
+}
+
 ##########################
 // ALL FUNCTIONS FOR USERS
 ###########################
@@ -262,6 +288,7 @@ function doctorUpdate(
     $id,
     $fname,
     $lname,
+    $birth,
     $fonction,
     $sexe,
     $description,
@@ -277,6 +304,7 @@ function doctorUpdate(
     $sql = "UPDATE doctors SET ";
     $sql .= "first_name = '{$fname}', ";
     $sql .= "last_name = '{$lname}', ";
+    $sql .= "birth = '{$birth}', ";
     $sql .= "fonction = '{$fonction}', ";
     $sql .= "sexe = '{$sexe}', ";
     $sql .= "description = '{$description}', ";
@@ -286,7 +314,7 @@ function doctorUpdate(
     $sql .= "email = '{$email}', ";
     $sql .= "pseudo = '{$pseudo}', ";
     $sql .= "password = '{$password}' ";
-    $sql .= "password = '{$picture}' ";
+    $sql .= "picture = '{$picture}' ";
     $sql .= " WHERE id = '{$id}'";
     if ($db->query($sql)) {
         return true;
@@ -430,5 +458,65 @@ function getAdminbyPseudo($pseudo)
         return $data;
     } else {
         return false;
+    }
+}
+
+function doctorUpdate_admin(
+    $id,
+    $fname,
+    $lname,
+    $birth,
+    $fonction,
+    $sexe,
+    $description,
+    $experience,
+    $contact1,
+    $contact2,
+    $picture
+) {
+    global $db;
+    $sql = "UPDATE doctors SET ";
+    $sql .= "first_name = '{$fname}', ";
+    $sql .= "last_name = '{$lname}', ";
+    $sql .= "birth = '{$birth}', ";
+    $sql .= "fonction = '{$fonction}', ";
+    $sql .= "sexe = '{$sexe}', ";
+    $sql .= "description = '{$description}', ";
+    $sql .= "experience = '{$experience}', ";
+    $sql .= "contact1 = {$contact1}, ";
+    $sql .= "contact2 = {$contact2}, ";
+    $sql .= "picture = '{$picture}' ";
+    $sql .= " WHERE id = '{$id}'";
+    if ($db->query($sql)) {
+        return true;
+    } else {
+        return false;
+        //return "<div class='alert alert-warning'>Error: " . $sql . "<br>" . "$db->error;</div>";
+    }
+}
+
+function userUpdate_admin(
+    $id,
+    $fname,
+    $lname,
+    $birth,
+    $contact,
+    $emergency,
+    $sexe
+){
+    global $db;
+    $sql = "UPDATE users SET ";
+    $sql .= "first_name = '{$fname}', ";
+    $sql .= "last_name = '{$lname}', ";
+    $sql .= "birth = '{$birth}', ";
+    $sql .= "contact = '{$contact}', ";
+    $sql .= "emergency_contact = '{$emergency}', ";
+    $sql .= "sexe = '{$sexe}' ";
+    $sql .= " WHERE id = '{$id}'";
+    if ($db->query($sql)) {
+        return true;
+    } else {
+        
+        echo "<div class='alert alert-warning'>Error: " . $sql . "<br>" . "$db->error;</div>";
     }
 }

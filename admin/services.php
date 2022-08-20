@@ -17,7 +17,7 @@ if(isset($source)) {
    switch ($source) {
 
     case 'add_service':
-        include "includes/service_register.php";
+        include "includes/register_service.php";
         break;
 
     default:

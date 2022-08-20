@@ -2,7 +2,10 @@
 include('includes/header.php');
 if (isset($_GET['pseudo'])) {
     include "includes/view_doctor.php";
-} elseif (isset($_GET['delete'])) {
+} elseif (isset($_GET['edit'])) {
+    include "includes/edit_doctor.php";
+} 
+elseif (isset($_GET['delete'])) {
     include "includes/delete_doctor.php";
 }elseif (isset($_GET['source'])) {
     $source = $_GET['source'];
@@ -14,16 +17,7 @@ if (isset($source)) {
     switch ($source) {
 
         case 'add_doctor':
-            include "includes/doctor_register.php";
-            break;
-
-
-        case 'edit_doctor':
-            include "includes/doctor_edit.php";
-            break;
-
-        case '200';
-            echo "NICE 200";
+            include "includes/register_doctor.php";
             break;
 
         default:

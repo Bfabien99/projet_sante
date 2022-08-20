@@ -15,7 +15,7 @@ if (isset($_POST['register'])) {
     }
 
     if (empty($_POST['last_name'])) {
-        $error['last_name'] = 'Veuillez entrer votre nom';
+        $error['last_name'] = 'Veuillez entrer votre prénom';
     } else {
         $lname = escapeString($_POST['last_name']);
     }
@@ -161,22 +161,21 @@ if (isset($_POST['register'])) {
                         <p class="alert-danger rounded-2 p-1"><?php echo  $error['birth']; ?></p>
                     <?php endif; ?>
                 </div>
-                <div class="row">
-                    <div class="col form-group">
+                    <div class="form-group">
                         <label for="contact1">Contact1</label>
                         <input class="form-control" type="tel" name="contact1" id="contact1" value="<?php if (isset($contact1)) echo $contact1; ?>">
                         <?php if (isset($error['contact1'])) : ?>
                             <p class="alert-danger rounded-2 p-1"><?php echo  $error['contact1']; ?></p>
                         <?php endif; ?>
                     </div>
-                    <div class="col form-group">
+                    <div class="form-group">
                         <label for="contact2">Contact2</label>
                         <input class="form-control" type="tel" name="contact2" id="contact2" value="<?php if (isset($contact2)) echo $contact2; ?>">
-                        <?php if (isset($error['contact1'])) : ?>
-                            <p class="alert-danger rounded-2 p-1"><?php echo  $error['contact1']; ?></p>
+                        <?php if (isset($error['contact2'])) : ?>
+                            <p class="alert-danger rounded-2 p-1"><?php echo  $error['contact2']; ?></p>
                         <?php endif; ?>
                     </div>
-                    <div class="col form-group">
+                    <div class="form-group">
                         <label for="sexe">Sexe</label>
                         <select name="sexe" id="sexe" class="form-control">
                             <option value="">--</option>
@@ -187,7 +186,6 @@ if (isset($_POST['register'])) {
                             <p class="alert-danger rounded-2 p-1"><?php echo  $error['sexe']; ?></p>
                         <?php endif; ?>
                     </div>
-                </div>
             </div>
 
             <div class="col-md-8 col-lg-5 p-2 m-2">
@@ -217,7 +215,7 @@ if (isset($_POST['register'])) {
 
             <div class="col-md-8 col-lg-8 p-2">
                 <legend>Informations d'ordre personnel</legend>
-                <div class="col form-group">
+                <div class="form-group">
                     <label for="fonction">Service</label>
                     <select name="fonction" id="fonction" class="form-control">
                         <option value="">--</option>
@@ -236,7 +234,7 @@ if (isset($_POST['register'])) {
                         <p class="alert-danger rounded-2 p-1"><?php echo  $error['fonction']; ?></p>
                     <?php endif; ?>
                 </div>
-                <div class="col form-group">
+                <div class="form-group">
                     <label for="description">Description</label>
                     <small>Que pouvez vous dire de vous?</small>
                     <textarea class="form-control" type="text" name="description" id="description"><?php if (isset($description)) echo $description; ?></textarea>
@@ -244,7 +242,7 @@ if (isset($_POST['register'])) {
                         <p class="alert-danger rounded-2 p-1"><?php echo  $error['description']; ?></p>
                     <?php endif; ?>
                 </div>
-                <div class="col form-group">
+                <div class="form-group">
                     <label for="experience">Année d'Expérience</label>
                     <input class="form-control" type="number" name="experience" id="experience" value="<?php if (isset($experience)) echo $experience; ?>">
                     <?php if (isset($error['experience'])) : ?>

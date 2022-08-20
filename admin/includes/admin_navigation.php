@@ -114,7 +114,7 @@
                 <a href="./"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Docteurs <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-plus"></i> Docteurs <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="posts_dropdown" class="collapse">
                     <li>
                         <a href="./doctors.php"> Voir tous les Docteurs</a>
@@ -136,10 +136,10 @@
                 </ul>
             </li>
             <li class="">
-                <a href="./services.php"><i class="fa fa-fw fa-file"></i>Services</a>
+                <a href="./services.php"><i class="fa fa-fw fa-folder"></i>Services</a>
             </li>
             <li class="active">
-                <a href="#"><i class="fa fa-fw fa-file"></i> Voir les rendez-vous</a>
+                <a href="#"><i class="fa fa-fw fa-calendar"></i> Voir les rendez-vous</a>
             </li>
         </ul>
     </div>

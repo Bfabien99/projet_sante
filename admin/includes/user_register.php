@@ -167,7 +167,7 @@ if (isset($_POST['register'])) {
 ?>
     <h1 class='text-center'>AJOUTER UN NOUVEL UTILISATEUR</h1>
     <?php if (!$success) : ?>
-        <form action="" method="post" autocomplete="off" class="">
+        <form action="" method="post" autocomplete="off" class="" >
             <div class="row py-1">
                 <div class="col-md-8 col-lg-5 p-2 m-2">
                     <legend>Information d'ordre général</legend>
@@ -192,15 +192,15 @@ if (isset($_POST['register'])) {
                             <p class="alert-danger rounded-2 p-1"><?php echo  $error['birth']; ?></p>
                         <?php endif; ?>
                     </div>
-                    <div class="row">
-                        <div class="col form-group">
+                    
+                        <div class="form-group">
                             <label for="contact">Contact</label>
                             <input class="form-control" type="tel" name="contact" id="contact" value="<?php if (isset($contact)) echo $contact; ?>">
                             <?php if (isset($error['contact'])) : ?>
                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['contact']; ?></p>
                             <?php endif; ?>
                         </div>
-                        <div class="col form-group">
+                        <div class="form-group">
                             <label for="sexe">Sexe</label>
                             <select name="sexe" id="sexe" class="form-control">
                                 <option value="">--</option>
@@ -212,7 +212,6 @@ if (isset($_POST['register'])) {
                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['sexe']; ?></p>
                             <?php endif; ?>
                         </div>
-                    </div>
                 </div>
 
                 <div class="col-md-8 col-lg-5 p-2 m-2">
@@ -257,8 +256,7 @@ if (isset($_POST['register'])) {
                             <p class="alert-danger rounded-2 p-1"><?php echo  $error['profession']; ?></p>
                         <?php endif; ?>
                     </div>
-                    <div class="row">
-                        <div class="col form-group">
+                        <div class="form-group">
                             <label for="marital_status">Situation matrimonial</label>
                             <select name="marital_status" id="marital_status" class="form-control">
                                 <option value="">--</option>
@@ -271,14 +269,13 @@ if (isset($_POST['register'])) {
                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['marital_status']; ?></p>
                             <?php endif; ?>
                         </div>
-                        <div class="col form-group">
+                        <div class="form-group">
                             <label for="children">Enfant</label>
                             <input class="form-control" type="number" name="children" id="children" value="<?php if (isset($children)) echo $children; ?>">
                             <?php if (isset($error['children'])) : ?>
                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['children']; ?></p>
                             <?php endif; ?>
                         </div>
-                    </div>
 
                 </div>
 

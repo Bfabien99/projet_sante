@@ -2,9 +2,11 @@
 include('includes/header.php');
 if (isset($_GET['edit'])) {
     include "includes/edit_service.php";
-} elseif (isset($_GET['source'])) {
+}elseif (isset($_GET['delete'])) {
+    include "includes/delete_service.php";
+}elseif (isset($_GET['source'])) {
     $source = $_GET['source'];
-} else {
+}else {
     $source = '';
 }
 

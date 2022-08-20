@@ -26,7 +26,7 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                 <td><?php echo $row['details']?></td>
                 <td>
                     <a href="?edit=<?php echo $row['id']?>" class="btn btn-primary">Editer</a>
-                    <a href="?delete=<?php echo $row['id']?>" class="btn btn-primary">Supprimer</a>
+                    <a href="?delete=<?php echo $row['id']?>" class="btn btn-danger">Supprimer</a>
                 </td>
             </tr>
             <?php }

@@ -35,7 +35,8 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                                     <td><?= $user['height'] ?></td>
                                     <td><?= $user['weight'] ?></td>
                                     <td><?= $user['profession'] ?></td>
-                                    <td><a href="?pseudo=<?php echo $user['pseudo'] ?>" class="btn btn-primary p-md-1 mb-0">Voir plus</a></td>
+                                    <td><a href="?pseudo=<?php echo $user['pseudo'] ?>" class="btn btn-primary p-md-1 mb-0">Voir plus</a>
+                                    <a href="?delete=<?php echo $user['id']?>" class="btn btn-danger">Supprimer</a></td>
                                 </tr>
                             <?php } ?>
                         <?php } else { ?>

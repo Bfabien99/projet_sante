@@ -33,7 +33,8 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                                     <td><?= $doctor['pseudo'] ?></td>
                                     <td><?= $doctor['fonction'] ?></td>
                                     <td><?= $doctor['experience'] ?></td>
-                                    <td><a href="?pseudo=<?php echo $doctor['pseudo'] ?>" class="btn btn-primary p-md-1 mb-0">Voir plus</a></td>
+                                    <td><a href="?pseudo=<?php echo $doctor['pseudo'] ?>" class="btn btn-primary p-md-1 mb-0">Voir plus</a>
+                                    <a href="?delete=<?php echo $doctor['id']?>" class="btn btn-danger">Supprimer</a></td>
                                 </tr>
                             <?php } ?>
                         <?php } else { ?>

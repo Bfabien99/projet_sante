@@ -5,12 +5,12 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
 ?>
 <h1>Service enregistré</h1>
 <div class="row">
-    <table class="table table-striped">
+    <table class="table bordered hover" id="tables" width="100%" cellspacing="0">
         <thead>
             <tr>
                 <th>Intitulé</th>
                 <th>Detail</th>
-                <th colspan="2">Actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
             <tr>
                 <td><?php echo $row['titre']?></td>
                 <td><?php echo $row['details']?></td>
-                <td colspan="2">
+                <td>
                     <a href="?edit=<?php echo $row['id']?>" class="btn btn-primary">Editer</a>
                     <a href="?delete=<?php echo $row['id']?>" class="btn btn-primary">Supprimer</a>
                 </td>
@@ -34,4 +34,5 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
         </tbody>
     </table>
 
+    <a href='?source=add_service' class='btn btn-success'>Ajouter un nouveau service</a>
 </div>

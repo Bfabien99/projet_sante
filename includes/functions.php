@@ -217,10 +217,10 @@ function isUser($email, $pseudo)
     }
 }
 
-function getUserbyPseudo($pseudo)
+function getUserbyId($id)
 {
     global $db;
-    $sql = "SELECT * FROM users WHERE pseudo = '$pseudo'";
+    $sql = "SELECT * FROM users WHERE id = '$id'";
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {
@@ -261,7 +261,33 @@ function getUserPicture($id)
     }
 }
 
+function getAllergy($id){
+    global $db;
+    $sql = "SELECT allergy FROM users WHERE id = '$id'";
+    $result = $db->query($sql);
 
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        $allergies = explode(',', $data['allergy']);
+        return $allergies;
+    } else {
+        return false;
+    }
+}
+
+function getAntecedant($id){
+    global $db;
+    $sql = "SELECT medical_background FROM users WHERE id = '$id'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        $antecedants = explode(',', $data['medical_background']);
+        return $antecedants;
+    } else {
+        return false;
+    }
+}
 ##########################
 // ALL FUNCTIONS FOR DOCTORS
 ###########################
@@ -396,10 +422,10 @@ function isDoctor($email, $pseudo)
     }
 }
 
-function getDoctorbyPseudo($pseudo)
+function getDoctorbyId($id)
 {
     global $db;
-    $sql = "SELECT * FROM doctors WHERE pseudo = '$pseudo'";
+    $sql = "SELECT * FROM doctors WHERE id = '$id'";
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {

@@ -24,7 +24,7 @@
                             foreach ($users as $user) {
                         ?>
                                 <tr>
-                                    <td><a href="?pseudo=<?php echo $user['pseudo'] ?>"><img src="./../profiles/<?php echo $user['picture'] ?? "" ?>" alt="<?php echo $user['first_name'] . "_" . $user['last_name'] ?>" style="width:50px" /></a></td>
+                                    <td><a href="?p_id=<?php echo $user['id'] ?>"><img src="./../profiles/<?php echo $user['picture'] ?? "" ?>" alt="<?php echo $user['first_name'] . "_" . $user['last_name'] ?>" style="width:50px" /></a></td>
                                     <td class="text-uppercase"><?= $user['first_name'] ?></td>
                                     <td class="text-uppercase"><?= $user['last_name'] ?></td>
                                     <td><?= $user['blood'] ?></td>

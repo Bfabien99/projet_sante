@@ -45,7 +45,12 @@ if (isset($_POST['register'])) {
     if (empty($_POST['sexe'])) {
         $error['sexe'] = 'Faîtes un choix';
     } else {
-        $sexe = escapeString($_POST['sexe']);
+        if($_POST['sexe'] == "Femme"){
+            $picture = "patientf.png";
+        }else{
+            $picture = "patient.png";
+        }
+        $sexe = escapeString($_POST['sexe']); 
     }
 
     if (empty($_POST['weight'])) {
@@ -152,7 +157,8 @@ if (isset($_POST['register'])) {
             $height,
             $blood,
             $allergy,
-            $antecedant
+            $antecedant,
+            $picture
         )) {
             $success = true;
         } else {

@@ -1,6 +1,6 @@
 <?php
 include('includes/header.php');
-if (isset($_GET['pseudo'])) {
+if (isset($_GET['d_id'])) {
     include "includes/view_doctor.php";
 } elseif (isset($_GET['edit'])) {
     include "includes/edit_doctor.php";

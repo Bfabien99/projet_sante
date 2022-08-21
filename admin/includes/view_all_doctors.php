@@ -23,7 +23,7 @@
                             foreach ($doctors as $doctor) {
                         ?>  
                                 <tr>
-                                    <td><a href="?pseudo=<?php echo $doctor['pseudo'] ?>"><img src="./../profiles/<?php echo $doctor['picture'] ?>" alt="<?php echo $doctor['first_name'] . "_" . $doctor['last_name'] ?>" style="width:50px" /></a></td>
+                                    <td><a href="?d_id=<?php echo $doctor['id'] ?>"><img src="./../profiles/<?php echo $doctor['picture'] ?>" alt="<?php echo $doctor['first_name'] . "_" . $doctor['last_name'] ?>" style="width:50px" /></a></td>
                                     <td class="text-uppercase"><?= $doctor['first_name'] ?></td>
                                     <td class="text-uppercase"><?= $doctor['last_name'] ?></td>
                                     <td><?= $doctor['pseudo'] ?></td>

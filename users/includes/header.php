@@ -1,20 +1,20 @@
 <?php
-    session_start();
-    include('../includes/config.php');
-    include('../includes/functions.php');
-    if (!isset($_SESSION['hp_user_pseudo']) || !isset($_SESSION['hp_user_email'])) {
-        header('Location:./../?route=login');
-    }
-    if(isset($_GET['logout'])){
-        unset($_SESSION['hp_user_pseudo'],$_SESSION['hp_user_email']);
-        header('Location:./');
-    }
-    $db = connect(
-        DB_HOST,
-        DB_USERNAME,
-        DB_PASSWORD,
-        DB_NAME
-    );
+session_start();
+include('../includes/config.php');
+include('../includes/functions.php');
+if (!isset($_SESSION['hp_user_pseudo']) || !isset($_SESSION['hp_user_email'])) {
+    header('Location:./../?route=login');
+}
+if (isset($_GET['logout'])) {
+    unset($_SESSION['hp_user_pseudo'], $_SESSION['hp_user_email']);
+    header('Location:./');
+}
+$db = connect(
+    DB_HOST,
+    DB_USERNAME,
+    DB_PASSWORD,
+    DB_NAME
+);
 
 ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>HEALTH PLUS</title>
+    <script src="./../js/jquery.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="./../css/bootstrap.min.css" rel="stylesheet">
@@ -41,12 +41,20 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <title>HEALTH PLUS</title>
     <style>
         body {
-  background-color: #f5f7fa;
-}
+            background-color: #f5f7fa;
+        }
     </style>
 </head>
 
 <body>
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <?php include('includes/user_navigation.php'); ?>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">

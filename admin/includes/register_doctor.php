@@ -256,4 +256,5 @@ if (isset($_POST['register'])) {
     </form>
 <?php else : ?>
     <h1 class="text-center alert-success"> Enregistrement éffectué avec succes</h1>
+    <a href="./doctors.php" class="btn btn-primary">Retour</a>
 <?php endif; ?>

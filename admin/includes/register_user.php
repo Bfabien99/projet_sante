@@ -26,6 +26,17 @@ if (isset($_POST['register'])) {
         $birth = escapeString($_POST['birth']);
     }
 
+    if (empty($_POST['sexe'])) {
+        $error['sexe'] = 'Faîtes un choix';
+    } else {
+        if($_POST['sexe'] == "Femme"){
+            $picture = "patientf.png";
+        }else{
+            $picture = "patient.png";
+        }
+        $sexe = escapeString($_POST['sexe']); 
+    }
+
     if (empty($_POST['contact'])) {
         $error['contact'] = 'Veuillez entrer un contact valide';
     } else {
@@ -156,7 +167,8 @@ if (isset($_POST['register'])) {
             $height,
             $blood,
             $allergy,
-            $antecedant
+            $antecedant,
+            $picture
         )) {
             $success = true;
         } else {
@@ -331,5 +343,6 @@ if (isset($_POST['register'])) {
         </form>
     <?php else : ?>
         <h1 class="text-center alert-success"> Enregistrement éffectué avec succes</h1>
+        <a href="./users.php" class="btn btn-primary">Retour</a>
     <?php endif; ?>
 

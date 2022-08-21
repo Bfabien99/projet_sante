@@ -28,13 +28,13 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                             foreach ($users as $user) {
                         ?>
                                 <tr>
-                                    <td><a href="?pseudo=<?php echo $user['pseudo'] ?>" class="btn btn-primary p-md-1 mb-0"><img src="./../profiles/<?php echo $user['picture'] ?? "" ?>" alt="<?php echo $user['first_name'] . "_" . $user['last_name'] ?>"class="img-responsive" /></a></td>
-                                    <td><?= $user['first_name'] ?></td>
-                                    <td><?= $user['last_name'] ?></td>
+                                    <td><a href="?pseudo=<?php echo $user['pseudo'] ?>"><img src="./../profiles/<?php echo $user['picture'] ?? "" ?>" alt="<?php echo $user['first_name'] . "_" . $user['last_name'] ?>" style="width:50px" /></a></td>
+                                    <td class="text-uppercase"><?= $user['first_name'] ?></td>
+                                    <td class="text-uppercase"><?= $user['last_name'] ?></td>
                                     <td><?= $user['blood'] ?></td>
                                     <td><?= $user['height'] ?></td>
                                     <td><?= $user['weight'] ?></td>
-                                    <td><?= $user['profession'] ?></td>
+                                    <td class="text-uppercase"><?= $user['profession'] ?></td>
                                     <td><a href="?edit=<?php echo $user['id'] ?>" class="btn btn-primary p-md-1 mb-0">Editer</a>
                                     <a href="?delete=<?php echo $user['id']?>" class="btn btn-danger">Supprimer</a></td>
                                 </tr>

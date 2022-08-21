@@ -32,10 +32,3 @@ if(isset($source)) {
 
 include('includes/footer.php');
 
-
-
-
-
-
-
-include('includes/footer.php');

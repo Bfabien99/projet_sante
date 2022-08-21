@@ -93,7 +93,7 @@ if (isset($_POST['update_category'])) {
 }
 ?>
 <?php if (isset($_GET['edit']) && !empty($_GET['edit'])) : ?>
-    <h1>Modifier les informations de l'utilisateur</h1>
+    <h1 class="text-center">Modifier les informations de l'utilisateur</h1>
 <?php else : ?>
     <a href="./" class="btn btn-primary">Retour</a>
 <?php endif; ?>
@@ -115,8 +115,12 @@ if (isset($_POST['update_category'])) {
                 $contact = $row['contact'];
                 $emergency = $row['emergency_contact'];
                 $sexe = $row['sexe'];
+                $picture = $row['picture'];
         ?>
                 <div class="row py-1">
+                    <div class="col-md-8 col-lg-6 p-2 m-2">
+                        <img src="../profiles/<?php echo  $picture; ?>" alt="" class="img-responsive">
+                    </div>
                     <div class="col-md-8 col-lg-6 p-2 m-2">
                         <legend>Information d'ordre général</legend>
                         <div class="form-group">
@@ -176,11 +180,10 @@ if (isset($_POST['update_category'])) {
                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['sexe']; ?></p>
                             <?php endif; ?>
                         </div>
-                    </div>
-
-                </div>
-                <div class="form-group">
+                        <div class="form-group">
                     <input class="btn btn-primary" type="submit" name="update_category" value="Modifier">
+                </div>
+                    </div>
                 </div>
         <?php }
         } ?>

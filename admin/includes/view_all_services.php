@@ -22,7 +22,7 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
             while ($row = $select_all_roles->fetch_assoc()) {
             ?>
             <tr>
-                <td><?php echo $row['titre']?></td>
+                <td class="text-uppercase"><?php echo $row['titre']?></td>
                 <td><?php echo $row['details']?></td>
                 <td>
                     <a href="?edit=<?php echo $row['id']?>" class="btn btn-primary">Editer</a>

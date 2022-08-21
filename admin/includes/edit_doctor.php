@@ -40,6 +40,7 @@ if (isset($_POST['update_category'])) {
     if(!empty($_FILES['profile'])){
         $picture = cleanFile('profile');
     }
+    
 
     if (empty($_POST['fonction'])) {
         $error['fonction'] = 'Veuillez choisir votre service';
@@ -74,7 +75,7 @@ if (isset($_POST['update_category'])) {
     }
 
     $id = escapeString($_GET['edit']);
-
+    $image = $picture ?? getDoctorPicture($id);
     if (
     !empty($fname)
     && !empty($lname)
@@ -85,7 +86,7 @@ if (isset($_POST['update_category'])) {
     && !empty($experience)
     && !empty($contact1)
     && !empty($contact2)
-    && !empty($picture)) {
+    && !empty($image)) {
         if(doctorUpdate_admin(
             $id,
             $fname,
@@ -97,9 +98,9 @@ if (isset($_POST['update_category'])) {
             $experience,
             $contact1,
             $contact2,
-            $picture
+            $image
         )){
-            if(!file_exists("../profiles/$picture")){
+            if(!file_exists("../profiles/$image")){
                 move_uploaded_file($_FILES['profile']['tmp_name'], '../profiles/' . $picture);
             }
             $success = true;

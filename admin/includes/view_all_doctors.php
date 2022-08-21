@@ -10,7 +10,7 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
             <div class="card-body">
                 <table class="table bordered hover" id="tables" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
+                        <tr class="text-uppercase">
                             <th>Image</th>
                             <th>Nom</th>
                             <th>Prenoms</th>
@@ -28,10 +28,10 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
                         ?>  
                                 <tr>
                                     <td><a href="?pseudo=<?php echo $doctor['pseudo'] ?>"><img src="./../profiles/<?php echo $doctor['picture'] ?>" alt="<?php echo $doctor['first_name'] . "_" . $doctor['last_name'] ?>" style="width:50px" /></a></td>
-                                    <td><?= $doctor['first_name'] ?></td>
-                                    <td><?= $doctor['last_name'] ?></td>
+                                    <td class="text-uppercase"><?= $doctor['first_name'] ?></td>
+                                    <td class="text-uppercase"><?= $doctor['last_name'] ?></td>
                                     <td><?= $doctor['pseudo'] ?></td>
-                                    <td><?= $doctor['fonction'] ?></td>
+                                    <td class="text-uppercase"><?= $doctor['fonction'] ?></td>
                                     <td><?= $doctor['experience'] ?></td>
                                     <td><a href="?edit=<?php echo $doctor['id'] ?>" class="btn btn-primary p-md-1 mb-0">Editer</a>
                                     <a href="?delete=<?php echo $doctor['id']?>" class="btn btn-danger">Supprimer</a></td>

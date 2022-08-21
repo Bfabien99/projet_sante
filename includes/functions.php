@@ -88,11 +88,12 @@ function userRegister(
     $height,
     $blood,
     $allergy,
-    $antecedant
+    $antecedant,
+    $picture
 ) {
     global $db;
-    $sql = "INSERT INTO users(first_name,last_name,birth,contact,emergency_contact,email,sexe,weight,height,blood,allergy,medical_background,children,marital_status,profession,pseudo,password) ";
-    $sql .= "VALUES ('{$fname}','{$lname}','{$birth}','{$contact}','{$emergency}','{$email}','{$sexe}','{$weight}','{$height}','{$blood}','{$allergy}','{$antecedant}','{$children}','{$marital}','{$profession}','{$pseudo}','{$password}')";
+    $sql = "INSERT INTO users(first_name,last_name,birth,contact,emergency_contact,email,sexe,weight,height,blood,allergy,medical_background,children,marital_status,profession,pseudo,password,picture) ";
+    $sql .= "VALUES ('{$fname}','{$lname}','{$birth}','{$contact}','{$emergency}','{$email}','{$sexe}','{$weight}','{$height}','{$blood}','{$allergy}','{$antecedant}','{$children}','{$marital}','{$profession}','{$pseudo}','{$password}','{$picture}')";
 
     if ($db->query($sql)) {
         return true;
@@ -123,7 +124,8 @@ function userUpdate(
     $height,
     $blood,
     $allergy,
-    $antecedant
+    $antecedant,
+    $picture
 ) {
     global $db;
     $sql = "UPDATE users SET ";
@@ -144,6 +146,7 @@ function userUpdate(
     $sql .= "profession = '{$profession}', ";
     $sql .= "pseudo = '{$pseudo}', ";
     $sql .= "password = '{$password}' ";
+    $sql .= "picture = '{$picture}' ";
     $sql .= " WHERE id = '{$id}'";
     if ($db->query($sql)) {
         return true;
@@ -407,6 +410,20 @@ function getAllDoctor()
         }
     }
     return $data;
+}
+
+function getDoctorPicture($id)
+{
+    global $db;
+    $sql = "SELECT picture FROM doctors WHERE id = '$id'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data['picture'];
+    } else {
+        return false;
+    }
 }
 
 

@@ -247,6 +247,20 @@ function getAllUser()
     return $data;
 }
 
+function getUserPicture($id)
+{
+    global $db;
+    $sql = "SELECT picture FROM users WHERE id = '$id'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data['picture'];
+    } else {
+        return false;
+    }
+}
+
 
 ##########################
 // ALL FUNCTIONS FOR DOCTORS

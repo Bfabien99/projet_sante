@@ -1,8 +1,4 @@
-<?php
-if (empty($_SESSION['hp_admin_pseudo'])) {
-    header('Location:./../?route=login');
-}
-?>
+
 <?php
 $success = false;
 $error = [];
@@ -75,6 +71,6 @@ if (isset($_POST['update_category'])) {
         } ?>
     </form>
 <?php else : ?>
-    <h3 class="alert-success">Modification effectuée!</h3>
+    <h1 class="text-center alert-success"> Modification éffectuée</h1>
     <a href="./services.php" class="btn btn-primary">Retour</a>
 <?php endif ?>

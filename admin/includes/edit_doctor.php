@@ -1,8 +1,4 @@
-<?php
-if (empty($_SESSION['hp_admin_pseudo'])) {
-    header('Location:./../?route=login');
-}
-?>
+
 <?php
 $success = false;
 $error = [];
@@ -140,7 +136,7 @@ if (isset($_POST['update_category'])) {
                 $picture = $row['picture'];
 
         ?>
-                <div class="row py-1">
+                <div class="row py-1" style="margin:2em auto;padding:1em; background-color:white;">
                     <div class="col-md-8 col-lg-6 p-2 m-2">
                         <legend>Information d'ordre général</legend>
                         <div class="form-group">
@@ -254,6 +250,6 @@ if (isset($_POST['update_category'])) {
 
     </form>
 <?php else : ?>
-    <h3 class="alert-success">Modification effectuée!</h3>
+    <h1 class="text-center alert-success"> Modification éffectuée</h1>
     <a href="./doctors.php" class="btn btn-primary">Retour</a>
 <?php endif ?>

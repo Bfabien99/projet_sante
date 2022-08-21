@@ -1,8 +1,4 @@
-<?php
-if (empty($_SESSION['hp_admin_pseudo'])) {
-    header('Location:./../?route=login');
-}
-?>
+
 <?php
 $success = false;
 $error = [];
@@ -98,7 +94,7 @@ if (isset($_POST['update_category'])) {
     <a href="./" class="btn btn-primary">Retour</a>
 <?php endif; ?>
 <?php if (!$success) : ?>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data" style="margin:2em auto;padding:1em; background-color:white;">
         <?php
 
         if (isset($_GET['edit']) && !empty($_GET['edit'])) {
@@ -190,6 +186,6 @@ if (isset($_POST['update_category'])) {
 
     </form>
 <?php else : ?>
-    <h3 class="alert-success">Modification effectuée!</h3>
+    <h1 class="text-center alert-success"> Modification éffectuée</h1>
     <a href="./users.php" class="btn btn-primary">Retour</a>
 <?php endif ?>

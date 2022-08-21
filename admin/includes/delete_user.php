@@ -1,8 +1,4 @@
-<?php
-if (empty($_SESSION['hp_admin_pseudo'])) {
-    header('Location:./../?route=login');
-}
-?>
+
 <?php
     if(isset($_GET['delete']) && !empty($_GET['delete'])){
     $id = escapeString($_GET['delete']);

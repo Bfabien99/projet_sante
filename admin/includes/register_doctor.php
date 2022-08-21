@@ -1,8 +1,4 @@
-<?php
-if (empty($_SESSION['hp_admin_pseudo'])) {
-    header('Location:./../?route=login');
-}
-?>
+
 <?php
 $success = false;
 $error = [];
@@ -137,7 +133,7 @@ if (isset($_POST['register'])) {
 <h1 class='text-center'>AJOUTER UN NOUVEAU DOCTEUR</h1>
 <?php if (!$success) : ?>
     <form action="" method="post" autocomplete="off" class="">
-        <div class="row py-1">
+        <div class="row py-1" style="margin:2em auto;padding:1em; background-color:white;overflow:auto;">
             <div class="col-md-8 col-lg-5 p-2 m-2">
                 <legend>Information d'ordre général</legend>
                 <div class="form-group">
@@ -255,6 +251,6 @@ if (isset($_POST['register'])) {
         <input type="submit" class="btn btn-success mb-2" name="register" value="S'enregistrer">
     </form>
 <?php else : ?>
-    <h1 class="text-center alert-success"> Enregistrement éffectué avec succes</h1>
+    <h1 class="text-center alert-success"> Enregistrement éffectué</h1>
     <a href="./doctors.php" class="btn btn-primary">Retour</a>
 <?php endif; ?>

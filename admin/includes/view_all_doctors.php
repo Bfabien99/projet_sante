@@ -1,8 +1,4 @@
-<?php
-if (empty($_SESSION['hp_admin_pseudo'])) {
-    header('Location:./../?route=login');
-}
-?>
+
 <h1 class="text-center">Docteur enregistré</h1>
 <div class="row">
     <div class="col-lg-12 col-xl-11">

@@ -1,8 +1,4 @@
-<?php
-if (empty($_SESSION['hp_admin_pseudo'])) {
-    header('Location:./../?route=login');
-}
-?>
+
 <?php
 $success = false;
 $error = [];
@@ -34,18 +30,17 @@ if (isset($_POST['submit'])) {
 ?>
     <h1>Ajouter un nouveau service</h1>
 <?php if (!$success): ?>
-    <form action="" method="post">
-        
+    <form action="" method="post" style="margin:2em auto;padding:1em; background-color:white;overflow:auto;">
                 <div class="form-group">
                     <label for="title">Titre du service</label>
-                    <input value="<?php echo $cat_title ?? "" ; ?>" type="text" class="form-control" name="title">
+                    <input value="<?php echo $title ?? "" ; ?>" type="text" class="form-control" name="title">
                     <?php if (isset($error['title'])) : ?>
                         <p class="alert-danger rounded-2 p-1"><?php echo  $error['title']; ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="form-group">
                     <label for="details">Description du service</label>
-                    <textarea class="form-control" name="details" id="details"><?php echo $cat_detail ?? ""; ?></textarea>
+                    <textarea class="form-control" name="details" id="details"><?php echo $detail ?? ""; ?></textarea>
                     <?php if (isset($error['details'])) : ?>
                         <p class="alert-danger rounded-2 p-1"><?php echo  $error['details']; ?></p>
                     <?php endif; ?>
@@ -56,6 +51,6 @@ if (isset($_POST['submit'])) {
                 </div>
     </form>
 <?php else : ?>
-    <h3 class="alert-success">Service ajouté!</h3>
+    <h1 class="text-center alert-success"> Enregistrement éffectué</h1>
     <a href="./services.php" class="btn btn-primary">Retour</a>
 <?php endif ?>

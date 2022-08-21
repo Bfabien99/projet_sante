@@ -1,10 +1,3 @@
-<?php
-if (empty($_SESSION['hp_admin_pseudo'])) {
-    header('Location:./../?route=login');
-}
-?>
-
-
 
             <div class="row">
                 <div class="col-lg-12">

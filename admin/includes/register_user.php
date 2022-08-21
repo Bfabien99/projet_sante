@@ -1,8 +1,4 @@
-<?php
-if (empty($_SESSION['hp_admin_pseudo'])) {
-    header('Location:./../?route=login');
-}
-?>
+
 <?php
 
 $success = false;
@@ -180,8 +176,8 @@ if (isset($_POST['register'])) {
     <h1 class='text-center'>AJOUTER UN NOUVEL UTILISATEUR</h1>
     <?php if (!$success) : ?>
         <form action="" method="post" autocomplete="off" class="" >
-            <div class="row py-1">
-                <div class="col-md-8 col-lg-5 p-2 m-2">
+            <div class="row py-1" style="margin:2em auto;padding:1em; background-color:white;overflow:auto;">
+                <div class="col-md-8 col-lg-5 p-2 m-2" >
                     <legend>Information d'ordre général</legend>
                     <div class="form-group">
                         <label for="first_name">Nom</label>
@@ -339,10 +335,10 @@ if (isset($_POST['register'])) {
                 </div>
             </div>
 
-            <input type="submit" class="btn btn-success mb-2" name="register" value="S'enregistrer">
+            <input type="submit" class="btn btn-success mb-2" name="register" value="Enregistrer">
         </form>
     <?php else : ?>
-        <h1 class="text-center alert-success"> Enregistrement éffectué avec succes</h1>
+        <h1 class="text-center alert-success"> Enregistrement éffectué</h1>
         <a href="./users.php" class="btn btn-primary">Retour</a>
     <?php endif; ?>
 

@@ -1,8 +1,4 @@
-<?php
-if (empty($_SESSION['hp_admin_pseudo'])) {
-    header('Location:./../?route=login');
-}
-?>
+
 <h1 class="text-center">Utilisateur enregistré</h1>
 <div class="row">
     <div class="col-lg-12 col-xl-11">
@@ -10,7 +6,7 @@ if (empty($_SESSION['hp_admin_pseudo'])) {
             <div class="card-body">
                 <table class="table bordered hover" id="tables" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
+                        <tr class="text-uppercase">
                             <th>Image</th>
                             <th>Nom</th>
                             <th>Prenoms</th>

@@ -2,6 +2,13 @@
     session_start();
     include('../includes/config.php');
     include('../includes/functions.php');
+    if (!isset($_SESSION['hp_user_pseudo']) || !isset($_SESSION['hp_user_email'])) {
+        header('Location:./../?route=login');
+    }
+    if(isset($_GET['logout'])){
+        unset($_SESSION['hp_user_pseudo'],$_SESSION['hp_user_email']);
+        header('Location:./');
+    }
     $db = connect(
         DB_HOST,
         DB_USERNAME,

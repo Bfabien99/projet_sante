@@ -1,5 +1,5 @@
 <?php
-
+include('includes/header.php');
 $error = [];
 if (isset($_POST['login'])) {
     if (empty($_POST['identifiant'])) {
@@ -14,11 +14,27 @@ if (isset($_POST['login'])) {
         $password = pass_crypt($_POST['password']);
     }
 
-    if(!empty($identifiant) && !empty($password)) {
-        if(loginUser($identifiant, $password)) {
-            header('Location:./');
-        }else{
-            $error['both'] = "Les informations saisies sont incorrectes, veuillez reessayer";
+    if (!empty($_POST['code'])) {
+        $code = escapeString($_POST['code']);
+    }else{
+        $error['code'] = "Veuillez votre code d'accès";
+    }
+
+
+    if (!empty($identifiant) && !empty($password)) {
+        if (!empty($_POST['code'])) {
+            $code = escapeString($_POST['code']);
+            if (loginDoctor($identifiant, $password, $code)) {
+                header('Location:./');
+            } else {
+                $error['both'] = "Les informations saisies sont incorrectes, veuillez reessayer";
+            }
+        } else {
+            if (loginAdmin($identifiant, $password)) {
+                header('Location:./../admin');
+            } else {
+                $error['code'] = "Veuillez votre code d'accès";
+            }
         }
     }
 }
@@ -26,11 +42,11 @@ if (isset($_POST['login'])) {
 
 ?>
 <div class="container">
-    <h1 class="text-center">Connexion</h1>
+    <h1 class="text-center">Doctor Connexion</h1>
     <form action="" method="post" autocomplete="off">
-            <?php if (isset($error['both'])) : ?>
-                <p class="alert-warning rounded-2 p-1"><?php echo  $error['both']; ?></p>
-            <?php endif; ?>
+        <?php if (isset($error['both'])) : ?>
+            <p class="alert-warning rounded-2 p-1"><?php echo  $error['both']; ?></p>
+        <?php endif; ?>
         <div class="form-group">
             <label for="identifiant">Entrez votre pseudo ou votre email</label>
             <input type="text" class="form-control" name="identifiant" id="identifiant" value="<?php if (isset($identifiant)) echo $identifiant; ?>">
@@ -45,9 +61,16 @@ if (isset($_POST['login'])) {
                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['password']; ?></p>
             <?php endif; ?>
         </div>
+        <div class="form-group">
+            <label for="identifiant">Entrez le code</label>
+            <input type="password" class="form-control" name="code" id="code" value="<?php if (isset($code)) echo $code; ?>">
+            <?php if (isset($error['code'])) : ?>
+                <p class="alert-danger rounded-2 p-1"><?php echo  $error['code']; ?></p>
+            <?php endif; ?>
+        </div>
         <input type="submit" name="login" value="Se connecter" class="btn btn-primary my-2">
     </form>
 </div>
 <?php
-
+    include('includes/footer.php');
 ?>

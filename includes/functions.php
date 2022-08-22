@@ -370,7 +370,7 @@ function doctorUpdate(
     $sql .= "contact2 = {$contact2}, ";
     $sql .= "email = '{$email}', ";
     $sql .= "pseudo = '{$pseudo}', ";
-    $sql .= "password = '{$password}' ";
+    $sql .= "password = '{$password}', ";
     $sql .= "picture = '{$picture}' ";
     $sql .= " WHERE id = '{$id}'";
     if ($db->query($sql)) {
@@ -475,6 +475,20 @@ function getDoctorPicture($id)
     if ($result->num_rows > 0) {
         $data = $result->fetch_assoc();
         return $data['picture'];
+    } else {
+        return false;
+    }
+}
+
+function getDoctorbyPseudo($pseudo)
+{
+    global $db;
+    $sql = "SELECT * FROM doctors WHERE pseudo = '$pseudo'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
     } else {
         return false;
     }

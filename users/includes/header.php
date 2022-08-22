@@ -54,43 +54,9 @@ if (isset($_GET['logout'])) {
     <![endif]-->
     <title>HEALTH PLUS</title>
     <style>
-        body {
-            margin: 0;
-        }
-
-        @media screen and (max-width:720px) {
-
-        }
-
-        /*.container-fluid{
+        body{
             background-color: #f5f7fa;
         }
-
-        .card{
-            position: relative;
-            background-color: #fff;
-            box-shadow: 0 0 10px lightgrey;
-            max-width: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1em;
-            border-radius: 5px;
-            margin:0 auto;
-        }
-
-        .table{
-            position: relative;
-            background-color: #fff;
-            box-shadow: 0 0 10px lightgrey;
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1em;
-            border-radius: 5px;
-            margin:2px auto;
-        }*/
     </style>
 </head>
 
@@ -98,4 +64,4 @@ if (isset($_GET['logout'])) {
     <?php include('includes/user_navigation.php'); ?>
 
     <!-- Navigation -->
-    <div class="container">
+    <div class="container p-2">

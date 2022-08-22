@@ -2,19 +2,21 @@
 session_start();
 include('../includes/config.php');
 include('../includes/functions.php');
-if (!isset($_SESSION['hp_doctor_pseudo']) || !isset($_SESSION['hp_doctor_email'])) {
-    header('Location:./../?route=login');
-}
-if (isset($_GET['logout'])) {
-    unset($_SESSION['hp_doctor_pseudo'], $_SESSION['hp_doctor_email']);
-    header('Location:./');
-}
 $db = connect(
     DB_HOST,
     DB_USERNAME,
     DB_PASSWORD,
     DB_NAME
 );
+if (!isset($_SESSION['hp_doctor_pseudo']) || !isset($_SESSION['hp_doctor_email'])) {
+    header('Location:./../?route=login');
+}else{
+    $doctor = getDoctorbyPseudo($_SESSION['hp_doctor_pseudo']);
+}
+if (isset($_GET['logout'])) {
+    unset($_SESSION['hp_doctor_pseudo'], $_SESSION['hp_doctor_email']);
+    header('Location:./');
+}
 
 ?>
 <!DOCTYPE html>
@@ -42,72 +44,12 @@ $db = connect(
     <![endif]-->
     <title>Docteur</title>
     <style>
-        body{
-            background-color: #fff;
-        }
-
-        .container-fluid{
+       body{
             background-color: #f5f7fa;
-        }
-
-        .card{
-            position: relative;
-            background-color: #fff;
-            box-shadow: 0 0 10px lightgrey;
-            max-width: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1em;
-            border-radius: 5px;
-            margin:0 auto;
-        }
-
-        .table{
-            position: relative;
-            background-color: #fff;
-            box-shadow: 0 0 10px lightgrey;
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1em;
-            border-radius: 5px;
-            margin:2px auto;
-        }
-
-        .card #blood{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            position: absolute;
-            right: 5px;
-            font-size:2em;
-        }
-
-        .patient_block_bottom{
-            margin: 1em auto;
-            padding: 2em;
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
-            justify-items: center;
-        }
-
-        .patient_block_bottom div{
-            background-color: #fff;
         }
     </style>
 </head>
 
 <body>
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <?php include('includes/doctor_navigation.php'); ?>
-
-        <div id="page-wrapper">
-
-            <div class="container-fluid">
+<?php include('includes/doctor_navigation.php'); ?>
+            <div class="container p-2">

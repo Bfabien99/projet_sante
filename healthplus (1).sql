@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 19 août 2022 à 20:27
+-- Généré le : lun. 22 août 2022 à 11:04
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -55,7 +55,7 @@ CREATE TABLE `doctors` (
   `last_name` varchar(255) NOT NULL,
   `birth` date DEFAULT NULL,
   `sexe` enum('Homme','Femme') NOT NULL,
-  `fonction` varchar(100) DEFAULT NULL,
+  `fonction` varchar(255) DEFAULT NULL,
   `description` text NOT NULL,
   `experience` int(11) NOT NULL,
   `contact1` varchar(255) NOT NULL,
@@ -72,14 +72,12 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `first_name`, `last_name`, `birth`, `sexe`, `fonction`, `description`, `experience`, `contact1`, `contact2`, `email`, `pseudo`, `password`, `picture`, `code`) VALUES
-(1, 'Jhon', 'Doe', '1988-08-09', 'Homme', '0', 'Expert en coeur.\r\nSur 100 patients traité, 100 sauvés.', 3, '0102030405', '0203040505', 'doctor1@gmail.com', 'doctor1', '6d912e7c19ddbed26ddc00bb38dd72bc3a0fc71740f8efc86845890193cb435d', NULL, 'healthplus22'),
-(4, 'rahima', 'gardia', '1995-09-02', 'Femme', 'ophtamologie', 'quia illo illo provi', 33, '+1514886-7955', '+1831796-5205', 'wavyt@mailinator.com', 'doctor2', '6d912e7c19ddbed26ddc00bb38dd72bc3a0fc71740f8efc86845890193cb435d', '', 'healthplus22'),
-(5, 'laurel', 'sanders', '1995-07-20', 'Homme', 'pédiatrie', 'laborum esse animi', 11, '+1882271-5857', '+1675288-6697', 'sirov@mailinator.com', 'doctor3', '6d912e7c19ddbed26ddc00bb38dd72bc3a0fc71740f8efc86845890193cb435d', '', 'healthplus22'),
-(6, 'melyssa', 'colon', '1971-10-31', 'Femme', 'généraliste', 'quia nesciunt elige', 43, '+1175532-7056', '+1436687-5588', 'xicunyq@mailinator.com', 'illum voluptatum do', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27', 'docteur.png', 'healthplus22'),
-(7, 'wyoming', 'holloway', '2001-02-08', 'Femme', 'ophtamologie', 'voluptas labore magn', 10, '+1577827-7533', '+1671392-3268', 'wugoqedymy@mailinator.com', 'cumque vitae fugiat ', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27', 'docteur.png', 'healthplus22'),
-(8, 'bruno', 'goodwin', '1996-08-17', 'Femme', 'chirurgie', 'aut quas quia repell', 4, '+1556814-2793', '+1623745-2214', 'gefohy@mailinator.com', 'ea mollitia inventor', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27', 'docteur.png', 'healthplus22'),
-(9, 'joelle', 'day', '2005-04-07', 'Homme', 'ophtamologie', 'dolorum ut provident', 47, '+1503744-2017', '+1328877-8636', 'ceryhad@mailinator.com', 'libero quo praesenti', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27', 'docteur.png', 'healthplus22'),
-(10, 'porter', 'powers', '2011-09-26', 'Femme', 'chirurgie', 'quia error voluptate', 3, '+1193674-1564', '+1418717-2126', 'wapu@mailinator.com', 'odit veniam dolorib', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27', 'docteurf.png', 'healthplus22');
+(3, 'tatyana', 'delgado', '2016-05-08', 'Femme', 'cardiologie', 'dolor eveniet velit', 74, '1192006', '1634316', 'zomyqipave@mailinator.com', 'doctor1', '2c6891582192f8cbdcc19ff060ae9adebb288ccd9865a7d3af45340c82790fa9', 'docteurf.png', 'healthplus22'),
+(4, 'calista', 'mccoy', '2002-05-01', 'Homme', 'cardiologie', 'ratione sed veritati', 89, '+1984913-5603', '+1592877-9221', 'mefufoc@mailinator.com', 'irure earum harum pr', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27', 'docteur.png', 'healthplus22'),
+(5, 'kiona', 'foreman', '1998-01-06', 'Femme', 'cardiologie', 'perspiciatis dolore', 45, '+1407266-8882', '+1311559-1339', 'vepak@mailinator.com', 'dolor voluptatum eos', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27', 'docteurf.png', 'healthplus22'),
+(6, 'kathleen', 'welch', '1983-09-27', 'Homme', 'cardiologie', 'sit aliqua ab quas ', 67, '+1896835-5392', '+1773697-5275', 'pemygu@mailinator.com', 'earum sed sed commod', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27', 'docteur.png', 'healthplus22'),
+(7, 'martha', 'mccarty', '2011-07-25', 'Femme', 'cardiologie', 'deleniti maxime exer', 85, '+1472881-5671', '+1596684-3971', 'josuh@mailinator.com', 'et illo sed veniam ', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27', 'docteurf.png', 'healthplus22'),
+(8, 'brent', 'ayala', '2004-05-21', 'Homme', 'dentiste', 'rem ut veniam quide', 12, '+1111333-4309', '+1862384-6143', 'balow@mailinator.com', 'quod eu nihil amet ', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27', 'docteur.png', 'healthplus22');
 
 -- --------------------------------------------------------
 
@@ -98,11 +96,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `titre`, `details`) VALUES
-(1, 'Cardiologie', 'S\'occupe des soucis en relations avec le coeur'),
-(2, 'Pédiatrie', 'S\'occupe des soucis en relations avec les enfants'),
-(3, 'Ophtamologie', 'S\'occupe des soucis en relations avec les yeux'),
-(4, 'Chirurgie', 'S\'occupe de tout ce qui concerne les opérations'),
-(5, 'Généraliste', 'S\'occupe de tout');
+(6, 'cardiologie', 'service du coeur'),
+(7, 'dentiste', 'affaire de dents');
 
 -- --------------------------------------------------------
 
@@ -128,18 +123,19 @@ CREATE TABLE `users` (
   `marital_status` enum('Célibataire','Mariée','Veuve','Divorcée') NOT NULL,
   `profession` varchar(255) NOT NULL,
   `pseudo` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `picture` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `birth`, `contact`, `emergency_contact`, `email`, `sexe`, `weight`, `height`, `blood`, `allergy`, `medical_background`, `children`, `marital_status`, `profession`, `pseudo`, `password`) VALUES
-(2, 'Stacy', 'Hull', '1992-02-28', '+1285699-1710', '+1 (614) 941-7774', 'hygakabipy@mailinator.com', 'Femme', 73, 54, 'AB', 'Ipsam est dolore sed', 'Aut ut culpa elit ', 12, 'Mariée', 'Est ut aut sint ea u', 'Incidunt nihil recu', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27'),
-(3, 'brou', 'fabien', '1999-05-18', '0153148864', '0709167244', 'gordon@gmail.com', 'Homme', 48, 125, 'O', 'aucun', 'aucun', 1, 'Célibataire', 'etudiant', 'gordon', 'd7c04d4096cad217337ccc0c0ab28d42b3704e77671cd647490acb35290abe7c'),
-(4, 'sharon', 'jones', '1977-11-25', '+1619599-9853', '+1147158-5241', 'vutewasy@mailinator.com', 'Femme', 81, 79, 'B', 'optio sunt assumend', 'sed in impedit volu', 89, 'Veuve', 'veniam dolor verita', 'fabie', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27'),
-(5, 'macon', 'wiggins', '1972-12-19', '+1416157-4369', '+1676673-2731', 'fajoky@mailinator.com', 'Homme', 16, 68, 'B', 'rerum id aut suscip', 'enim magnam laboris ', 71, 'Mariée', 'dolores ut illum et', 'darwins', '44cd8e992947f7c312dc4ce694603a3a0fee41819d52e861c3ea052235416a2c');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `birth`, `contact`, `emergency_contact`, `email`, `sexe`, `weight`, `height`, `blood`, `allergy`, `medical_background`, `children`, `marital_status`, `profession`, `pseudo`, `password`, `picture`) VALUES
+(7, 'kirsten', 'lowery', '1979-12-11', '+1921178-1149', '+1732289-1204', 'gosaxunis@mailinator.com', 'Homme', 74, 85, 'B', 'incidunt deserunt d', 'perferendis quis quo', 58, 'Divorcée', 'dolore corporis dict', 'patient1', '2ab404235058541fe43e965e050608622c27548dae5ea840efea2b42d69fb62d', 'patient.png'),
+(8, 'hanae', 'cooper', '1971-02-03', '+1481419-6819', '+1967256-4916', 'cyxig@mailinator.com', 'Femme', 72, 62, 'AB', 'qui ad rerum et impe', 'commodo reprehenderi', 44, 'Divorcée', 'ipsa eveniet corpo', 'fabien', 'd7c04d4096cad217337ccc0c0ab28d42b3704e77671cd647490acb35290abe7c', 'patientf.png'),
+(9, 'anthony', 'gallegos', '2015-09-07', '+1827141-6125', '+1142219-7678', 'nadug@mailinator.com', 'Homme', 3, 90, 'O', 'ratione irure invent, ratione irure invent, ratione irure invent', 'do quis est mollitia, ratione irure invent, ratione irure invent', 45, 'Mariée', 'velit voluptates sit', 'patient2', '68cb602dbb582aa248de1640e4a94b54dfaf456cf8d77d9ca03f445235114c6e', 'patient.png'),
+(10, 'kimberly', 'hodge', '1983-11-01', '+1821413-3303', '+1115836-2118', 'madoz@mailinator.com', 'Femme', 97, 69, 'AB', 'rem atque sit volupt', 'et delectus esse re', 37, 'Mariée', 'ad maxime impedit n', 'esse ullamco lorem ', 'ce1e37f9a09628751128b846f659ddd3d2cba85848e5bd1d472e4151eb92cc27', 'patientf.png');
 
 --
 -- Index pour les tables déchargées
@@ -163,7 +159,8 @@ ALTER TABLE `doctors`
 -- Index pour la table `roles`
 --
 ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `titre` (`titre`);
 
 --
 -- Index pour la table `users`
@@ -187,19 +184,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT pour la table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

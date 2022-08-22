@@ -204,11 +204,11 @@ if (isset($_POST['register'])) {
                             <?php endif; ?>
                         </div>
                         <div class="col form-group">
-                            <label for="sexe">Sexe</label>
+                            <label for="sexe">Genre</label>
                             <select name="sexe" id="sexe" class="form-control">
                                 <option value="">--</option>
-                                <option value="Homme">Homme</option>
-                                <option value="Femme">Femme</option>
+                                <option value="Homme">Masculin</option>
+                                <option value="Femme">Feminin</option>
                                 <option value="Autre">Autre</option>
                             </select>
                             <?php if (isset($error['sexe'])) : ?>

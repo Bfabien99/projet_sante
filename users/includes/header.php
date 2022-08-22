@@ -2,19 +2,22 @@
 session_start();
 include('../includes/config.php');
 include('../includes/functions.php');
-if (!isset($_SESSION['hp_user_pseudo']) || !isset($_SESSION['hp_user_email'])) {
-    header('Location:./../?route=login');
-}
-if (isset($_GET['logout'])) {
-    unset($_SESSION['hp_user_pseudo'], $_SESSION['hp_user_email']);
-    header('Location:./');
-}
 $db = connect(
     DB_HOST,
     DB_USERNAME,
     DB_PASSWORD,
     DB_NAME
 );
+if (!isset($_SESSION['hp_user_pseudo']) || !isset($_SESSION['hp_user_email'])) {
+    header('Location:./../?route=login');
+}
+else{
+    $user = getUserbyPseudo($_SESSION['hp_user_pseudo']);
+}
+if (isset($_GET['logout'])) {
+    unset($_SESSION['hp_user_pseudo'], $_SESSION['hp_user_email']);
+    header('Location:./');
+}
 
 ?>
 <!DOCTYPE html>
@@ -30,9 +33,18 @@ $db = connect(
 
     <script src="./../js/jquery.js"></script>
 
+    <!-- Calendar -->
+    
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js'></script>
+
     <!-- Bootstrap Core CSS & JS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Custom Fonts -->
+    <link href="./../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,10 +55,14 @@ $db = connect(
     <title>HEALTH PLUS</title>
     <style>
         body {
-            background-color: #f5f7fa;
+            margin: 0;
         }
 
-        .container-fluid{
+        @media screen and (max-width:720px) {
+
+        }
+
+        /*.container-fluid{
             background-color: #f5f7fa;
         }
 
@@ -74,16 +90,12 @@ $db = connect(
             padding: 1em;
             border-radius: 5px;
             margin:2px auto;
-        }
+        }*/
     </style>
 </head>
 
 <body>
-    <div id="wrapper">
+    <?php include('includes/user_navigation.php'); ?>
 
-        <!-- Navigation -->
-        <?php include('includes/user_navigation.php'); ?>
-
-        <div id="page-wrapper">
-
-            <div class="container-fluid">
+    <!-- Navigation -->
+    <div class="container">

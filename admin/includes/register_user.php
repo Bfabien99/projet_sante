@@ -63,13 +63,15 @@ if (isset($_POST['register'])) {
         $error['weight'] = 'Veuillez entrer votre poids en kg';
     } elseif ($_POST['weight'] < 0) {
         $error['weight'] = 'Veuillez entrer un nombre valide';
+    }elseif ($_POST['weight'] == '0') {
+        $weight = "0";
     } else {
         $weight = escapeString($_POST['weight']);
     }
 
     if (empty($_POST['height'])) {
         $error['height'] = 'Veuillez entrer votre taille en cm';
-    } elseif ($_POST['height'] < 0) {
+    } elseif (($_POST['height']) < 0) {
         $error['height'] = 'Veuillez entrer un nombre valide';
     } else {
         $height = escapeString($_POST['height']);
@@ -93,8 +95,8 @@ if (isset($_POST['register'])) {
         $antecedant = escapeString($_POST['medical_background']);
     }
 
-    if (empty($_POST['children'])) {
-        $error['children'] = 'Veuillez remplir ce champ';
+    if (!isset($_POST['children'])) {
+        $error['children'] = 'Veuillez remplir ce champs';
     } elseif ($_POST['children'] < 0) {
         $error['children'] = 'Veuillez entrer un nombre valide';
     } else {
@@ -139,7 +141,6 @@ if (isset($_POST['register'])) {
         && !empty($emergency)
         && !empty($profession)
         && !empty($marital)
-        && !empty($children)
         && !empty($weight)
         && !empty($height)
         && !empty($blood)
@@ -279,7 +280,7 @@ if (isset($_POST['register'])) {
                         </div>
                         <div class="form-group">
                             <label for="children">Enfant</label>
-                            <input class="form-control" type="number" name="children" id="children" value="<?php if (isset($children)) echo $children; ?>">
+                            <input class="form-control" type="number" name="children" id="children" value="<?php if (isset($children)) echo $children; ?>" min="0">
                             <?php if (isset($error['children'])) : ?>
                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['children']; ?></p>
                             <?php endif; ?>
@@ -290,14 +291,14 @@ if (isset($_POST['register'])) {
                 <div class="col-md-8 col-lg-8 p-2">
                     <div class="form-group">
                         <label for="weight">Poids en kg</label>
-                        <input class="form-control" type="number" name="weight" id="weight" value="<?php if (isset($weight)) echo $weight; ?>">
+                        <input class="form-control" type="number" name="weight" id="weight" value="<?php if (isset($weight)) echo $weight; ?>" min="0">
                         <?php if (isset($error['weight'])) : ?>
                             <p class="alert-danger rounded-2 p-1"><?php echo  $error['weight']; ?></p>
                         <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label for="height">Taille en cm</label>
-                        <input class="form-control" type="number" name="height" id="height" value="<?php if (isset($height)) echo $height; ?>">
+                        <input class="form-control" type="number" name="height" id="height" value="<?php if (isset($height)) echo $height; ?>" min="0">
                         <?php if (isset($error['height'])) : ?>
                             <p class="alert-danger rounded-2 p-1"><?php echo  $error['height']; ?></p>
                         <?php endif; ?>

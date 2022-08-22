@@ -145,7 +145,7 @@ function userUpdate(
     $sql .= "marital_status = '{$marital}', ";
     $sql .= "profession = '{$profession}', ";
     $sql .= "pseudo = '{$pseudo}', ";
-    $sql .= "password = '{$password}' ";
+    $sql .= "password = '{$password}', ";
     $sql .= "picture = '{$picture}' ";
     $sql .= " WHERE id = '{$id}'";
     if ($db->query($sql)) {
@@ -221,6 +221,20 @@ function getUserbyId($id)
 {
     global $db;
     $sql = "SELECT * FROM users WHERE id = '$id'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
+    } else {
+        return false;
+    }
+}
+
+function getUserbyPseudo($pseudo)
+{
+    global $db;
+    $sql = "SELECT * FROM users WHERE pseudo = '$pseudo'";
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {

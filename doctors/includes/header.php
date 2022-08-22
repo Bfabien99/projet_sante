@@ -29,11 +29,9 @@ $db = connect(
     <meta name="author" content="">
     <script src="./../js/jquery.js"></script>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="./../css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="./../css/sb-admin.css" rel="stylesheet">
-
+    <!-- Bootstrap Core CSS & JS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- Custom Fonts -->
     <link href="./../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

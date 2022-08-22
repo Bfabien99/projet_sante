@@ -31,9 +31,11 @@ $db = connect(
 
     <!-- Bootstrap Core CSS -->
     <link href="./../css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <!-- Custom CSS -->
+    <link href="./../css/sb-admin.css" rel="stylesheet">
 
+    <!-- Custom Fonts -->
+    <link href="./../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -42,8 +44,62 @@ $db = connect(
     <![endif]-->
     <title>Docteur</title>
     <style>
-        body {
+        body{
+            background-color: #fff;
+        }
+
+        .container-fluid{
             background-color: #f5f7fa;
+        }
+
+        .card{
+            position: relative;
+            background-color: #fff;
+            box-shadow: 0 0 10px lightgrey;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1em;
+            border-radius: 5px;
+            margin:0 auto;
+        }
+
+        .table{
+            position: relative;
+            background-color: #fff;
+            box-shadow: 0 0 10px lightgrey;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1em;
+            border-radius: 5px;
+            margin:2px auto;
+        }
+
+        .card #blood{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            position: absolute;
+            right: 5px;
+            font-size:2em;
+        }
+
+        .patient_block_bottom{
+            margin: 1em auto;
+            padding: 2em;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            justify-items: center;
+        }
+
+        .patient_block_bottom div{
+            background-color: #fff;
         }
     </style>
 </head>

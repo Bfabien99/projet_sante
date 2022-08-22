@@ -1,20 +1,20 @@
 <?php
 session_start();
-    include('../includes/config.php');
-    include('../includes/functions.php');
-    if (!isset($_SESSION['hp_admin_pseudo'])) {
-        header('Location:./../?route=login');
-    }
-    if(isset($_GET['logout'])){
-        unset($_SESSION['hp_admin_pseudo']);
-        header('Location:./');
-    }
-    $db = connect(
-        DB_HOST,
-        DB_USERNAME,
-        DB_PASSWORD,
-        DB_NAME
-    );
+include('../includes/config.php');
+include('../includes/functions.php');
+if (!isset($_SESSION['hp_admin_pseudo'])) {
+    header('Location:./../?route=login');
+}
+if (isset($_GET['logout'])) {
+    unset($_SESSION['hp_admin_pseudo']);
+    header('Location:./');
+}
+$db = connect(
+    DB_HOST,
+    DB_USERNAME,
+    DB_PASSWORD,
+    DB_NAME
+);
 
 ?>
 <!DOCTYPE html>
@@ -46,24 +46,23 @@ session_start();
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>    
+    <style>
         body {
-  background-color: #f5f7fa;
-}
+            background-color: #f5f7fa;
+        }
 
-#page-wrapper{
-    background-color: #f5f7fa;
-}
-
+        #page-wrapper {
+            background-color: #f5f7fa;
+        }
     </style>
 </head>
 
 <body>
-<div id="wrapper">
+    <div id="wrapper">
 
-<!-- Navigation -->
-<?php include('includes/admin_navigation.php'); ?>
+        <!-- Navigation -->
+        <?php include('includes/admin_navigation.php'); ?>
 
-<div id="page-wrapper">
+        <div id="page-wrapper">
 
-    <div class="container-fluid">
+            <div class="container-fluid">

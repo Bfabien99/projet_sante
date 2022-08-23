@@ -3,6 +3,8 @@
 $success = false;
 $error = [];
 
+$doctor = getDoctorbyId($_GET["edit"]); 
+
 if (isset($_POST['update_category'])) {
     if (empty($_POST['first_name'])) {
         $error['first_name'] = 'Veuillez entrer votre nom';
@@ -104,12 +106,12 @@ if (isset($_POST['update_category'])) {
     }
 }
 ?>
-<?php if (isset($_GET['edit']) && !empty($_GET['edit'])) : ?>
-    <h1>Modifier les informations du docteur</h1>
-<?php else : ?>
+<?php if (!$doctor) : ?>
+    <p class="error-box">Error: Entrée incorrecte</p>
     <a href="./" class="btn btn-primary">Retour</a>
-<?php endif; ?>
+<?php else : ?>
 <?php if (!$success) : ?>
+    <h1 class="text-center">Modifier les informations du docteur</h1>
     <form action="" method="post" enctype="multipart/form-data">
         <?php
 
@@ -250,6 +252,7 @@ if (isset($_POST['update_category'])) {
 
     </form>
 <?php else : ?>
-    <h1 class="text-center alert-success"> Modification éffectuée</h1>
+    <p class="text-center success-box"> Modification éffectuée</p>
     <a href="./doctors.php" class="btn btn-primary">Retour</a>
 <?php endif ?>
+<?php endif; ?>

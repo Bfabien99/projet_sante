@@ -12,6 +12,9 @@ if (!isset($_SESSION['hp_doctor_pseudo']) || !isset($_SESSION['hp_doctor_email']
     header('Location:./../?route=login');
 }else{
     $doctor = getDoctorbyPseudo($_SESSION['hp_doctor_pseudo']);
+    if(!$doctor){
+        header('Location:./../?route=login');
+    }
 }
 if (isset($_GET['logout'])) {
     unset($_SESSION['hp_doctor_pseudo'], $_SESSION['hp_doctor_email']);
@@ -44,25 +47,27 @@ if (isset($_GET['logout'])) {
     <![endif]-->
     <title>Docteur</title>
     <style>
-       body{
+        body {
             background-color: #f5f7fa;
         }
 
-        .success-box{
-        background-color: green;
-        color: white;
-        padding: 0.5em;
-        border-radius:5px;
-        box-shadow: 0px 0px 10px lightgrey;
-        width:fit-content;
-    }
-    .error-box{
-        background-color: red;
-        color: white;
-        padding: 0.5em;
-        border-radius:5px;
-        box-shadow: 0px 0px 10px lightgrey;
-    }
+        .success-box {
+            background-color: green;
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px lightgrey;
+            width: fit-content;
+        }
+
+        .error-box {
+            background-color: red;
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px lightgrey;
+            width: fit-content;
+        }
     </style>
 </head>
 

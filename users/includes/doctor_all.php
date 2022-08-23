@@ -1,5 +1,6 @@
 <h1 class="text-center">La liste des docteurs</h1>
-<div class="row">
+    <input type="search" class="form-control" name="search" id="live_search" placeholder="Rechercher un docteur">
+<div class="row" id="searchresult">
     <?php
     $doctors = getAllDoctor();
     if ($doctors) {
@@ -27,3 +28,27 @@
         <p class="h4 text-muted">Aucun docteur pour l'instant</p>
     <?php } ?>
 </div>
+<script>
+    $(document).ready(function(){
+
+        $("#live_search").keyup(function(){
+            var input = $(this).val();
+            
+            if(input != ""){
+                $.ajax({
+                    url:"search.php",
+                    method:"POST",
+                    data:{input: input},
+                    success:function(data){
+                        if(data){
+                          $("#searchresult").html(data);  
+                        }
+                        
+                    }
+                })
+            }else{
+                window.location.reload()
+            }
+        })
+    })
+</script>

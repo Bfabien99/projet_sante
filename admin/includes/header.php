@@ -2,19 +2,24 @@
 session_start();
 include('../includes/config.php');
 include('../includes/functions.php');
-if (!isset($_SESSION['hp_admin_pseudo'])) {
-    header('Location:./../?route=login');
-}
-if (isset($_GET['logout'])) {
-    unset($_SESSION['hp_admin_pseudo']);
-    header('Location:./');
-}
 $db = connect(
     DB_HOST,
     DB_USERNAME,
     DB_PASSWORD,
     DB_NAME
 );
+if (!isset($_SESSION['hp_admin_pseudo'])) {
+    header('Location:./../?route=login');
+}else{
+    $admin = getAdminbyPseudo($_SESSION['hp_admin_pseudo']);
+    if(!$admin){
+        header('Location:./../?route=login');
+    }
+}
+if (isset($_GET['logout'])) {
+    unset($_SESSION['hp_admin_pseudo']);
+    header('Location:./');
+}
 
 ?>
 <!DOCTYPE html>
@@ -53,6 +58,24 @@ $db = connect(
 
         #page-wrapper {
             background-color: #f5f7fa;
+        }
+
+        .success-box {
+            background-color: green;
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px lightgrey;
+            width: fit-content;
+        }
+
+        .error-box {
+            background-color: red;
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px lightgrey;
+            width: fit-content;
         }
     </style>
 </head>

@@ -10,9 +10,11 @@ $db = connect(
 );
 if (!isset($_SESSION['hp_user_pseudo']) || !isset($_SESSION['hp_user_email'])) {
     header('Location:./../?route=login');
-}
-else{
+} else {
     $user = getUserbyPseudo($_SESSION['hp_user_pseudo']);
+    if(!$user){
+        header('Location:./../?route=login');
+    }
 }
 if (isset($_GET['logout'])) {
     unset($_SESSION['hp_user_pseudo'], $_SESSION['hp_user_email']);
@@ -34,9 +36,9 @@ if (isset($_GET['logout'])) {
     <script src="./../js/jquery.js"></script>
 
     <!-- Calendar -->
-    
-<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css' rel='stylesheet' />
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js'></script>
+
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js'></script>
 
     <!-- Bootstrap Core CSS & JS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -54,25 +56,27 @@ if (isset($_GET['logout'])) {
     <![endif]-->
     <title>HEALTH PLUS</title>
     <style>
-        body{
+        body {
             background-color: #f5f7fa;
         }
 
-        .success-box{
-        background-color: green;
-        color: white;
-        padding: 0.5em;
-        border-radius:5px;
-        box-shadow: 0px 0px 10px lightgrey;
-        width:fit-content;
-    }
-    .error-box{
-        background-color: red;
-        color: white;
-        padding: 0.5em;
-        border-radius:5px;
-        box-shadow: 0px 0px 10px lightgrey;
-    }
+        .success-box {
+            background-color: green;
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px lightgrey;
+            width: fit-content;
+        }
+
+        .error-box {
+            background-color: red;
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px lightgrey;
+            width: fit-content;
+        }
     </style>
 </head>
 

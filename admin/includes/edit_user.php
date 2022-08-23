@@ -1,6 +1,8 @@
 <?php
 $success = false;
 $error = [];
+
+$user = getUserbyId($_GET["edit"]); 
 $_sexes = ['Homme' => 'Masculin', 'Femme' => 'Feminin', 'Autre' => 'Autre'];
 
 if (isset($_POST['update_category'])) {
@@ -89,12 +91,12 @@ if (isset($_POST['update_category'])) {
     }
 }
 ?>
-<?php if (isset($_GET['edit']) && !empty($_GET['edit'])) : ?>
-    <h1 class="text-center">Modifier les informations de l'utilisateur</h1>
-<?php else : ?>
+<?php if (!$user) : ?>
+    <p class="error-box">Error: Entrée incorrecte</p>
     <a href="./" class="btn btn-primary">Retour</a>
-<?php endif; ?>
+<?php else : ?>
 <?php if (!$success) : ?>
+    <h1 class="text-center">Modifier les informations de l'utilisateur</h1>
     <form action="" method="post" enctype="multipart/form-data" style="margin:2em auto;padding:1em; background-color:white;">
         <?php
 
@@ -104,7 +106,7 @@ if (isset($_POST['update_category'])) {
 
             $query = "SELECT * FROM users WHERE id = $id ";
             $select_user_id = mysqli_query($db, $query);
-
+            
             while ($row = mysqli_fetch_assoc($select_user_id)) {
                 $fname = $row['first_name'];
                 $lname = $row['last_name'];
@@ -180,6 +182,7 @@ if (isset($_POST['update_category'])) {
 
     </form>
 <?php else : ?>
-    <h1 class="text-center alert-success"> Modification éffectuée</h1>
+    <p class="text-center success-box"> Modification éffectuée</p>
     <a href="./users.php" class="btn btn-primary">Retour</a>
 <?php endif ?>
+<?php endif; ?>

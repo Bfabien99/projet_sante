@@ -10,15 +10,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
-            <a href="./" class="nav-item nav-link active">Home</a>
-            <a href="doctor.php" class="nav-item nav-link">Docteur</a>
-            <a href="carnet.php" class="nav-item nav-link">Carnet</a>
-            <a href="rdv.php" class="nav-item nav-link">Rendez-vous</a>
+            <a href="./" class="nav-item nav-link active"><i class="fa fa-home"></i> Home</a>
+            <a href="doctor.php" class="nav-item nav-link"><i class="fa fa-plus"></i> Docteur</a>
+            <a href="carnet.php" class="nav-item nav-link"><i class="fa fa-file"></i> Carnet</a>
+            <a href="rdv.php" class="nav-item nav-link"><i class="fa fa-calendar"></i> Rendez-vous</a>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Options</a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-cog"></i> Options</a>
                 <div class="dropdown-menu bg-light border-0 m-0">
-                    <a href="profil.php" class="dropdown-item">Profile</a>
-                    <a href="?logout" class="dropdown-item">Logout</a>
+                    <a href="profil.php" class="dropdown-item"><i class="fa fa-user"></i> Profile</a>
+                    <a href="?logout" class="dropdown-item"><i class="fa fa-arrow-left"></i> Logout</a>
                 </div>
             </div>
         </div>

@@ -624,7 +624,7 @@ function setRdv(
 
 function cancelRdv($user_id,$doctor_id){
     global $db;
-    $sql = "UPDATE rdv SET status = 'canceled' WHERE user_id = '$user_id' AND doctor_id = '$doctor_id'";
+    $sql = "DELETE FROM rdv WHERE user_id = '$user_id' AND doctor_id = '$doctor_id'";
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {
@@ -652,13 +652,28 @@ function getUserRdv($user_id){
     global $db;
     $sql = "SELECT * FROM rdv WHERE user_id = '$user_id'";
     $result = $db->query($sql);
+    $data = [];
 
     if ($result->num_rows > 0) {
-        $data = $result->fetch_assoc();
-        return $data;
-    } else {
-        return false;
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
     }
+    return $data;
+}
+
+function getUserRdvLimit($user_id){
+    global $db;
+    $sql = "SELECT * FROM rdv WHERE user_id = '$user_id' ORDER BY rdv_id DESC LIMIT 6";
+    $result = $db->query($sql);
+    $data = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+    }
+    return $data;
 }
 
 function getDoctorRdv($doctor_id){

@@ -1,37 +1,41 @@
-<div class="row">
-    <div class="col-md-12 col-lg-4">
-        <span class="badge rounded-pill bg-success">Rendez vous confirmé</span>
-        <div class="card">
-
+<?php
+    $rdvs = getUserRdv($user['id']);
+?>
+<div class="row d-flex justify-content-evenly">
+    <div class="col-md-12 col-lg-4 p-2 text-center bg-white">
+        <span class="badge rounded-pill bg-success"><i class="fa fa-check"></i> Rendez vous confirmé</span>
+        <div class="col p-2" style="max-height:200px; overflow: auto;">
+            <?php foreach ($rdvs as $rdv):?>
+            <?php if($rdv['status'] == 'confirm'):?>
+        <div class="card border-success my-1">
             <div class="card-body">
-                liste des rendez-vous
+            <?php echo date('l F,j Y',strtotime($rdv['date_rdv']))." at ".date('H:i',strtotime($rdv['time_rdv'])); ?>
             </div>
         </div>
-
-        <div class="card">
-
-            <div class="card-body">
-                liste des rendez-vous
-            </div>
+        <?php endif; ?>
+        <?php endforeach;?>
         </div>
+        
+        
     </div>
-    <div class="col-md-12 col-lg-4">
-
+    <div class="col-md-12 col-lg-4 p-2 text-center bg-white"> 
         <span class="badge rounded-pill bg-warning">Rendez vous en attente de confirmation</span>
-        <div class="card">
-
+        <div class="col p-2" style="max-height:200px; overflow: auto;">
+            <?php foreach ($rdvs as $rdv):?>
+            <?php if($rdv['status'] == 'wait'):?>
+        <div class="card border-warning my-1">
             <div class="card-body">
-                liste des rendez-vous
-                <a href="" class="btn btn-danger">Annulé</a>
+                <?php echo date('l F,j Y',strtotime($rdv['date_rdv']))." at ".date('H:i',strtotime($rdv['time_rdv'])); ?>
             </div>
         </div>
-
-        <div class="card">
-
-            <div class="card-body">
-                liste des rendez-vous
-                <a href="" class="btn btn-danger">Annulé</a>
-            </div>
+        <?php endif; ?>
+        <?php endforeach;?>
         </div>
+        
+
     </div>
+</div>
+<hr>
+<div class="row">
+
 </div>

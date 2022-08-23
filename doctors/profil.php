@@ -328,7 +328,7 @@ if (isset($_POST['register'])) {
                                             <input type="submit" class="btn btn-success mb-2" name="register" value="Modifier">
                                         </form>
                                     <?php else : ?>
-                                        <h1 class="text-center alert-success"> Modification éffectuée</h1>
+                                        <p class="success-box"> Modification éffectuée</p>
                                         <a href="./" class="btn btn-primary">Retour</a>
                                     <?php endif; ?>
                                 </div>

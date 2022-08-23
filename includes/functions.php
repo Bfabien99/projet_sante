@@ -99,7 +99,7 @@ function userRegister(
         return true;
     } else {
         return false;
-        //return "<div class='alert alert-warning'>Error: " . $sql . "<br>" . "$db->error;</div>";
+        //rereturn false;
     }
 }
 
@@ -152,7 +152,7 @@ function userUpdate(
         return true;
     } else {
         return false;
-        //return "<div class='alert alert-warning'>Error: " . $sql . "<br>" . "$db->error;</div>";
+        //rereturn false;
     }
 }
 
@@ -337,7 +337,7 @@ function doctorRegister(
         return true;
     } else {
         return false;
-        //return "<div class='alert alert-warning'>Error: " . $sql . "<br>" . "$db->error;</div>";
+        //rereturn false;
     }
 }
 
@@ -377,7 +377,7 @@ function doctorUpdate(
         return true;
     } else {
         return false;
-        //return "<div class='alert alert-warning'>Error: " . $sql . "<br>" . "$db->error;</div>";
+        //rereturn false;
     }
 }
 
@@ -576,7 +576,6 @@ function doctorUpdate_admin(
         return true;
     } else {
         return false;
-        //return "<div class='alert alert-warning'>Error: " . $sql . "<br>" . "$db->error;</div>";
     }
 }
 
@@ -601,7 +600,76 @@ function userUpdate_admin(
     if ($db->query($sql)) {
         return true;
     } else {
-        
-        echo "<div class='alert alert-warning'>Error: " . $sql . "<br>" . "$db->error;</div>";
+        return false;
+    }
+}
+
+function setRdv(
+    $user_id,
+    $doctor_id,
+    $objet,
+    $date,
+    $time
+){
+    global $db;
+    $sql = "INSERT INTO rdv (user_id, doctor_id, objet, date_rdv, time_rdv) ";
+    $sql .= "VALUES('{$user_id}','{$doctor_id}','{$objet}','{$date}','{$time}')";
+
+    if ($db->query($sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function cancelRdv($user_id,$doctor_id){
+    global $db;
+    $sql = "UPDATE rdv SET status = 'canceled' WHERE user_id = '$user_id' AND doctor_id = '$doctor_id'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
+    } else {
+        return false;
+    }
+}
+
+function confirmRdv($user_id,$doctor_id){
+    global $db;
+    $sql = "UPDATE rdv SET status = 'confirm' WHERE user_id = '$user_id' AND doctor_id = '$doctor_id'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
+    } else {
+        return false;
+    }
+}
+
+function getUserRdv($user_id){
+    global $db;
+    $sql = "SELECT * FROM rdv WHERE user_id = '$user_id'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
+    } else {
+        return false;
+    }
+}
+
+function getDoctorRdv($doctor_id){
+    global $db;
+    $sql = "SELECT * FROM rdv WHERE doctor_id = '$doctor_id'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
+    } else {
+        return false;
     }
 }

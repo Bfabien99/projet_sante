@@ -22,6 +22,9 @@ if ($user) {
     $picture = $user['picture'];
 }
 
+$_sexes = ['Homme' => 'Masculin','Femme' => 'Feminin','Autre' => 'Autre'];
+$_bloods = ['A','B','AB','O'];
+$_statuts = ['Célibataire', 'Mariée', 'Veuve', 'Divorcée'];
 $success = false;
 $error = [];
 if (isset($_POST['register'])) {
@@ -273,20 +276,13 @@ if (isset($_POST['register'])) {
                                                         <div class="col form-group">
                                                             <label for="sexe">Genre</label>
                                                             <select name="sexe" id="sexe" class="form-control">
-                                                                <?php if (isset($sexe) && $sexe == 'Femme') : ?>
-                                                                    <option value="Homme">Masculin</option>
-                                                                    <option selected value="Femme">Feminin</option>
-                                                                    <option value="Autre">Autre</option>
-                                                                <?php elseif (isset($sexe) && $sexe == 'Homme') : ?>
-                                                                    <option selected value="Homme">Masculin</option>
-                                                                    <option value="Femme">Feminin</option>
-                                                                    <option value="Autre">Autre</option>
-                                                                <?php else : ?>
-                                                                    <option value="">--</option>
-                                                                    <option value="Homme">Masculin</option>
-                                                                    <option value="Femme">Feminin</option>
-                                                                    <option value="Autre">Autre</option>
-                                                                <?php endif; ?>
+                                                            <?php foreach ($_sexes as $key => $_sexe):?>
+                                                                <?php if($sexe == $key):?>
+                                                                <option selected value="<?php echo $key?>"><?php echo $_sexe?></option>
+                                                                <?php else:?>
+                                                                    <option value="<?php echo $_sexe?>"><?php echo $_sexe?></option>
+                                                                <?php endif;?>
+                                                            <?php endforeach; ?>
                                                             </select>
                                                             <?php if (isset($error['sexe'])) : ?>
                                                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['sexe']; ?></p>
@@ -341,11 +337,13 @@ if (isset($_POST['register'])) {
                                                         <div class="col form-group">
                                                             <label for="marital_status">Situation matrimonial</label>
                                                             <select name="marital_status" id="marital_status" class="form-control">
-                                                                <option value="">--</option>
-                                                                <option value="Célibataire">Célibataire</option>
-                                                                <option value="Mariée">Mariée</option>
-                                                                <option value="Veuve">Veuve</option>
-                                                                <option value="Divorcée">Divorcée</option>
+                                                            <?php foreach ($_statuts as $_statut):?>
+                                                                <?php if($marital == $_statut):?>
+                                                                <option selected value="<?php echo $_statut?>"><?php echo $_statut?></option>
+                                                                <?php else:?>
+                                                                    <option value="<?php echo $_statut?>"><?php echo $_statut?></option>
+                                                                <?php endif;?>
+                                                            <?php endforeach; ?>
                                                             </select>
                                                             <?php if (isset($error['marital_status'])) : ?>
                                                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['marital_status']; ?></p>
@@ -381,11 +379,13 @@ if (isset($_POST['register'])) {
                                                     <div class="col form-group">
                                                         <label for="blood">Groupe sanguin</label>
                                                         <select name="blood" id="blood" class="form-control">
-                                                            <option value="">--</option>
-                                                            <option value="A">A</option>
-                                                            <option value="B">B</option>
-                                                            <option value="AB">AB</option>
-                                                            <option value="O">O</option>
+                                                            <?php foreach ($_bloods as $_blood):?>
+                                                                <?php if($blood == $_blood):?>
+                                                                <option selected value="<?php echo $_blood?>"><?php echo $_blood?></option>
+                                                                <?php else:?>
+                                                                    <option value="<?php echo $_blood?>"><?php echo $_blood?></option>
+                                                                <?php endif;?>
+                                                            <?php endforeach; ?>
                                                         </select>
                                                         <?php if (isset($error['blood'])) : ?>
                                                             <p class="alert-danger rounded-2 p-1"><?php echo  $error['blood']; ?></p>

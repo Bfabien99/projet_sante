@@ -1,7 +1,7 @@
-
 <?php
 $success = false;
 $error = [];
+$_sexes = ['Homme' => 'Masculin', 'Femme' => 'Feminin', 'Autre' => 'Autre'];
 
 if (isset($_POST['update_category'])) {
     if (empty($_POST['first_name'])) {
@@ -24,7 +24,7 @@ if (isset($_POST['update_category'])) {
 
     if (empty($_POST['sexe'])) {
         $error['sexe'] = 'Faîtes un choix';
-    } elseif(!empty($_POST['sexe']) && empty($picture)){
+    } elseif (!empty($_POST['sexe']) && empty($picture)) {
         if ($_POST['sexe'] == "Femme") {
             $picture = "patient.png";
         } else {
@@ -68,13 +68,14 @@ if (isset($_POST['update_category'])) {
     $id = escapeString($_GET['edit']);
 
     if (
-    !empty($fname)
-    && !empty($lname)
-    && !empty($birth)
-    && !empty($contact)
-    && !empty($emergency)
-    && !empty($sexe)) {
-        if(userUpdate_admin(
+        !empty($fname)
+        && !empty($lname)
+        && !empty($birth)
+        && !empty($contact)
+        && !empty($emergency)
+        && !empty($sexe)
+    ) {
+        if (userUpdate_admin(
             $id,
             $fname,
             $lname,
@@ -82,7 +83,7 @@ if (isset($_POST['update_category'])) {
             $contact,
             $emergency,
             $sexe
-        )){
+        )) {
             $success = true;
         }
     }
@@ -155,30 +156,23 @@ if (isset($_POST['update_category'])) {
                             <?php endif; ?>
                         </div>
                         <div class="form-group">
-                            <label for="sexe">Sexe</label>
+                            <label for="sexe">Genre</label>
                             <select name="sexe" id="sexe" class="form-control">
-                                <?php if (isset($sexe) && $sexe == 'Femme') : ?>
-                                    <option value="Homme">Homme</option>
-                                    <option selected value="Femme">Femme</option>
-                                    <option value="Autre">Autre</option>
-                                <?php elseif (isset($sexe) && $sexe == 'Homme') : ?>
-                                    <option selected value="Homme">Homme</option>
-                                    <option value="Femme">Femme</option>
-                                    <option value="Autre">Autre</option>
-                                <?php else : ?>
-                                    <option value="">--</option>
-                                    <option value="Homme">Homme</option>
-                                    <option value="Femme">Femme</option>
-                                    <option value="Autre">Autre</option>
-                                <?php endif; ?>
+                                <?php foreach ($_sexes as $key => $_sexe) : ?>
+                                    <?php if ($sexe == $key) : ?>
+                                        <option selected value="<?php echo $key ?>"><?php echo $_sexe ?></option>
+                                    <?php else : ?>
+                                        <option value="<?php echo $_sexe ?>"><?php echo $_sexe ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                             </select>
                             <?php if (isset($error['sexe'])) : ?>
                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['sexe']; ?></p>
                             <?php endif; ?>
                         </div>
                         <div class="form-group">
-                    <input class="btn btn-primary" type="submit" name="update_category" value="Modifier">
-                </div>
+                            <input class="btn btn-primary" type="submit" name="update_category" value="Modifier">
+                        </div>
                     </div>
                 </div>
         <?php }

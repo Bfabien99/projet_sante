@@ -29,7 +29,7 @@ function connect($dbHost, $dbUsername, $dbPassword, $dbName)
 function escapeString($string)
 {
     global $db;
-    $new_string = mysqli_real_escape_string($db, strtolower($string));
+    $new_string = mysqli_real_escape_string($db, trim(strtolower($string)));
     return $new_string;
 }
 
@@ -640,10 +640,22 @@ function setRdv(
     }
 }
 
-function cancelRdv($user_id, $doctor_id)
+function cancelRdv($rdv_id)
 {
     global $db;
-    $sql = "DELETE FROM rdv WHERE user_id = '$user_id' AND doctor_id = '$doctor_id'";
+    $sql = "DELETE FROM rdv WHERE rdv_id = '$rdv_id'";
+
+    if ($db->query($sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function confirmRdv($rdv_id)
+{
+    global $db;
+    $sql = "UPDATE rdv SET status = 'confirm' WHERE rdv_id = '$rdv_id'";
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {
@@ -654,10 +666,10 @@ function cancelRdv($user_id, $doctor_id)
     }
 }
 
-function confirmRdv($user_id, $doctor_id)
+function undoRdv($rdv_id)
 {
     global $db;
-    $sql = "UPDATE rdv SET status = 'confirm' WHERE user_id = '$user_id' AND doctor_id = '$doctor_id'";
+    $sql = "UPDATE rdv SET status = 'undo' WHERE rdv_id = '$rdv_id'";
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {
@@ -799,6 +811,19 @@ function TotalDoctorLogin()
 
     if ($result->num_rows > 0) {
         return $result->num_rows;
+    } else {
+        return false;
+    }
+}
+
+function getRdv($rdv_id){
+    global $db;
+    $sql = "SELECT * FROM rdv WHERE rdv_id = '$rdv_id'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
     } else {
         return false;
     }

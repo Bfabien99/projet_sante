@@ -1,5 +1,6 @@
 <h1 class="text-center">Patients consultés</h1>
-<div class="row">
+<input type="search" class="form-control" name="search" id="live_search" placeholder="Rechercher un patient">
+<div class="row" id="searchresult">
     <?php
     $users = getAllUser();
     if ($users) {
@@ -27,3 +28,27 @@
         <p class="h4 text-muted">Aucun patient consulté</p>
     <?php } ?>
 </div>
+<script>
+    $(document).ready(function(){
+
+        $("#live_search").keyup(function(){
+            var input = $(this).val();
+            
+            if(input != ""){
+                $.ajax({
+                    url:"search.php",
+                    method:"POST",
+                    data:{input: input},
+                    success:function(data){
+                        if(data){
+                          $("#searchresult").html(data);  
+                        }
+                        
+                    }
+                })
+            }else{
+                window.location.reload()
+            }
+        })
+    })
+</script>

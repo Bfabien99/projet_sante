@@ -698,18 +698,34 @@ function getUserRdvLimit($user_id)
     return $data;
 }
 
+function getDoctorRdvLimit($doctor_id)
+{
+    global $db;
+    $sql = "SELECT * FROM rdv WHERE doctor_id = '$doctor_id' ORDER BY rdv_id DESC LIMIT 6";
+    $result = $db->query($sql);
+    $data = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+    }
+    return $data;
+}
+
 function getDoctorRdv($doctor_id)
 {
     global $db;
     $sql = "SELECT * FROM rdv WHERE doctor_id = '$doctor_id'";
     $result = $db->query($sql);
+    $data = [];
 
     if ($result->num_rows > 0) {
-        $data = $result->fetch_assoc();
-        return $data;
-    } else {
-        return false;
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
     }
+    return $data;
 }
 
 function userLogin($user_id) {
@@ -743,8 +759,7 @@ function getUserLogin($user_id)
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {
-        $data = $result->fetch_assoc();
-        return $data;
+        return $result->num_rows;
     } else {
         return false;
     }
@@ -757,8 +772,7 @@ function getDoctorLogin($doctor_id)
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {
-        $data = $result->fetch_assoc();
-        return $data;
+        return $result->num_rows;
     } else {
         return false;
     }
@@ -771,8 +785,20 @@ function TotalUserLogin()
     $result = $db->query($sql);
 
     if ($result->num_rows > 0) {
-        $data = $result->fetch_assoc();
-        return count($data);
+        return $result->num_rows;
+    } else {
+        return false;
+    }
+}
+
+function TotalDoctorLogin()
+{
+    global $db;
+    $sql = "SELECT * FROM doctor_login";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        return $result->num_rows;
     } else {
         return false;
     }

@@ -123,7 +123,7 @@ Docteur consulter
   ],
   datasets: [{
     label: 'My First Dataset',
-    data: [<?php echo $loginTotal?>, <?php echo count($userlogin)?>],
+    data: [<?php echo $loginTotal ?? 0?>, <?php echo $userlogin ?? 0?>],
     backgroundColor: [
       'rgb(255, 99, 132)',
       'rgb(54, 162, 235)'

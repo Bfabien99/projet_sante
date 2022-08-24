@@ -77,6 +77,15 @@ if (isset($_GET['logout'])) {
             box-shadow: 0px 0px 10px lightgrey;
             width: fit-content;
         }
+
+        .fc-toolbar-title, #fc-dom-1{
+        font-size: 12px;
+        
+    }
+    .fc-daygrid-day{
+        border: 1px solid lightgrey !important;
+        border-radius: 5px !important;
+    }
     </style>
 </head>
 

@@ -20,14 +20,14 @@ $rdvs = getUserRdvLimit($user['id']);
                 <?php if ($rdv['status'] == 'wait') : ?>
                     <div class="card border-warning my-1">
                         <div class="card-body">
-                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['time_rdv'])); ?>
+                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                         </div>
                     </div>
                 <?php elseif ($rdv['status'] == 'confirm') : ?>
                     <div class="card border-success my-1">
                         <div class="card-body">
                             <span class="badge rounded-pill bg-success"><i class="fa fa-check"></i></span>
-                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['time_rdv'])); ?>
+                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                         </div>
                     </div>
                 <?php endif; ?>

@@ -34,26 +34,24 @@ function escapeString($string)
 }
 
 
-function cleanFile($file){
+function cleanFile($file)
+{
     $allowedExtensions = array('jpg', 'jpeg', 'png');
-    if(!empty($_FILES[$file]) && ($_FILES[$file]['error'] == 0)){
-        if($_FILES[$file]['size'] <= 4000000){
+    if (!empty($_FILES[$file]) && ($_FILES[$file]['error'] == 0)) {
+        if ($_FILES[$file]['size'] <= 4000000) {
             $fileInfo = pathinfo($_FILES[$file]['name']);
             $extension = $fileInfo['extension'];
-        }
-        else{
+        } else {
             return false;
         }
 
         //Verifie si l'extension est valide
-        if(in_array($extension, $allowedExtensions))
-        {
+        if (in_array($extension, $allowedExtensions)) {
             //On stocke le fichier
-            $img = str_replace("/","",md5(time())."_".basename(str_replace([' ','/','@','#','$',"'"],['_','','','',''],$_FILES[$file]['name'])));
-            $img = str_replace(" ","",$img);
+            $img = str_replace("/", "", md5(time()) . "_" . basename(str_replace([' ', '/', '@', '#', '$', "'"], ['_', '', '', '', ''], $_FILES[$file]['name'])));
+            $img = str_replace(" ", "", $img);
             return $img;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -148,6 +146,7 @@ function userUpdate(
     $sql .= "password = '{$password}', ";
     $sql .= "picture = '{$picture}' ";
     $sql .= " WHERE id = '{$id}'";
+
     if ($db->query($sql)) {
         return true;
     } else {
@@ -165,10 +164,12 @@ function pseudoExists($pseudo)
     $sql = "SELECT pseudo FROM users WHERE pseudo = '$pseudo'";
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        return true;
-    } else {
-        return false;
+    if ($result) {
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -181,10 +182,12 @@ function emailExists($email)
     $sql = "SELECT email FROM users WHERE email = '$email'";
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        return true;
-    } else {
-        return false;
+    if ($result) {
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -194,13 +197,15 @@ function loginUser($pseudo, $password)
     $sql = "SELECT * FROM users WHERE (email = '$pseudo' OR pseudo = '$pseudo') AND password = '$password'";
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        $data = $result->fetch_assoc();
-        $_SESSION['hp_user_pseudo'] = $data['pseudo'];
-        $_SESSION['hp_user_email'] = $data['email'];
-        return true;
-    } else {
-        return false;
+    if ($result) {
+        if ($result->num_rows > 0) {
+            $data = $result->fetch_assoc();
+            $_SESSION['hp_user_pseudo'] = $data['pseudo'];
+            $_SESSION['hp_user_email'] = $data['email'];
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -210,10 +215,12 @@ function isUser($email, $pseudo)
     $sql = "SELECT * FROM users WHERE email = '$email' AND pseudo = '$pseudo'";
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        return true;
-    } else {
-        return false;
+    if ($result) {
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -275,7 +282,8 @@ function getUserPicture($id)
     }
 }
 
-function getAllergy($id){
+function getAllergy($id)
+{
     global $db;
     $sql = "SELECT allergy FROM users WHERE id = '$id'";
     $result = $db->query($sql);
@@ -289,7 +297,8 @@ function getAllergy($id){
     }
 }
 
-function getAntecedant($id){
+function getAntecedant($id)
+{
     global $db;
     $sql = "SELECT medical_background FROM users WHERE id = '$id'";
     $result = $db->query($sql);
@@ -387,10 +396,12 @@ function pseudoExist($pseudo)
     $sql = "SELECT pseudo FROM doctors WHERE pseudo = '$pseudo'";
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        return true;
-    } else {
-        return false;
+    if ($result) {
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -400,10 +411,12 @@ function emailExist($email)
     $sql = "SELECT email FROM doctors WHERE email = '$email'";
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        return true;
-    } else {
-        return false;
+    if ($result) {
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -429,10 +442,12 @@ function isDoctor($email, $pseudo)
     $sql = "SELECT * FROM doctors WHERE email = '$email' AND pseudo = '$pseudo'";
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        return true;
-    } else {
-        return false;
+    if ($result) {
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -525,10 +540,12 @@ function isAdmin($email, $pseudo)
     $sql = "SELECT * FROM admin WHERE email = '$email' AND pseudo = '$pseudo'";
     $result = $db->query($sql);
 
-    if ($result->num_rows > 0) {
-        return true;
-    } else {
-        return false;
+    if ($result) {
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -587,7 +604,7 @@ function userUpdate_admin(
     $contact,
     $emergency,
     $sexe
-){
+) {
     global $db;
     $sql = "UPDATE users SET ";
     $sql .= "first_name = '{$fname}', ";
@@ -608,12 +625,11 @@ function setRdv(
     $user_id,
     $doctor_id,
     $objet,
-    $date,
-    $time
-){
+    $date
+) {
     global $db;
-    $sql = "INSERT INTO rdv (user_id, doctor_id, objet, date_rdv, time_rdv) ";
-    $sql .= "VALUES('{$user_id}','{$doctor_id}','{$objet}','{$date}','{$time}')";
+    $sql = "INSERT INTO rdv (user_id, doctor_id, objet, date_rdv) ";
+    $sql .= "VALUES('{$user_id}','{$doctor_id}','{$objet}','{$date}')";
 
     if ($db->query($sql)) {
         return true;
@@ -622,7 +638,8 @@ function setRdv(
     }
 }
 
-function cancelRdv($user_id,$doctor_id){
+function cancelRdv($user_id, $doctor_id)
+{
     global $db;
     $sql = "DELETE FROM rdv WHERE user_id = '$user_id' AND doctor_id = '$doctor_id'";
     $result = $db->query($sql);
@@ -635,7 +652,8 @@ function cancelRdv($user_id,$doctor_id){
     }
 }
 
-function confirmRdv($user_id,$doctor_id){
+function confirmRdv($user_id, $doctor_id)
+{
     global $db;
     $sql = "UPDATE rdv SET status = 'confirm' WHERE user_id = '$user_id' AND doctor_id = '$doctor_id'";
     $result = $db->query($sql);
@@ -648,7 +666,8 @@ function confirmRdv($user_id,$doctor_id){
     }
 }
 
-function getUserRdv($user_id){
+function getUserRdv($user_id)
+{
     global $db;
     $sql = "SELECT * FROM rdv WHERE user_id = '$user_id'";
     $result = $db->query($sql);
@@ -662,7 +681,8 @@ function getUserRdv($user_id){
     return $data;
 }
 
-function getUserRdvLimit($user_id){
+function getUserRdvLimit($user_id)
+{
     global $db;
     $sql = "SELECT * FROM rdv WHERE user_id = '$user_id' ORDER BY rdv_id DESC LIMIT 6";
     $result = $db->query($sql);
@@ -676,7 +696,8 @@ function getUserRdvLimit($user_id){
     return $data;
 }
 
-function getDoctorRdv($doctor_id){
+function getDoctorRdv($doctor_id)
+{
     global $db;
     $sql = "SELECT * FROM rdv WHERE doctor_id = '$doctor_id'";
     $result = $db->query($sql);

@@ -38,7 +38,7 @@
             if($fulldate <= $timeUnix){
                 $error['time'] = "L'heure n'est pas valide";
             }else{
-                if(setRdv($user['id'], $doctor['id'], $objet, $date, $time)){
+                if(setRdv($user['id'], $doctor['id'], $objet, $_fulldate)){
                     $success = true;
                 }
             }

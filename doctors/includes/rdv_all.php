@@ -1,7 +1,7 @@
 <?php
 $rdvs = getDoctorRdv($doctor['id']);
-foreach($rdvs as $rd){
-    if(strtotime($rd['date_rdv']) <= time()){
+foreach ($rdvs as $rd) {
+    if (strtotime($rd['date_rdv']) <= time()) {
         cancelRdv($rd['rdv_id']);
     }
 }
@@ -15,8 +15,8 @@ foreach($rdvs as $rd){
                     <div class="card border-success my-1">
                         <div class="card-body">
                             <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                            <span><i class="d-inline text-success rounded fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'cancel')"></i></span>
                         </div>
-                        <i class="fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'cancel')"></i>
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
@@ -32,8 +32,8 @@ foreach($rdvs as $rd){
                     <div class="card border-warning my-1">
                         <div class="card-body">
                             <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                            <span><i class="d-inline text-warning rounded fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'confirm')"></i></span>
                         </div>
-                        <i class="fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'confirm')"></i>
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
@@ -46,11 +46,11 @@ foreach($rdvs as $rd){
         <div class="col p-2" style="max-height:200px; overflow: auto;">
             <?php foreach ($rdvs as $rdv) : ?>
                 <?php if ($rdv['status'] == 'undo') : ?>
-                    <div class="card border-warning my-1">
+                    <div class="card border-danger my-1">
                         <div class="card-body">
                             <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                            <span><i class="d-inline text-danger rounded fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'undo');e.stopPropagation"></i></span>
                         </div>
-                        <i class="fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'confirm')"></i>
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
@@ -60,39 +60,30 @@ foreach($rdvs as $rd){
     </div>
 </div>
 <hr>
-<div class="row">
-    <div id="result">
+<div class="row d-flex justify-content-center align-items-center h-100" id="result">
         <p>Details rendez-vous</p>
-    </div>
 </div>
 <script>
-    function see(id,type) {
+    function see(id, type) {
+        var input = id;
 
+        if (input != "") {
+            $.ajax({
+                url: "see_rdv.php",
+                method: "POST",
+                data: {
+                    input: input,
+                    type: type
+                },
+                success: function(data) {
+                    if (data) {
+                        $("#result").html(data);
+                    }
 
-        $(document).ready(function() {
-
-            
-                var input = id;
-
-                if (input != "") {
-                    $.ajax({
-                        url: "see_rdv.php",
-                        method: "POST",
-                        data: {
-                            input: input,type: type
-                        },
-                        success: function(data) {
-                            if (data) {
-                                $("#result").html(data);
-                            }
-
-                        }
-                    })
-                } else {
-                    window.location.reload()
                 }
-            
-        })
-
+            })
+        } else {
+            window.location.reload()
+        }
     }
 </script>

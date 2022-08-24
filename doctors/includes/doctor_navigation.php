@@ -12,8 +12,8 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
             <a href="./" class="nav-item nav-link active"><i class="fa fa-home"></i> Home</a>
-            <a href="user.php" class="nav-item nav-link"><i class="fa fa-hospital-user"></i> Patient</a>
-            <a href="rdv.php" class="nav-item nav-link"><i class="fa fa-calendar"></i> Rendez-vous</a>
+            <a href="./user.php" class="nav-item nav-link"><i class="fa fa-hospital-user"></i> Patient</a>
+            <a href="./rdv.php" class="nav-item nav-link"><i class="fa fa-calendar"></i> Rendez-vous</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-cog"></i> Options</a>
                 <div class="dropdown-menu bg-light border-0 m-0">

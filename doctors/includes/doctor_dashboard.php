@@ -24,6 +24,7 @@ $loginTotal = TotaldoctorLogin();
                 <?php if ($rdv['status'] == 'wait') : ?>
                     <div class="card border-warning my-1 bg-white">
                         <div class="card-body">
+                        <span class="badge rounded-pill bg-warning"><i class="fa fa-exclamation"></i></span>
                             <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                         </div>
                     </div>
@@ -31,6 +32,13 @@ $loginTotal = TotaldoctorLogin();
                     <div class="card border-success my-1 bg-white">
                         <div class="card-body">
                             <span class="badge rounded-pill bg-success"><i class="fa fa-check"></i></span>
+                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                        </div>
+                    </div>
+                    <?php elseif ($rdv['status'] == 'undo') : ?>
+                    <div class="card border-danger my-1 bg-white">
+                        <div class="card-body">
+                            <span class="badge rounded-pill bg-danger"><i class="fa fa-close"></i></span>
                             <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                         </div>
                     </div>

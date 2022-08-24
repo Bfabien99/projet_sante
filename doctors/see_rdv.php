@@ -1,6 +1,5 @@
 <?php
-
-if (isset($_POST['input']) && isset($_POST['type'])){
+if (isset($_POST['input']) && isset($_POST['type'])) {
     include('../includes/config.php');
     include('../includes/functions.php');
     $db = connect(
@@ -13,33 +12,92 @@ if (isset($_POST['input']) && isset($_POST['type'])){
     $type = $_POST['type'];
     $input = escapeString($_POST['input']);
     $rdv = getRdv($input);
-    if($rdv){
+    if ($rdv) {
         $user = getUserbyId($rdv['user_id']);
         $doctor = getDoctorbyId($rdv['doctor_id']);
-    ?>
-    <div class="col-md-12 col-lg-8" style="margin:2em 0;">
-                <div class="card shadow">
-                    <div class="bg-image hover-overlay ripple p-2" data-mdb-ripple-color="light">
-                        <img src="./../profiles/<?php echo $user['picture']; ?>" class="img-responsive" alt="<?php echo $user['first_name'] . "_" . $user['last_name']; ?>" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-uppercase text-center"><?php echo $user['first_name'] . " " . $user['last_name']; ?></h5>
-                        <?php if($type == 'confirm'):?>
-                        <a href="./rdv.php" class="btn btn-success" onclick="<?php confirmRdv($rdv['rdv_id']);?>">Confirmer le rendez-vous</a>
-                        <?php elseif($type == 'cancel'):?>
-                            <a href="./rdv.php" class="btn btn-danger" onclick="<?php undoRdv($rdv['rdv_id']);?>">Annulez le rendez-vous</a>
-                        <?php endif; ?>
+?>
+        <div class="col col-md-9 col-lg-7 col-xl-5">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-4">
+                    <div class="d-flex text-black">
+                        <div class="flex-shrink-0">
+                            <img src="./../profiles/<?php echo $user['picture']; ?>" alt="<?php echo $user['first_name'] . "_" . $user['last_name']; ?>" class="img-fluid" style="width: 180px; border-radius: 10px;">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="mb-1 text-uppercase"><?php echo $user['first_name'] . " " . $user['last_name']; ?></h5>
+                            <p class="mb-2 pb-1" style="color: #2b2a2a;"><?php echo $user['profession']; ?></p>
+                            <hr>
+                            <h5>Objet : <?php echo $rdv['objet']; ?></h5> 
+                            <hr>
+                            <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
+                                <div>
+                                    <p class="small text-muted mb-1">Taille</p>
+                                    <p class="mb-0"><?php echo $user['height']; ?></p>
+                                </div>
+                                <div class="px-3">
+                                    <p class="small text-muted mb-1">Poids</p>
+                                    <p class="mb-0"><?php echo $user['weight']; ?></p>
+                                </div>
+                                <div>
+                                    <p class="small text-muted mb-1">Néé le</p>
+                                    <p class="mb-0"><?php echo $user['birth']; ?></p>
+                                </div>
+                            </div>
+                            <div class="d-flex pt-1">
+                                <?php if ($type == 'confirm') : ?>
+                                    <a href="./rdv.php" class="confirm btn btn-success flex-grow-1" >Confirmer le rendez-vous</a>
+                                <?php elseif ($type == 'cancel') : ?>
+                                    <a href="./rdv.php" class="remove btn btn-outline-danger me-1 flex-grow-1" >Annulez le rendez-vous</a>
+                                <?php elseif ($type == 'undo') : ?>
+                                    <a href="./rdv.php" class="confirm btn btn-success flex-grow-1" >Confirmer le rendez-vous</a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-    <?php }
-    else{
+        </div>
+
+        <script>
+            $('.remove').on('click',function(){
+                $.ajax({
+                url: "update_rdv.php",
+                method: "POST",
+                data: {
+                    input: <?php echo $rdv['rdv_id'] ?>,
+                    type: 'remove'
+                },
+                success: function(data) {
+                    if (data) {
+                        $("#result").html(data);
+                    }
+
+                }
+            })
+            })
+            
+            $('.confirm').on('click',function(){
+                $.ajax({
+                url: "update_rdv.php",
+                method: "POST",
+                data: {
+                    input: <?php echo $rdv['rdv_id'] ?>,
+                    type: 'confirm'
+                },
+                success: function(data) {
+                    if (data) {
+                        window.location.reload();
+                    }else{
+                        alert('Error')
+                    }
+
+                }
+            })
+            })
+        </script>
+<?php } else {
         header('location:./rdv.php');
     }
-    }
-    else{
-        header('location:./');
-    }?>
+} else {
+    header('location:./');
+} ?>

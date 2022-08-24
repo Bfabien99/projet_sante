@@ -82,7 +82,7 @@ include('includes/navigation.php');
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg" title="Project Name">
+                <a class="portfolio-box" href="https://cdn.pixabay.com/photo/2016/06/24/02/35/ehr-1476525__480.png" title="Project Name">
                     <img class="img-fluid" src="https://cdn.pixabay.com/photo/2016/06/24/02/35/ehr-1476525__480.png" alt="..." />
                     <div class="portfolio-box-caption">
                         <div class="project-category text-white-50">Tout à distance</div>
@@ -91,7 +91,8 @@ include('includes/navigation.php');
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="assets/img/portfolio/fullsize/3.jpg" title="Project Name">
+                <a class="portfolio-box" href="https://cdn.pixabay.com/photo/2019/07/09/12/57/retractable-belt-stanchion-4326819__480.png" alt="..." />
+                    <div class="portfolio-box-caption" title="Project Name">
                     <img class="img-fluid" src="https://cdn.pixabay.com/photo/2019/07/09/12/57/retractable-belt-stanchion-4326819__480.png" alt="..." />
                     <div class="portfolio-box-caption">
                         <div class="project-category text-white-50">Finis les files d'attente</div>

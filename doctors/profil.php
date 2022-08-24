@@ -19,6 +19,7 @@ if ($doctor) {
     $pseudo = $doctor['pseudo'];
     $password = $doctor['password'];
     $picture = $doctor['picture'];
+    $created = $doctor['created'];
 }
 $success = false;
 $error = [];
@@ -96,6 +97,7 @@ if (isset($_POST['register'])) {
             $error['email'] = "Cet email existe déja, veuillez en choisr un autre";
         } else {
             $email = escapeString($_POST['email']);
+            $_SESSION['hp_doctor_email'] = $email;
         }
     }
 
@@ -112,6 +114,7 @@ if (isset($_POST['register'])) {
             $error['pseudo'] = "Cet pseudo existe déja, veuillez en choisr un autre";
         } else {
             $pseudo = escapeString($_POST['pseudo']);
+            $_SESSION['hp_doctor_pseudo'] = $pseudo;
         }
     }
 

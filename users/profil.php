@@ -20,6 +20,7 @@ if ($user) {
     $allergy = $user['allergy'];
     $antecedant = $user['medical_background'];
     $picture = $user['picture'];
+    $created = $user['created'];
 }
 
 $_sexes = ['Homme' => 'Masculin','Femme' => 'Feminin','Autre' => 'Autre'];
@@ -65,6 +66,7 @@ if (isset($_POST['register'])) {
             $error['email'] = "Cet email existe déja, veuillez en choisr un autre";
         } else {
             $email = escapeString($_POST['email']);
+            $_SESSION['hp_user_email'] = $email;
         }
     }
 
@@ -145,6 +147,7 @@ if (isset($_POST['register'])) {
             $error['pseudo'] = "Cet pseudo existe déja, veuillez en choisr un autre";
         } else {
             $pseudo = escapeString($_POST['pseudo']);
+            $_SESSION['hp_user_pseudo'] = $pseudo;
         }
     }
 
@@ -228,7 +231,7 @@ if (isset($_POST['register'])) {
                                         <div class="text-muted"><small><?php echo $marital ?> - <?php echo $blood ?></small></div>
                                     </div>
                                     <div class="text-center text-sm-right">
-                                        <div class="text-muted"><small>Joined 09 Dec 2017</small></div>
+                                        <div class="text-muted"><small>Inscrit le <?php echo date('d M Y',strtotime($created) )?></small></div>
                                     </div>
                                 </div>
                             </div>

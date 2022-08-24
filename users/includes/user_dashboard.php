@@ -1,6 +1,9 @@
 <?php
 $rdvs = getUserRdvLimit($user['id']);
+$userlogin = getUserLogin($user['id']);
+$loginTotal = TotalUserLogin();
 ?>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="row">
     <div class="col-md-12 col-lg-4">
         <div class="card">
@@ -12,6 +15,7 @@ $rdvs = getUserRdvLimit($user['id']);
             </div>
         </div><!-- /.card -->
     </div>
+
     <div class="col-md-12 col-lg-4 bg-white">
         <?php if ($rdvs) : ?>
             <hr>
@@ -36,6 +40,15 @@ $rdvs = getUserRdvLimit($user['id']);
                 <hr>
                 Aucun rendez-vous pris
         <?php endif; ?>
+    </div>
+
+    <div class="col-md-12 col-lg-4">
+        <div class="card bg-white">
+            <div class="card-body">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    
     </div>
 </div>
 <hr>
@@ -70,9 +83,7 @@ Docteur consulter
     </div>
 
 </div>
-<div class="row">
-    graph de connexion
-</div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -103,4 +114,31 @@ Docteur consulter
         calendar.updateSize();
         calendar.render();
     });
+</script>
+<script>
+  const data = {
+  labels: [
+    'Visite Totale',
+    'Moi',
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [<?php echo $loginTotal?>, <?php echo count($userlogin)?>],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)'
+    ],
+    hoverOffset: 4
+  }]
+};
+
+const config = {
+  type: 'doughnut',
+  data: data,
+};
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
 </script>

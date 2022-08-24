@@ -202,6 +202,7 @@ function loginUser($pseudo, $password)
             $data = $result->fetch_assoc();
             $_SESSION['hp_user_pseudo'] = $data['pseudo'];
             $_SESSION['hp_user_email'] = $data['email'];
+            userLogin($data['id']);
             return true;
         } else {
             return false;
@@ -430,6 +431,7 @@ function loginDoctor($pseudo, $password)
         $data = $result->fetch_assoc();
         $_SESSION['hp_doctor_pseudo'] = $data['pseudo'];
         $_SESSION['hp_doctor_email'] = $data['email'];
+        doctorLogin($data['id']);
         return true;
     } else {
         return false;
@@ -705,6 +707,72 @@ function getDoctorRdv($doctor_id)
     if ($result->num_rows > 0) {
         $data = $result->fetch_assoc();
         return $data;
+    } else {
+        return false;
+    }
+}
+
+function userLogin($user_id) {
+    global $db;
+    $sql = "INSERT INTO user_login (user_id) ";
+    $sql .= "VALUES('{$user_id}')";
+
+    if ($db->query($sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function doctorLogin($doctor_id) {
+    global $db;
+    $sql = "INSERT INTO doctor_login (doctor_id) ";
+    $sql .= "VALUES('{$doctor_id}')";
+
+    if ($db->query($sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function getUserLogin($user_id)
+{
+    global $db;
+    $sql = "SELECT * FROM user_login WHERE user_id = '$user_id'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
+    } else {
+        return false;
+    }
+}
+
+function getDoctorLogin($doctor_id)
+{
+    global $db;
+    $sql = "SELECT * FROM doctor_login WHERE doctor_id = '$doctor_id'";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
+    } else {
+        return false;
+    }
+}
+
+function TotalUserLogin()
+{
+    global $db;
+    $sql = "SELECT * FROM user_login";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return count($data);
     } else {
         return false;
     }

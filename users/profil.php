@@ -210,6 +210,7 @@ if (isset($_POST['register'])) {
 }
 ?>
 <div class="row flex-lg-nowrap">
+<?php if (!$success) : ?>
     <div class="col">
         <div class="row">
             <div class="col mb-3">
@@ -238,7 +239,6 @@ if (isset($_POST['register'])) {
 
                             <div class="tab-content pt-3">
                                 <div class="tab-pane active">
-                                    <?php if (!$success) : ?>
                                         <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                                             <label for="profile">Changer d'image</label>
                                             <input class="btn btn-primary" type="file" name="profile" id="profile">
@@ -413,11 +413,6 @@ if (isset($_POST['register'])) {
 
                                             <input type="submit" class="btn btn-success mb-2" name="register" value="Modifier">
                                         </form>
-                                    <?php else : ?>
-                                        <h1 class="text-center alert-success"> Modification éffectuée</h1>
-                                        <a href="./" class="btn btn-primary">Retour</a>
-                                    <?php endif; ?>
-
                                 </div>
                             </div>
                         </div>
@@ -427,6 +422,10 @@ if (isset($_POST['register'])) {
         </div>
 
     </div>
+    <?php else : ?>
+        <p class="success-box"> Modification éffectuée</p>
+        <p><a href="./" class="btn btn-primary">Retour</a></p>
+    <?php endif; ?>
 </div>
 <?php
 include('includes/footer.php');

@@ -168,33 +168,34 @@ if (isset($_POST['register'])) {
 }
 ?>
 <div class="row flex-lg-nowrap">
-    <div class="col">
-        <div class="row">
-            <div class="col mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="e-profile">
-                            <div class="row">
-                                <div class="col-12 col-sm-auto mb-3">
-                                    <div class="mx-auto" style="width: 140px;">
-                                        <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <img src="./../profiles/<?php echo $picture ?>" alt="" class="rounded-circle img-fluid" style="width: 140px;height:140px;object-fit:contain;">
+    <?php if (!$success) : ?>
+        <div class="col">
+            <div class="row">
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="e-profile">
+                                <div class="row">
+                                    <div class="col-12 col-sm-auto mb-3">
+                                        <div class="mx-auto" style="width: 140px;">
+                                            <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                                                <img src="./../profiles/<?php echo $picture ?>" alt="" class="rounded-circle img-fluid" style="width: 140px;height:140px;object-fit:contain;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                        <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap text-capitalize"><?php echo $fname . " " . $lname ?></h4>
+                                            <p class="mb-0">@<?php echo $pseudo ?></p>
+                                        </div>
+                                        <div class="text-center text-sm-right">
+                                            <div class="text-muted"><small>Inscrit le <?php echo date('d M Y', strtotime($doctor['created'])) ?></small></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                                    <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap text-capitalize"><?php echo $fname . " " . $lname ?></h4>
-                                        <p class="mb-0">@<?php echo $pseudo ?></p>
-                                    </div>
-                                    <div class="text-center text-sm-right">
-                                        <div class="text-muted"><small>Inscrit le <?php echo date('d M Y',strtotime($doctor['created']))?></small></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-content pt-3">
-                                <div class="tab-pane active">
-                                    <?php if (!$success) : ?>
+                                <div class="tab-content pt-3">
+                                    <div class="tab-pane active">
+
                                         <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                                             <label for="profile">Changer d'image</label>
                                             <input class="btn btn-primary" type="file" name="profile" id="profile">
@@ -327,19 +328,19 @@ if (isset($_POST['register'])) {
 
                                             <input type="submit" class="btn btn-success mb-2" name="register" value="Modifier">
                                         </form>
-                                    <?php else : ?>
-                                        <p class="success-box"> Modification éffectuée</p>
-                                        <a href="./" class="btn btn-primary">Retour</a>
-                                    <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
+    <?php else : ?>
+        <p class="success-box"> Modification éffectuée</p>
+        <p><a href="./" class="btn btn-primary">Retour</a></p>
+    <?php endif; ?>
 </div>
 
 <?php

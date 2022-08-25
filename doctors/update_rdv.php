@@ -17,6 +17,15 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
         confirmRdv(escapeString($_POST['input']));
         return true;
     }
+    if($_POST['type'] == "done"){
+        if(confirmConsultation(escapeString($_POST['doctor']),escapeString($_POST['user']))){
+            cancelRdv(escapeString($_POST['input']));
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
 
 }
 ?>

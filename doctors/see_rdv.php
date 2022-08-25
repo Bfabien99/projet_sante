@@ -13,8 +13,8 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
     $input = escapeString($_POST['input']);
     $rdv = getRdv($input);
     if ($rdv) {
-        $user = getUserbyId($rdv['user_id']);
         $doctor = getDoctorbyId($rdv['doctor_id']);
+        $user = getUserbyId($rdv['user_id']);
 ?>
         <div class="col col-md-9 col-lg-7 col-xl-5">
             <div class="card" style="border-radius: 15px;">
@@ -48,6 +48,7 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
                                     <a href="./rdv.php" class="confirm btn btn-success flex-grow-1" >Confirmer le rendez-vous</a>
                                 <?php elseif ($type == 'cancel') : ?>
                                     <a href="./rdv.php" class="remove btn btn-outline-danger me-1 flex-grow-1" >Annulez le rendez-vous</a>
+                                    <a href="./rdv.php" class="done btn btn-outline-primary me-1 flex-grow-1" >Fait</a>
                                 <?php elseif ($type == 'undo') : ?>
                                     <a href="./rdv.php" class="confirm btn btn-success flex-grow-1" >Confirmer le rendez-vous</a>
                                 <?php endif; ?>
@@ -69,7 +70,9 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
                 },
                 success: function(data) {
                     if (data) {
-                        $("#result").html(data);
+                        window.location.reload();
+                    }else{
+                        alert('Error')
                     }
 
                 }
@@ -83,6 +86,27 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
                 data: {
                     input: <?php echo $rdv['rdv_id'] ?>,
                     type: 'confirm'
+                },
+                success: function(data) {
+                    if (data) {
+                        window.location.reload();
+                    }else{
+                        alert('Error')
+                    }
+
+                }
+            })
+            })
+
+            $('.done').on('click',function(){
+                $.ajax({
+                url: "update_rdv.php",
+                method: "POST",
+                data: {
+                    input: <?php echo $rdv['rdv_id'] ?>,
+                    user: <?php echo $user['id'] ?>,
+                    doctor: <?php echo $doctor['id'] ?>,
+                    type: 'done'
                 },
                 success: function(data) {
                     if (data) {

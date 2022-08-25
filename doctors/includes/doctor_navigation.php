@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 shadow">
     <a href="profil.php" class="navbar-brand d-flex align-items-center">
 
-        <img class="rounded-circle" src="./../profiles/<?php echo $doctor['picture'] ?>" alt="<?php echo $doctor['pseudo'] ?>" width="50px">
+        <img class="rounded-circle" src="./../profiles/<?php echo $doctor['picture'] ?>" alt="<?php echo $doctor['pseudo'] ?>" style="width: 50px;height:50px;object-fit:cover;">
 
         <h5><?php echo $doctor['pseudo']?></h5>
     </a>

@@ -49,7 +49,7 @@ foreach ($rdvs as $rd) {
                     <div class="card border-danger my-1">
                         <div class="card-body">
                             <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
-                            <span><i class="d-inline text-danger rounded fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'undo');e.stopPropagation"></i></span>
+                            <span><i class="d-inline text-danger rounded fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'undo')"></i></span>
                         </div>
                     </div>
                 <?php endif; ?>

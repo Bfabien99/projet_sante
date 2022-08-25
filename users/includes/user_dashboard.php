@@ -60,35 +60,17 @@ $loginTotal = TotalUserLogin();
     </div>
 </div>
 <hr>
-Docteur consulter
+
 <div class="row">
-
+<h5>Consultations effectuées</h5>
     <div class="col-md-12 col-lg-4">
         <div class="card">
             <div class="card-body">
-                <!-- <h4 class="box-title">Chandler</h4> -->
                 <div class="card-title">Docteur consulter</div>
             </div>
         </div><!-- /.card -->
     </div>
 
-    <div class="col-md-12 col-lg-4">
-        <div class="card">
-            <div class="card-body">
-                <!-- <h4 class="box-title">Chandler</h4> -->
-                <div class="card-title">Docteur consulter</div>
-            </div>
-        </div><!-- /.card -->
-    </div>
-
-    <div class="col-md-12 col-lg-4">
-        <div class="card">
-            <div class="card-body">
-                <!-- <h4 class="box-title">Chandler</h4> -->
-                <div class="card-title">Docteur consulter</div>
-            </div>
-        </div><!-- /.card -->
-    </div>
 
 </div>
 

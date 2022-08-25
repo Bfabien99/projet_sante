@@ -828,3 +828,18 @@ function getRdv($rdv_id){
         return false;
     }
 }
+
+function confirmConsultation(
+    $doctor_id,
+    $user_id
+) {
+    global $db;
+    $sql = "INSERT INTO consultation (doctor_id, user_id) ";
+    $sql .= "VALUES('{$doctor_id}', '{$user_id}')";
+
+    if ($db->query($sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}

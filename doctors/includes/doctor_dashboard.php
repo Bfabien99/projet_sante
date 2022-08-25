@@ -60,8 +60,8 @@ $loginTotal = TotaldoctorLogin();
     </div>
 </div>
 <hr>
-Docteur consulter
 <div class="row">
+    <h5>Consultations effectuées</h5>
 
     <div class="col-md-12 col-lg-4">
         <div class="card">

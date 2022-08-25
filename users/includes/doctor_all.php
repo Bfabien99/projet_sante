@@ -9,8 +9,8 @@
             <div class="col-md-6 col-lg-3" style="margin:2em 0;">
                 <div class="card shadow">
                     <h3 class="alert alert-info text-center text-uppercase"><?php echo $doctor['fonction']; ?></h3>
-                    <div class="bg-image hover-overlay ripple p-2" data-mdb-ripple-color="light">
-                        <img src="./../profiles/<?php echo $doctor['picture']; ?>" class="img-fluid" alt="<?php echo $doctor['first_name'] . "_" . $doctor['last_name']; ?>" />
+                    <div class="bg-image hover-overlay ripple p-2 d-flex justify-content-center" data-mdb-ripple-color="light">
+                        <img src="./../profiles/<?php echo $doctor['picture']; ?>" class="rounded-circle img-fluid" alt="<?php echo $doctor['first_name'] . "_" . $doctor['last_name']; ?>" style="width:140px;height:140px;object-fit:cover;"/>
                         <a href="#!">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                         </a>

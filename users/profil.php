@@ -220,7 +220,7 @@ if (isset($_POST['register'])) {
                                 <div class="col-12 col-sm-auto mb-3">
                                     <div class="mx-auto" style="width: 140px;">
                                         <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <img src="./../profiles/<?php echo $picture ?>" alt="" class="img-fluid">
+                                            <img src="./../profiles/<?php echo $picture ?>" alt="" class="rounded-circle img-fluid" style="width: 140px;height:140px;object-fit:contain;">
                                         </div>
                                     </div>
                                 </div>
@@ -235,9 +235,7 @@ if (isset($_POST['register'])) {
                                     </div>
                                 </div>
                             </div>
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
-                            </ul>
+
                             <div class="tab-content pt-3">
                                 <div class="tab-pane active">
                                     <?php if (!$success) : ?>

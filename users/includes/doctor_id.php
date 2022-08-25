@@ -17,7 +17,7 @@ if (!$doctor) {
                                     <div class="col-12 col-sm-auto mb-3">
                                         <div class="mx-auto" style="width: 140px;">
                                             <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                                <img src="./../profiles/<?php echo $doctor['picture'] ?>" alt="" class="img-fluid">
+                                                <img src="./../profiles/<?php echo $doctor['picture'] ?>" alt="" class="img-fluid" style="width: 140px;height:140px;object-fit:cover;">
                                             </div>
                                             <h6 class="pt-sm-2 pb-1 mb-0 text-nowrap text-uppercase"><?php echo $doctor['first_name'] ?> <?php echo $doctor['last_name'] ?></h6>
                                             <a href="rdv.php?r_id=<?php echo $doctor['id'] ?>" class="btn btn-success">Prendre rendez-vous</a>
@@ -25,7 +25,7 @@ if (!$doctor) {
                                     </div>
                                     <div class="col d-flex flex-column flex-sm-row mb-3">
                                         <div class="text-center text-sm-left">
-                                            <div class="text-muted"><small>Joined 09 Dec 2017</small></div>
+                                            <div class="text-muted"><small>Inscrit le <?php echo date('d M Y',strtotime($doctor['created']))?></small></div>
                                         </div>
                                         <div class="text-center text-sm-right">
                                         <div class="tab-content pt-3">

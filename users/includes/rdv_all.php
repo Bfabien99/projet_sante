@@ -15,6 +15,7 @@
         <div class="card border-success my-1">
             <div class="card-body">
             <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+            <span><i class="d-inline text-success rounded fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'cancel')"></i></span>
             </div>
         </div>
         <?php endif; ?>
@@ -31,6 +32,7 @@
         <div class="card border-warning my-1">
             <div class="card-body">
                 <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                <span><i class="d-inline text-warning rounded fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'confirm')"></i></span>
             </div>
         </div>
         <?php endif; ?>
@@ -48,6 +50,7 @@
         <div class="card border-danger my-1">
             <div class="card-body">
                 <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                <span><i class="d-inline text-danger rounded fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'undo')"></i></span>
             </div>
         </div>
         <?php endif; ?>
@@ -58,6 +61,30 @@
     </div>
 </div>
 <hr>
-<div class="row">
-
+<div class="row d-flex justify-content-center align-items-center h-100" id="result">
+        <p>Details rendez-vous</p>
 </div>
+<script>
+    function see(id, type) {
+        var input = id;
+
+        if (input != "") {
+            $.ajax({
+                url: "see_rdv.php",
+                method: "POST",
+                data: {
+                    input: input,
+                    type: type
+                },
+                success: function(data) {
+                    if (data) {
+                        $("#result").html(data);
+                    }
+
+                }
+            })
+        } else {
+            window.location.reload()
+        }
+    }
+</script>

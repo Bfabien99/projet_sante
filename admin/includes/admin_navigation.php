@@ -138,9 +138,6 @@
             <li class="">
                 <a href="./services.php"><i class="fa fa-fw fa-folder"></i>Services</a>
             </li>
-            <li class="active">
-                <a href="#"><i class="fa fa-fw fa-calendar"></i> Rendez-vous</a>
-            </li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

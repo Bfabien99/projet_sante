@@ -565,6 +565,50 @@ function getAdminbyPseudo($pseudo)
     }
 }
 
+function getCode()
+{
+    global $db;
+    $sql = "SELECT code FROM doctors";
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data['code'];
+    } else {
+        return false;
+    }
+}
+
+function updateCode(
+    $code
+) {
+    global $db;
+    $sql = "UPDATE doctors SET ";
+    $sql .= "code = '{$code}' ";
+    if ($db->query($sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function updateAdmin(
+    $email,
+    $pseudo,
+    $password
+) {
+    global $db;
+    $sql = "UPDATE admin SET ";
+    $sql .= "email = '{$email}', ";
+    $sql .= "pseudo = '{$pseudo}', ";
+    $sql .= "password = '{$password}' ";
+    if ($db->query($sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function doctorUpdate_admin(
     $id,
     $fname,

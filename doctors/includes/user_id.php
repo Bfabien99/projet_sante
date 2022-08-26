@@ -22,7 +22,8 @@ if (!$user) {
                                                 <img src="./../profiles/<?php echo $user['picture'] ?>" alt="" class="img-fluid" style="width: 140px;height:140px;object-fit:cover;">
                                             </div>
                                             <h6 class="pt-sm-2 pb-1 mb-0 text-nowrap text-uppercase"><?php echo $user['first_name'] ?> <?php echo $user['last_name'] ?></h6>
-                                            <a href="carnet.php?c_id=<?php echo $user['id'] ?>" class="btn btn-success">Voir carnet</a>
+                                            <a href="carnet.php?pc_id=<?php echo $user['id'] ?>" class="btn btn-primary">Voir carnet</a>
+                                            <a href="carnet.php?p_id=<?php echo $user['id'] ?>" class="btn btn-success">Remplir carnet</a>
                                         </div>
                                     </div>
                                     <div class="col d-flex flex-column flex-sm-row mb-3">

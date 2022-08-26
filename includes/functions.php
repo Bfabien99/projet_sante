@@ -511,6 +511,62 @@ function getDoctorbyPseudo($pseudo)
     }
 }
 
+function consultation(
+    $user_id,
+    $doctor_id,
+    $analyse,
+    $resultats,
+    $avis,
+    $ordonnance){
+        global $db;
+        $sql = "INSERT INTO carnets(user_id,doctor_id,analyse,resultat,avis,ordonnance) ";
+        $sql .= "VALUES ('{$user_id}','{$doctor_id}','{$analyse}', '{$resultats}','{$avis}','{$ordonnance}')";
+    
+        if ($db->query($sql)) {
+            return true;
+        } else {
+            return false;
+        }
+}
+
+function getUserCarnet_doctor($user_id, $doctor_id)
+{
+    global $db;
+    $sql = "SELECT * FROM carnets WHERE user_id = '$user_id' AND doctor_id = '$doctor_id'";
+    $data = [];
+
+    $result = $db->query($sql);
+    if($result){
+        if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
+    } else {
+        return false;
+    }
+    }else {
+        return false;
+    }
+    
+}
+
+function getCarnet($id){
+    global $db;
+    $sql = "SELECT * FROM carnets WHERE id = '$id'";
+    $data = [];
+
+    $result = $db->query($sql);
+    if($result){
+        if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
+    } else {
+        return false;
+    }
+    }else {
+        return false;
+    }
+}
+
 
 ##########################
 // ALL FUNCTIONS FOR ADMIN

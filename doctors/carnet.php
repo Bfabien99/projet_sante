@@ -3,7 +3,7 @@ include('includes/header.php');
 if (isset($_GET['p_id']) && !empty($_GET['p_id'])) {
     include "includes/consultation.php";
 }elseif (isset($_GET['pc_id']) && !empty($_GET['pc_id'])) {
-    include "includes/carnet_id.php";
+    include "includes/all_carnet_id.php";
 }elseif (isset($_GET['c_id']) && !empty($_GET['c_id'])) {
     include "includes/carnet_id.php";
 }

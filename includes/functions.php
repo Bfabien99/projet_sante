@@ -609,9 +609,9 @@ function getUserCarnet($user_id){
     }
 }
 
-function getUserCarnet2($user_id){
+function getUserCarnetLimit($user_id){
     global $db;
-    $sql = "SELECT * FROM carnets WHERE user_id = '$user_id' ORDER BY date DESC LIMIT 3";
+    $sql = "SELECT * FROM carnets WHERE user_id = '$user_id' ORDER BY date DESC LIMIT 4";
     $data = [];
 
     $result = $db->query($sql);

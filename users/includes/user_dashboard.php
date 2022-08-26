@@ -1,80 +1,134 @@
 <?php
+$allrdvs = getUserRdv($user['id']);
 $rdvs = getUserRdvLimit($user['id']);
 $userlogin = getUserLogin($user['id']);
 $loginTotal = TotalUserLogin();
-$carnets = getUserCarnet2($user['id']);
+$carnets = getUserCarnetLimit($user['id']);
+           
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<div class="row">
-    <div class="col-md-12 col-lg-4">
+<div class="row d-flex justify-content-around">
+    <div class="col-md-12 col-lg-5 overflow-hidden" style="max-height:400px">
         <div class="card">
             <div class="card-body">
                 <!-- <h4 class="box-title">Chandler</h4> -->
                 <div class="calender-cont widget-calender">
-                    <div id="calendar"></div>
+                    <div id="calendar" class="shadow p-2 rounded" style="max-height:300px"></div>
                 </div>
             </div>
         </div><!-- /.card -->
     </div>
 
-    <div class="col-md-12 col-lg-4 bg-white">
-        <?php if ($rdvs) : ?>
-            <hr>
-            Rendez-vous
-            <?php foreach ($rdvs as $rdv) : ?>
-                <?php if ($rdv['status'] == 'wait') : ?>
-                    <div class="card border-warning my-1">
-                        <div class="card-body">
-                            <span class="badge rounded-pill bg-warning"><i class="fa fa-exclamation"></i></span>
-                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
-                        </div>
-                    </div>
-                <?php elseif ($rdv['status'] == 'confirm') : ?>
-                    <div class="card border-success my-1">
-                        <div class="card-body">
-                            <span class="badge rounded-pill bg-success"><i class="fa fa-check"></i></span>
-                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
-                        </div>
-                    </div>
-                <?php elseif ($rdv['status'] == 'undo') : ?>
-                    <div class="card border-danger my-1">
-                        <div class="card-body">
-                            <span class="badge rounded-pill bg-danger"><i class="fa fa-close"></i></span>
-                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
-                        </div>
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        <?php else : ?>
-            <hr>
-            Aucun rendez-vous pris
-        <?php endif; ?>
-    </div>
-
-    <div class="col-md-12 col-lg-4">
+    <div class="col-md-12 col-lg-5" style="max-height:400px">
         <div class="card bg-white">
-            <div class="card-body">
-                <canvas id="myChart"></canvas>
+            <div class="card-body shadow">
+                <canvas id="myChart" style="max-height:300px"></canvas>
             </div>
         </div>
 
     </div>
 </div>
 <hr>
+<h4 class="text-center fst-italic text-primary text-decoration-underline my-5"><i class="fa fa-calendar text-secondary fs-3"></i> Détails Rendez-vous</h4> 
+<div class="row d-flex justify-content-center g-2">
+        <?php if ($rdvs) : ?>
+            <div class="col-md-12 col-lg-4 p-2 text-center bg-white overflow-auto" style="max-height:210px"> 
+            <span class="badge rounded-pill bg-warning">rdv en attente</span>
+            <?php foreach ($rdvs as $rdv) : ?>
+                <?php $doctor = getDoctorbyId($rdv['doctor_id'])?>
+                <?php if ($rdv['status'] == 'wait') : ?>
+                    <div class="card border-secondary my-1 shadow">
+                        <div class="card-body">
+                            <div>
+                                <span class="badge rounded-pill bg-warning">en attente</span>
+                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture']?>" style="max-width:100px;max-height:100px">
+                                <div class="col d-flex flex-column justify-content-evenly">
+                                    <h3 class="text-secondary text-uppercase"><?php echo $doctor['first_name'] . " ". $doctor['last_name']?></h3>
+                                    <p class="fst-italic text-primary"><?php echo $doctor['fonction']?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </div>
+            
+            <div class="col-md-12 col-lg-4 p-2 text-center bg-white overflow-auto" style="max-height:210px">
+            <span class="badge rounded-pill bg-success">rdv confirmé</span> 
+            <?php foreach ($rdvs as $rdv) : ?>
+            <?php if ($rdv['status'] == 'confirm') : ?>
+                    <div class="card border-secondary my-1 shadow">
+                        <div class="card-body">
+                            <div>
+                                <span class="badge rounded-pill bg-success">confirmé</span>
+                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture']?>" style="max-width:100px;max-height:100px">
+                                <div class="col d-flex flex-column justify-content-evenly">
+                                    <h3 class="text-secondary text-uppercase"><?php echo $doctor['first_name'] . " ". $doctor['last_name']?></h3>
+                                    <p class="fst-italic text-primary"><?php echo $doctor['fonction']?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </div>
 
-<div class="row">
-    <h5>Consultations effectuées</h5>
+            <div class="col-md-12 col-lg-4 p-2 text-center bg-white overflow-auto" style="max-height:210px">
+            <span class="badge rounded-pill bg-danger">rdv annulé</span> 
+            <?php foreach ($rdvs as $rdv) : ?>
+                <?php if ($rdv['status'] == 'undo') : ?>
+                    <div class="card border-secondary my-1 shadow">
+                        <div class="card-body">
+                            <div>
+                                <span class="badge rounded-pill bg-danger">annulé</span>
+                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture']?>" style="max-width:100px;max-height:100px">
+                                <div class="col d-flex flex-column justify-content-evenly">
+                                    <h3 class="text-secondary text-uppercase"><?php echo $doctor['first_name'] . " ". $doctor['last_name']?></h3>
+                                    <p class="fst-italic text-primary"><?php echo $doctor['fonction']?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </div>
+        <?php else : ?>
+            <hr>
+            Aucun rendez-vous pris
+        <?php endif; ?>
+</div>
+<hr>
+<h4 class="text-center fst-italic text-primary text-decoration-underline my-5"><i class="fa fa-file-medical text-secondary fs-3"></i> Consultations effectuées</h4>
+<div class="row gap-4 d-flex justify-content-center">
+    
     <?php if($carnets):?>
     <?php foreach ($carnets as $carnet) : ?>
         <?php $doctor = getDoctorbyId($carnet['doctor_id']); ?>
-        <div class="col-md-12 col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <small>* <?php echo date("D j F Y", strtotime($carnet['date'])); ?></small>
-                    <hr>
-                    <p>Docteur : <?php echo $doctor['first_name'] . " " . $doctor['last_name'];; ?></p>
-                </div>
-            </div><!-- /.card -->
+        <div class="col-md-12 col-lg-3 bg-white shadow rounded border-top border-3 border-secondary" style="max-width:300px">
+            <div class="rounded">
+                <p class="text-center text-muted"><i class="fa fa-file-medical-alt"></i> Résultats du <?php echo date("Y-m-d",strtotime($carnet['date'])); ?></p>
+                <hr>
+                <div class="row">
+                                <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture']?>" style="max-width:100px;max-height:100px">
+                                <div class="col d-flex flex-column justify-content-evenly">
+                                    <h5 class="text-uppercase"><?php echo $doctor['first_name'] . " ". $doctor['last_name']?></h5>
+                                    <p class="fst-italic text-primary"><?php echo $doctor['fonction']?></p>
+                                </div>
+                            </div>
+                <a class="btn btn-secondary m-2" href="./carnet.php?c_id=<?php echo $carnet['id']?>">Voir</a>
+            </div>
         </div>
     <?php endforeach; ?>
     <?php else:?>
@@ -96,8 +150,8 @@ $carnets = getUserCarnet2($user['id']);
             initialView: 'dayGridMonth',
             timeZone: 'UTC',
             events: [
-                <?php if ($rdvs) : ?>
-                    <?php foreach ($rdvs as $rdv) : ?>
+                <?php if ($allrdvs) : ?>
+                    <?php foreach ($allrdvs as $rdv) : ?>
                         <?php if ($rdv['status'] == 'wait') : ?> {
                                 start: '<?php echo $rdv['date_rdv'] ?>',
                                 backgroundColor: 'orange',
@@ -107,6 +161,11 @@ $carnets = getUserCarnet2($user['id']);
                                 start: '<?php echo $rdv['date_rdv'] ?>',
                                 backgroundColor: 'green',
                                 borderColor: 'green'
+                            },
+                            <?php elseif ($rdv['status'] == 'undo') : ?> {
+                                start: '<?php echo $rdv['date_rdv'] ?>',
+                                backgroundColor: 'red',
+                                borderColor: 'red'
                             },
                         <?php endif; ?>
                     <?php endforeach; ?>

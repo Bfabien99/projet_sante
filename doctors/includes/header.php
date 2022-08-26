@@ -55,7 +55,7 @@ if (isset($_GET['logout'])) {
     <title>Docteur</title>
     <style>
         body {
-            background-color: #f5f7fa;
+            background-color: #fff;
         }
 
         .success-box {

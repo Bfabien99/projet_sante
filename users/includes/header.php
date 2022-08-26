@@ -48,7 +48,6 @@ if (isset($_GET['logout'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <!-- Custom Fonts -->
-    <link href="./../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="https://kit.fontawesome.com/1f88d87af5.js" crossorigin="anonymous"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -60,7 +59,7 @@ if (isset($_GET['logout'])) {
     <title>HEALTH PLUS</title>
     <style>
         body {
-            background-color: #f5f7fa;
+            background-color: #fff;
         }
 
         .success-box {

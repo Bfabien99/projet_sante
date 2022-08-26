@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 shadow">
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 shadow border-top border-5 border-primary">
     <a href="profil.php" class="navbar-brand d-flex align-items-center">
 
         <img class="rounded-circle" src="./../profiles/<?php echo $user['picture'] ?>" alt="<?php echo $user['pseudo'] ?>" width="50px">

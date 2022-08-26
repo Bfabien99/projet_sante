@@ -13,35 +13,35 @@ if (!$carnet) {
 ?>
 <h3 class="text-uppercase text-center"><?php echo $doctor['first_name']." ".$doctor['last_name']?></h3>
 <hr>
-<div class="row">
-        <div class="col-md-12 col-lg-3">
-            <h5>Analyse</h5>
+<div class="row d-flex justify-content-around">
+        <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px">
+            <h5 class="text-center text-secondary text-uppercase">Analyse</h5>
             <hr>
-            <blockquote>
+            <blockquote class="text-center text-capitalize">
             <?php echo nl2br($carnet['analyse'])?>
             </blockquote>
         </div>
 
-        <div class="col-md-12 col-lg-3">
-            <h5>Resultats</h5>
+        <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px">
+            <h5 class="text-center text-secondary text-uppercase">Resultats</h5>
             <hr>
-            <blockquote>
+            <blockquote class="text-center text-capitalize">
             <?php echo nl2br($carnet['resultat'])?>
             </blockquote>
         </div>
 
-        <div class="col-md-12 col-lg-3">
-            <h5>Avis</h5>
+        <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px">
+            <h5 class="text-center text-secondary text-uppercase">Avis</h5>
             <hr>
-            <blockquote>
+            <blockquote class="text-center text-capitalize">
             <?php echo nl2br($carnet['avis'])?>
             </blockquote>
         </div>
 
-        <div class="col-md-12 col-lg-3">
-            <h5>Ordonnance</h5>
+        <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px">
+            <h5 class="text-center text-secondary text-uppercase">Ordonnance</h5>
             <hr>
-            <blockquote>
+            <blockquote class="text-center text-capitalize">
             <?php echo nl2br($carnet['ordonnance'])?>
             </blockquote>
         </div>

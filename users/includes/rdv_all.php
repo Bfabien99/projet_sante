@@ -6,8 +6,8 @@
         }
     }
 ?>
-<div class="row d-flex justify-content-evenly">
-    <div class="col-md-12 col-lg-4 p-2 text-center bg-white">
+<div class="row d-flex justify-content-evenly g-2">
+    <div class="col-md-12 col-lg-4 p-2 text-center bg-white border-top border-3 border-secondary rounded">
         <span class="badge rounded-pill bg-success"><i class="fa fa-check"></i> Rendez-vous confirmé</span>
         <div class="col p-2" style="max-height:200px; overflow: auto;">
             <?php foreach ($rdvs as $rdv):?>
@@ -24,7 +24,7 @@
         
         
     </div>
-    <div class="col-md-12 col-lg-4 p-2 text-center bg-white"> 
+    <div class="col-md-12 col-lg-4 p-2 text-center bg-white border-top border-3 border-secondary rounded"> 
         <span class="badge rounded-pill bg-warning"><i class="fa fa-exclamation"></i> Rendez-vous en attente de confirmation</span>
         <div class="col p-2" style="max-height:200px; overflow: auto;">
             <?php foreach ($rdvs as $rdv):?>
@@ -42,7 +42,7 @@
 
     </div>
 
-    <div class="col-md-12 col-lg-4 p-2 text-center bg-white"> 
+    <div class="col-md-12 col-lg-4 p-2 text-center bg-white border-top border-3 border-secondary rounded"> 
         <span class="badge rounded-pill bg-danger"><i class="fa fa-close"></i> Rendez-vous annuler</span>
         <div class="col p-2" style="max-height:200px; overflow: auto;">
             <?php foreach ($rdvs as $rdv):?>

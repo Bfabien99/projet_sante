@@ -1,4 +1,4 @@
-<h1 class="text-center">Patients consultés</h1>
+<h1 class="text-center text-uppercase">Liste des patients</h1>
 <input type="search" class="form-control" name="search" id="live_search" placeholder="Rechercher un patient">
 <div class="row" id="searchresult">
     <?php
@@ -8,9 +8,9 @@
     ?>
             <div class="col-md-6 col-lg-3" style="margin:2em 0;">
                 <div class="card shadow">
-                    <h3 class="badge round-pill bg-danger text-uppercase"><?php echo $user['blood']; ?></h3>
+                    <h3 class="badge round-pill bg-danger text-uppercase">Groupe sanguin: <?php echo $user['blood']; ?></h3>
                     <div class="bg-image hover-overlay ripple p-2 d-flex justify-content-center" data-mdb-ripple-color="light">
-                        <img src="./../profiles/<?php echo $user['picture']; ?>" class="img-fluid" alt="<?php echo $user['first_name'] . "_" . $user['last_name']; ?>" style="width:140px;object-fit:cover;"/>
+                        <img src="./../profiles/<?php echo $user['picture']; ?>" class="img-fluid" alt="<?php echo $user['first_name'] . "_" . $user['last_name']; ?>" style="width:140px;object-fit:cover;" />
                         <a href="#!">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                         </a>
@@ -18,7 +18,20 @@
                     <div class="card-body">
                         <h5 class="card-title text-uppercase text-center"><?php echo $user['first_name'] . " " . $user['last_name']; ?></h5>
                         <hr>
-                        <p class="card-text"><?php echo $user['contact'] ?></p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Taille</h5>
+                                <p class="text-primary"><?php echo $user['height'] ?> Cm</p>
+                            </div>
+                            <div class="col">
+                                <h5>Poids</h5>
+                                <p class="text-primary"><?php echo $user['weight'] ?> Kg</p>
+                            </div>
+                            <div class="col">
+                                <h5>Sexe</h5>
+                                <p class="text-primary"><?php echo $user['sexe'] ?></p>
+                            </div>
+                        </div>
                         <a href="?p_id=<?php echo $user['id'] ?>" class="btn btn-primary">details</a>
                     </div>
                 </div>
@@ -29,24 +42,26 @@
     <?php } ?>
 </div>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
 
-        $("#live_search").keyup(function(){
+        $("#live_search").keyup(function() {
             var input = $(this).val();
-            
-            if(input != ""){
+
+            if (input != "") {
                 $.ajax({
-                    url:"search.php",
-                    method:"POST",
-                    data:{input: input},
-                    success:function(data){
-                        if(data){
-                          $("#searchresult").html(data);  
+                    url: "search.php",
+                    method: "POST",
+                    data: {
+                        input: input
+                    },
+                    success: function(data) {
+                        if (data) {
+                            $("#searchresult").html(data);
                         }
-                        
+
                     }
                 })
-            }else{
+            } else {
                 window.location.reload()
             }
         })

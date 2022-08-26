@@ -2,6 +2,7 @@
 $rdvs = getUserRdvLimit($user['id']);
 $userlogin = getUserLogin($user['id']);
 $loginTotal = TotalUserLogin();
+$carnets = getUserCarnet2($user['id']);
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="row">
@@ -19,12 +20,12 @@ $loginTotal = TotalUserLogin();
     <div class="col-md-12 col-lg-4 bg-white">
         <?php if ($rdvs) : ?>
             <hr>
-                Rendez-vous
+            Rendez-vous
             <?php foreach ($rdvs as $rdv) : ?>
                 <?php if ($rdv['status'] == 'wait') : ?>
                     <div class="card border-warning my-1">
                         <div class="card-body">
-                        <span class="badge rounded-pill bg-warning"><i class="fa fa-exclamation"></i></span>
+                            <span class="badge rounded-pill bg-warning"><i class="fa fa-exclamation"></i></span>
                             <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                         </div>
                     </div>
@@ -35,7 +36,7 @@ $loginTotal = TotalUserLogin();
                             <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                         </div>
                     </div>
-                    <?php elseif ($rdv['status'] == 'undo') : ?>
+                <?php elseif ($rdv['status'] == 'undo') : ?>
                     <div class="card border-danger my-1">
                         <div class="card-body">
                             <span class="badge rounded-pill bg-danger"><i class="fa fa-close"></i></span>
@@ -44,9 +45,9 @@ $loginTotal = TotalUserLogin();
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
-            <?php else: ?>
-                <hr>
-                Aucun rendez-vous pris
+        <?php else : ?>
+            <hr>
+            Aucun rendez-vous pris
         <?php endif; ?>
     </div>
 
@@ -56,20 +57,32 @@ $loginTotal = TotalUserLogin();
                 <canvas id="myChart"></canvas>
             </div>
         </div>
-    
+
     </div>
 </div>
 <hr>
 
 <div class="row">
-<h5>Consultations effectuées</h5>
-    <div class="col-md-12 col-lg-4">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-title">Docteur consulter</div>
-            </div>
-        </div><!-- /.card -->
-    </div>
+    <h5>Consultations effectuées</h5>
+    <?php if($carnets):?>
+    <?php foreach ($carnets as $carnet) : ?>
+        <?php $doctor = getDoctorbyId($carnet['doctor_id']); ?>
+        <div class="col-md-12 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <small>* <?php echo date("D j F Y", strtotime($carnet['date'])); ?></small>
+                    <hr>
+                    <p>Docteur : <?php echo $doctor['first_name'] . " " . $doctor['last_name'];; ?></p>
+                </div>
+            </div><!-- /.card -->
+        </div>
+    <?php endforeach; ?>
+    <?php else:?>
+        <div class="col-md-12 col-lg-6">
+            <p>Aucun résultat pour l'instant</p>
+        </div>
+    <?php endif?>
+
 
 
 </div>
@@ -106,29 +119,29 @@ $loginTotal = TotalUserLogin();
     });
 </script>
 <script>
-  const data = {
-  labels: [
-    'Visite Totale',
-    'Moi',
-  ],
-  datasets: [{
-    label: 'My First Dataset',
-    data: [<?php echo $loginTotal ?? 0?>, <?php echo $userlogin ?? 0?>],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)'
-    ],
-    hoverOffset: 4
-  }]
-};
+    const data = {
+        labels: [
+            'Visite Totale',
+            'Moi',
+        ],
+        datasets: [{
+            label: 'My First Dataset',
+            data: [<?php echo $loginTotal ?? 0 ?>, <?php echo $userlogin ?? 0 ?>],
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)'
+            ],
+            hoverOffset: 4
+        }]
+    };
 
-const config = {
-  type: 'doughnut',
-  data: data,
-};
+    const config = {
+        type: 'doughnut',
+        data: data,
+    };
 
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
 </script>

@@ -2,8 +2,8 @@
 $user = getuserbyId($_GET["p_id"]);
 
 if (!$user) {
-    echo "<h4 class='alert alert-warning'>Le Docteur n'est pas reconnu</h4>";
-    echo "<p><a class='btn btn-secondary' href='./user.php'>Retour</a></p>";
+    echo "<h4 class='error-box'>Le Patient n'est pas reconnu</h4>";
+    echo "<p><a class='btn btn-danger' href='./user.php'>Retour</a></p>";
 } else {
     $allergies = getAllergy($user['id']);
     $antecedants = getAntecedant($user['id']);

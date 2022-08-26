@@ -12,7 +12,7 @@
         <div class="navbar-nav mx-auto bg-light rounded pe-4 py-3 py-lg-0">
             <a href="./" class="nav-item nav-link active"><i class="fa fa-home"></i> Home</a>
             <a href="doctor.php" class="nav-item nav-link"><i class="fa fa-plus"></i> Docteur</a>
-            <a href="carnet.php" class="nav-item nav-link"><i class="fa fa-file"></i> Carnet</a>
+            <a href="carnet.php" class="nav-item nav-link"><i class="fa fa-file"></i> Resultat</a>
             <a href="rdv.php" class="nav-item nav-link"><i class="fa fa-calendar"></i> Rendez-vous</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-cog"></i> Options</a>

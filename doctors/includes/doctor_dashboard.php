@@ -2,6 +2,7 @@
 $rdvs = getdoctorRdvLimit($doctor['id']);
 $doctorlogin = getdoctorLogin($doctor['id']);
 $loginTotal = TotaldoctorLogin();
+$carnets = getDoctorCarnet($doctor['id']);
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="row">
@@ -62,15 +63,25 @@ $loginTotal = TotaldoctorLogin();
 <hr>
 <div class="row">
     <h5>Consultations effectuées</h5>
+    <?php if($carnets):?>
+    <?php foreach ($carnets as $carnet) : ?>
+        <?php $user = getuserbyId($carnet['user_id']); ?>
+        <div class="col-md-12 col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <small>* <?php echo date("D j F Y", strtotime($carnet['date'])); ?></small>
+                    <hr>
+                    <p>Docteur : <?php echo $user['first_name'] . " " . $user['last_name'];; ?></p>
+                </div>
+            </div><!-- /.card -->
+        </div>
+    <?php endforeach; ?>
+    <?php else:?>
+        <div class="col-md-12 col-lg-6">
+            <p>Aucun résultat pour l'instant</p>
+        </div>
+    <?php endif?>
 
-    <div class="col-md-12 col-lg-4">
-        <div class="card">
-            <div class="card-body">
-                <!-- <h4 class="box-title">Chandler</h4> -->
-                <div class="card-title">Patient consulter</div>
-            </div>
-        </div><!-- /.card -->
-    </div>
 
 
 </div>

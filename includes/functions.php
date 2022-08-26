@@ -529,6 +529,26 @@ function consultation(
         }
 }
 
+function getDoctorCarnet($doctor_id){
+    global $db;
+    $sql = "SELECT * FROM carnets WHERE doctor_id = '$doctor_id'";
+    $data = [];
+
+    $result = $db->query($sql);
+    if($result){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            return $data;
+    } else {
+        return false;
+    }
+    }else {
+        return false;
+    }
+}
+
 function getUserCarnet_doctor($user_id, $doctor_id)
 {
     global $db;
@@ -569,6 +589,46 @@ function getCarnet($id){
     }
 }
 
+function getUserCarnet($user_id){
+    global $db;
+    $sql = "SELECT * FROM carnets WHERE user_id = '$user_id'";
+    $data = [];
+
+    $result = $db->query($sql);
+    if($result){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            return $data;
+    } else {
+        return false;
+    }
+    }else {
+        return false;
+    }
+}
+
+function getUserCarnet2($user_id){
+    global $db;
+    $sql = "SELECT * FROM carnets WHERE user_id = '$user_id' ORDER BY date DESC LIMIT 3";
+    $data = [];
+
+    $result = $db->query($sql);
+    if($result){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            return $data;
+    } else {
+        return false;
+    }
+    }else {
+        return false;
+    }
+}
+
 function verifyCarnet_doctor($id,$user_id, $doctor_id){
     global $db;
     $sql = "SELECT * FROM carnets WHERE id = '$id' AND user_id = '$user_id' AND doctor_id = '$doctor_id'";
@@ -586,6 +646,25 @@ function verifyCarnet_doctor($id,$user_id, $doctor_id){
         return false;
     }
 }
+
+function verifyCarnet($id,$user_id){
+    global $db;
+    $sql = "SELECT * FROM carnets WHERE id = '$id' AND user_id = '$user_id'";
+    $data = [];
+
+    $result = $db->query($sql);
+    if($result){
+        if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        return $data;
+    } else {
+        return false;
+    }
+    }else {
+        return false;
+    }
+}
+
 
 
 ##########################

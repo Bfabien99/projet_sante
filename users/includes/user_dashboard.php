@@ -29,10 +29,10 @@ $carnets = getUserCarnetLimit($user['id']);
     </div>
 </div>
 <hr>
-<h4 class="text-center fst-italic text-primary text-decoration-underline my-5"><i class="fa fa-calendar text-secondary fs-3"></i> Détails Rendez-vous</h4> 
+<h4 class="text-center fst-italic text-secondary my-5"><i class="fa fa-calendar fs-3"></i> Détails Rendez-vous</h4> 
 <div class="row d-flex justify-content-center g-2">
         <?php if ($rdvs) : ?>
-            <div class="col-md-12 col-lg-4 p-2 text-center bg-white overflow-auto" style="max-height:210px"> 
+            <div class="col-md-12 col-lg-4 p-2 text-center overflow-auto" style="max-height:210px"> 
             <span class="badge rounded-pill bg-warning">rdv en attente</span>
             <?php foreach ($rdvs as $rdv) : ?>
                 <?php $doctor = getDoctorbyId($rdv['doctor_id'])?>
@@ -57,7 +57,7 @@ $carnets = getUserCarnetLimit($user['id']);
             <?php endforeach; ?>
             </div>
             
-            <div class="col-md-12 col-lg-4 p-2 text-center bg-white overflow-auto" style="max-height:210px">
+            <div class="col-md-12 col-lg-4 p-2 text-center overflow-auto" style="max-height:210px">
             <span class="badge rounded-pill bg-success">rdv confirmé</span> 
             <?php foreach ($rdvs as $rdv) : ?>
             <?php if ($rdv['status'] == 'confirm') : ?>
@@ -81,7 +81,7 @@ $carnets = getUserCarnetLimit($user['id']);
             <?php endforeach; ?>
             </div>
 
-            <div class="col-md-12 col-lg-4 p-2 text-center bg-white overflow-auto" style="max-height:210px">
+            <div class="col-md-12 col-lg-4 p-2 text-center overflow-auto" style="max-height:210px">
             <span class="badge rounded-pill bg-danger">rdv annulé</span> 
             <?php foreach ($rdvs as $rdv) : ?>
                 <?php if ($rdv['status'] == 'undo') : ?>
@@ -110,7 +110,7 @@ $carnets = getUserCarnetLimit($user['id']);
         <?php endif; ?>
 </div>
 <hr>
-<h4 class="text-center fst-italic text-primary text-decoration-underline my-5"><i class="fa fa-file-medical text-secondary fs-3"></i> Consultations effectuées</h4>
+<h4 class="text-center fst-italic text-secondary my-5"><i class="fa fa-file-medical fs-3"></i> Consultations effectuées</h4>
 <div class="row gap-4 d-flex justify-content-center">
     
     <?php if($carnets):?>

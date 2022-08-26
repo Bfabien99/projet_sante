@@ -59,7 +59,7 @@ if (isset($_GET['logout'])) {
     <title>HEALTH PLUS</title>
     <style>
         body {
-            background-color: #fff;
+            background-color: #F8F9FC;
         }
 
         .success-box {
@@ -95,4 +95,4 @@ if (isset($_GET['logout'])) {
     <?php include('includes/user_navigation.php'); ?>
 
     <!-- Navigation -->
-    <div class="container p-2">
+    <div class="container p-4">

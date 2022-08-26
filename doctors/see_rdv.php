@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_POST['input']) && isset($_POST['type'])) {
     include('../includes/config.php');
     include('../includes/functions.php');
@@ -45,12 +46,13 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
                             </div>
                             <div class="d-flex pt-1">
                                 <?php if ($type == 'confirm') : ?>
-                                    <a href="./rdv.php" class="confirm btn btn-success flex-grow-1" >Confirmer le rendez-vous</a>
+                                    <i class="confirm btn btn-success flex-grow-1" >Confirmer le rendez-vous</i>
+                                    <i class="remove btn btn-outline-danger me-1 flex-grow-1" >Annulez le rendez-vous</i>
                                 <?php elseif ($type == 'cancel') : ?>
-                                    <a href="./rdv.php" class="remove btn btn-outline-danger me-1 flex-grow-1" >Annulez le rendez-vous</a>
-                                    <a href="./rdv.php" class="done btn btn-outline-primary me-1 flex-grow-1" >Fait</a>
+                                    <i class="remove btn btn-outline-danger me-1 flex-grow-1" >Annulez le rendez-vous</i>
+                                    <i class="done btn btn-outline-primary me-1 flex-grow-1" >Fait</i>
                                 <?php elseif ($type == 'undo') : ?>
-                                    <a href="./rdv.php" class="confirm btn btn-success flex-grow-1" >Confirmer le rendez-vous</a>
+                                    <i class="confirm btn btn-success flex-grow-1" >Confirmer le rendez-vous</i>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -69,12 +71,9 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
                     type: 'remove'
                 },
                 success: function(data) {
-                    if (data) {
-                        window.location.reload();
-                    }else{
-                        alert('Error')
+                    if(data){
+                        location.reload();
                     }
-
                 }
             })
             })
@@ -88,12 +87,7 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
                     type: 'confirm'
                 },
                 success: function(data) {
-                    if (data) {
-                        window.location.reload();
-                    }else{
-                        alert('Error')
-                    }
-
+                    location.reload();
                 }
             })
             })
@@ -109,12 +103,7 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
                     type: 'done'
                 },
                 success: function(data) {
-                    if (data) {
-                        window.location.reload();
-                    }else{
-                        alert('Error')
-                    }
-
+                    location.reload();
                 }
             })
             })

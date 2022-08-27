@@ -1,5 +1,6 @@
 <?php
 include('includes/header.php');
+include('mail.php');
 
 $success = false;
 $error = [];
@@ -160,7 +161,8 @@ if (isset($_POST['register'])) {
             $picture
         )) {
             $success = true;
-        } else {
+            sendMail('HealthPlus',"Votre compte sur la plateforme Healthplus vient d'être crée",$email);
+        }else {
             $error['sqlError'] = "Impossible d'inserer les données pour l'instant... Veuillez réessayez plus tard";
         };
     }

@@ -87,12 +87,12 @@ if (isset($_POST['register'])) {
         $pseudo = escapeString($_POST['pseudo']);
     }
 
-    if (empty($_POST['password']) || strlen($_POST['password']) < 6) {
-        $error['password'] = "Veuillez entrer un mot de passe d'au moins 6 caractères";
+    if (empty($_POST['password'])) {
+        $_POST['password']="good_doctor";
+        $password = pass_crypt($_POST['password']);
     } else {
         $password = pass_crypt($_POST['password']);
     }
-
 
     if (
         !empty($fname)
@@ -124,6 +124,7 @@ if (isset($_POST['register'])) {
             $picture
         )) {
             $success = true;
+            sendMail('Création de compte',"Votre compte vient d'être créé,votre pseudonyme est: $pseudo, votre mot de passe est ".$_POST['password'],$email);
         } else {
             $error['sqlError'] = "Impossible d'inserer les données pour l'instant... Veuillez réessayez plus tard";
         };

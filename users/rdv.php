@@ -1,5 +1,6 @@
 <?php
 include('includes/header.php');
+include('../mail.php');
 if (isset($_GET['r_id']) && !empty($_GET['r_id'])) {
     include "includes/rdv_id.php";
 }else{

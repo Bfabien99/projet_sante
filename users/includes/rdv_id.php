@@ -40,6 +40,7 @@
             }else{
                 if(setRdv($user['id'], $doctor['id'], $objet, $_fulldate)){
                     $success = true;
+                    sendMail('Rendez-vous','Notifications pour un rendez-vous le '.date('Y-m-d',strtotime($_fulldate)),$doctor['email']);
                 }
             }
             // echo "date = $date </br>";

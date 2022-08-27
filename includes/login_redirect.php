@@ -1,8 +1,8 @@
 <?php
-include('includes/header.php');
+include('header.php');
 ?>
 <?php
-include('includes/navigation.php');
+include('navigation.php');
 ?>
 
 <section class="page-section bg-primary" id="about">

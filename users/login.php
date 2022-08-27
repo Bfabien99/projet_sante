@@ -55,10 +55,10 @@ if (isset($_POST['login'])) {
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-    <title>HEALTH PLUS</title>
+    <title>UTILISATEUR LOGIN</title>
     <style>
         body {
-            background-color: background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
+            background-image: linear-gradient(to right top, #6ba0c2, #6da4d1, #75a7e0, #82a8ed, #94a9f8);
         }
 
         .success-box {
@@ -86,7 +86,7 @@ if (isset($_POST['login'])) {
                     <a class="" href="./../"><i class="h2 fa fa-hand-holding-medical text-dark"></i></a>
                     <p>HealthPlus | Page de connexion utilisateur</p>
                 </div>
-            <div class="container-fluid d-flex flex-column justify-content-center bg-gray" style="position:relative;min-height:100vh; background:linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%),url('https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG1lZGljYWx8ZW58MHx8MHx8&auto=format&fit=crop&w=700&q=60') no-repeat center/cover">
+            <div class="container-fluid d-flex flex-column justify-content-center bg-gray" style="position:relative;min-height:100vh;">
                     <h1 class="text-center text-light">Connectez-vous</h1>
                     <form action="" method="post" autocomplete="off" style="margin:0 auto; background:#fafafa;max-width:600px" class="rounded col-md-6 col-lg-6 shadow p-4">
                         <?php if (isset($error['both'])) : ?>

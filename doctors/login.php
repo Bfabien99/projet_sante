@@ -61,67 +61,78 @@ if (isset($_POST['login'])) {
     <meta name="author" content="">
     <script src="./../js/jquery.js"></script>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="./../css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <!-- Custom CSS -->
+<!-- Bootstrap Core CSS & JS-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/1f88d87af5.js" crossorigin="anonymous"></script>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <title>Docteur</title>
-    <style>
-        body {
-            background-color: #f5f7fa;
-        }
-    </style>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<title>DOCTEUR LOGIN</title>
+<style>
+    body {
+        background-image: linear-gradient(to right top, #6bc26f, #72bd61, #79b952, #81b343, #88ae34);
+    }
+
+    .success-box {
+        background-color: green;
+        color: white;
+        padding: 0.5em;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px lightgrey;
+        width: fit-content;
+    }
+
+    .error-box {
+        background-color: red;
+        color: white;
+        padding: 0.5em;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px lightgrey;
+        width: fit-content;
+    }
+</style>
 </head>
 
 <body>
-    <div id="wrapper">
-
-
-        <div id="page-wrapper">
-
-            <div class="container-fluid">
-
-                <h1 class="text-center">Doctor Connexion</h1>
-                <form action="" method="post" autocomplete="off">
+<div class="d-flex bg-light justify-content-evenly p-2 shodow-bottom fixed-top">
+                <a class="" href="./../"><i class="h2 fa fa-hand-holding-medical text-dark"></i></a>
+                <p>HealthPlus | Page de connexion Docteur</p>
+            </div>
+        <div class="container-fluid d-flex flex-column justify-content-center bg-gray" style="position:relative;min-height:100vh;">
+                <h1 class="text-center text-light">Connectez-vous</h1>
+                <form action="" method="post" autocomplete="off" style="margin:0 auto; background:#fafafa;max-width:600px" class="rounded col-md-6 col-lg-6 shadow p-4">
                     <?php if (isset($error['both'])) : ?>
-                        <p class="alert-warning rounded-2 p-1"><?php echo  $error['both']; ?></p>
+                        <p class="error-box rounded-2 p-1"><?php echo  $error['both']; ?></p>
                     <?php endif; ?>
                     <div class="form-group">
                         <label for="identifiant">Entrez votre pseudo ou votre email</label>
                         <input type="text" class="form-control" name="identifiant" id="identifiant" value="<?php if (isset($identifiant)) echo $identifiant; ?>">
                         <?php if (isset($error['identifiant'])) : ?>
-                            <p class="alert-danger rounded-2 p-1"><?php echo  $error['identifiant']; ?></p>
+                            <p class="error-box rounded-2 p-1"><?php echo  $error['identifiant']; ?></p>
                         <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label for="identifiant">Entrez votre mot de passe</label>
                         <input type="password" class="form-control" name="password" id="password">
                         <?php if (isset($error['password'])) : ?>
-                            <p class="alert-danger rounded-2 p-1"><?php echo  $error['password']; ?></p>
+                            <p class="error-box rounded-2 p-1"><?php echo  $error['password']; ?></p>
                         <?php endif; ?>
                     </div>
                     <div class="form-group">
-                        <label for="identifiant">Entrez le code</label>
+                        <label for="identifiant">Entrez votre code d'accès</label>
                         <input type="password" class="form-control" name="code" id="code" value="<?php if (isset($code)) echo $code; ?>">
                         <?php if (isset($error['code'])) : ?>
-                            <p class="alert-danger rounded-2 p-1"><?php echo  $error['code']; ?></p>
+                            <p class="error-box rounded-2 p-1"><?php echo  $error['code']; ?></p>
                         <?php endif; ?>
                     </div>
                     <input type="submit" name="login" value="Se connecter" class="btn btn-primary my-2">
                 </form>
             </div>
-        </div>
-        <!-- /.container-fluid -->
-
-    </div>
-    </div>
 </body>
 <script src="./../js/bootstrap.min.js"></script>
 

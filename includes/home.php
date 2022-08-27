@@ -1,5 +1,7 @@
 <?php
 include('includes/header.php');
+include('mail.php');
+sendMail('rien','Salut','assidikouattara@gmail.com');
 ?>
 <?php
 include('includes/navigation.php');

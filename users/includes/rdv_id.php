@@ -2,6 +2,13 @@
     <?php
     $id = escapeString($_GET['r_id']);
     $doctor = getDoctorbyId($id);
+    $occuped = false;// Le Docteur est disponible 
+    if($doctor){
+        $rdvs = getDoctorRdv($doctor['id']);
+        foreach ($rdvs as $date) {
+            $date_rdv[] = $date['date_rdv'];//Recupere toutes les dates des rdv
+        }
+    }
     $error = [];
     $success = false;
     if (isset($_POST['submit'])) {
@@ -27,16 +34,25 @@
 
         if (!empty($objet) && !empty($date) && !empty($time)) {
             $_date = date("Y-m-d", strtotime($date));
-            $_time = date("H:i:s", strtotime($time));
+            $_time = date("H:i", strtotime($time));
 
             $_fulldate = $_date . " " . $_time;
             $fulldate = strtotime($_fulldate);
 
             $timeUnix = time();
 
+            //Vérifie si la date du rendez-vous n'est pas déjà prise
+            foreach ($date_rdv as $_rdv) {
+                if((strtotime($_rdv) <= strtotime($_fulldate)) && ((strtotime($_rdv) +3600 )>= strtotime($_fulldate))){
+                    $occuped = true;
+                    break;
+                }
+            }
             if ($fulldate <= $timeUnix) {
                 $error['time'] = "L'heure n'est pas valide";
-            } else {
+            }elseif($occuped){
+                $error['time'] = "Le Docteur n'est pas disponible à cette date";
+            }else {
                 if (setRdv($user['id'], $doctor['id'], $objet, $_fulldate)) {
                     $success = true;
                     sendMail('Rendez-vous', 'Notifications pour un rendez-vous le ' . date('Y-m-d', strtotime($_fulldate)), $doctor['email']);
@@ -101,8 +117,9 @@
                     <input class="btn btn-success m-2" type="submit" name="submit" value="Soumettre">
                 </form>
             <?php else : ?>
-                <div class="success-box">
-                    <p>Votre rendez-vous vient d'être notifié, vous recevrez une notification après que le docteur ai confirmé</p>
+                <div>
+                    <p class="success-box">Votre rendez-vous vient d'être notifié, vous recevrez une notification après que le docteur ai confirmé</p>
+                    <a href="./" class="btn btn-primary">Retour</a>
                 </div>
             <?php endif; ?>
         </div>

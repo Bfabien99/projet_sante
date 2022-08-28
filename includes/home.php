@@ -13,7 +13,7 @@ include('includes/navigation.php');
             </div>
             <div class="col-lg-8 align-self-baseline">
                 <p class="text-white-75 mb-5">Service médicale en ligne!</p>
-                <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
+                <a class="btn btn-primary btn-xl" href="#about">Qui sommes nous ?</a>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@ include('includes/navigation.php');
                 <h2 class="text-white mt-0">Health plus</h2>
                 <hr class="divider divider-light" />
                 <p class="text-white-75 mb-4">Health Plus est une plateforme médicale conçu dans le but d'être le plus proche possible de nos patients!</p>
-                <a class="btn btn-light btn-xl" href="#services">Get Started!</a>
+                <a class="btn btn-light btn-xl" href="#services">Nos services</a>
             </div>
         </div>
     </div>

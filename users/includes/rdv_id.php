@@ -1,5 +1,6 @@
 <div class="row d-flex justify-content-center">
     <?php
+    $date_rdv = [];
     $id = escapeString($_GET['r_id']);
     $doctor = getDoctorbyId($id);
     $occuped = false;// Le Docteur est disponible 
@@ -42,12 +43,15 @@
             $timeUnix = time();
 
             //Vérifie si la date du rendez-vous n'est pas déjà prise
-            foreach ($date_rdv as $_rdv) {
+            if(!empty($date_rdv)){
+                foreach ($date_rdv as $_rdv) {
                 if((strtotime($_rdv) <= strtotime($_fulldate)) && ((strtotime($_rdv) +3600 )>= strtotime($_fulldate))){
                     $occuped = true;
                     break;
                 }
             }
+            }
+            
             if ($fulldate <= $timeUnix) {
                 $error['time'] = "L'heure n'est pas valide";
             }elseif($occuped){
@@ -55,7 +59,7 @@
             }else {
                 if (setRdv($user['id'], $doctor['id'], $objet, $_fulldate)) {
                     $success = true;
-                    sendMail('Rendez-vous', 'Notifications pour un rendez-vous le ' . date('Y-m-d', strtotime($_fulldate)), $doctor['email']);
+                    sendMail('Rendez-vous', 'Notifications pour un rendez-vous le ' . date('Y-m-d', strtotime($_fulldate)). " avec ".strtoupper($user['first_name']) . " " .strtoupper($user['last_name']), $doctor['email']);
                 }
             }
             // echo "date = $date </br>";
@@ -118,7 +122,7 @@
                 </form>
             <?php else : ?>
                 <div>
-                    <p class="success-box">Votre rendez-vous vient d'être notifié, vous recevrez une notification après que le docteur ai confirmé</p>
+                    <p class="success-box">Votre rendez-vous vient d'être notifié au docteur, vous recevrez une notification après que le docteur ai confirmé</p>
                     <a href="./" class="btn btn-primary">Retour</a>
                 </div>
             <?php endif; ?>

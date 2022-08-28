@@ -161,7 +161,7 @@ if (isset($_POST['register'])) {
             $picture
         )) {
             $success = true;
-            sendMail('HealthPlus', "Votre compte sur la plateforme Healthplus vient d'être crée", $email);
+            sendMail('HealthPlus', "Votre compte sur la plateforme Healthplus vient d'être crée.", $email);
         } else {
             $error['sqlError'] = "Impossible d'inserer les données pour l'instant... Veuillez réessayez plus tard";
         };

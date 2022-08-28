@@ -18,20 +18,20 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
     
     if($_POST['type'] == "remove"){
         if(undoRdv(escapeString($_POST['input']))){
-            sendMail('Rendez-vous Annulé','Votre rendez-vous du '.date('d/m/Y - H:i',strtotime($rdv['date']))." vient d'être annulé car le docteur ".$docteur['first_name']." ".$docteur['last_name']." sera indisponible",$user['email']);
+            sendMail('Rendez-vous Annulé','Votre rendez-vous du '.date('d/m/Y - H:i',strtotime($rdv['date']))." vient d'être annulé car le docteur ".strtoupper($docteur['first_name'])." ".strtoupper($docteur['last_name'])." sera indisponible",$user['email']);
         };
         return true;
     }
     if($_POST['type'] == "confirm"){
         if(confirmRdv(escapeString($_POST['input']))){
-            sendMail('Rendez-vous Confirmé','Votre rendez-vous du '.date('d/m/Y - H:i',strtotime($rdv['date']))." vient d'être confirmé par le docteur ".$docteur['first_name']." ".$docteur['last_name'],$user['email']);
+            sendMail('Rendez-vous Confirmé','Votre rendez-vous du '.date('d/m/Y - H:i',strtotime($rdv['date']))." vient d'être confirmé par le docteur ".strtoupper($docteur['first_name'])." ".strtoupper($docteur['last_name']),$user['email']);
         };
         return true;
     }
     if($_POST['type'] == "done"){
         if(confirmConsultation(escapeString($_POST['doctor']),escapeString($_POST['user']))){
             if(cancelRdv(escapeString($_POST['input']))){
-                sendMail('Rendez-vous effectué',"Merci d'être passé", $user['email']);
+                sendMail('Rendez-vous effectué',"Merci d'être passé voir le Docteur ".strtoupper($docteur['first_name']) . " " . strtoupper($docteur['last_name']), $user['email']);
             };
             return true;
         }else{

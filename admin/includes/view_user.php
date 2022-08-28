@@ -3,8 +3,8 @@
 $user = getUserbyId($_GET["p_id"]); 
 
 if(!$user){
-    echo "<h4 class='error-box'>L'utilisateur n'est pas reconnu</h4>";
-    echo "<p><a class='btn btn-primary' href='./users.php'>Retour</a></p>";
+    echo "<div class=''><h1 class='error-box'>404, PAGE NOT FOUND</h1>";
+    echo "<p><a class='btn btn-danger' href='./'>Retour</a></p></div>";
 }else{
     ?>
     <style>

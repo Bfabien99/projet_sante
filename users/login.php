@@ -82,35 +82,35 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-<div class="d-flex bg-light justify-content-evenly p-2 shodow-bottom fixed-top">
-                    <a class="" href="./../"><i class="h2 fa fa-hand-holding-medical text-dark"></i></a>
-                    <p>HealthPlus | Page de connexion utilisateur</p>
-                </div>
-            <div class="container-fluid d-flex flex-column justify-content-center bg-gray" style="position:relative;min-height:100vh;">
-                    <h1 class="text-center text-light">Connectez-vous</h1>
-                    <form action="" method="post" autocomplete="off" style="margin:0 auto; background:#fafafa;max-width:600px" class="rounded col-md-6 col-lg-6 shadow p-4">
-                        <?php if (isset($error['both'])) : ?>
-                            <p class="error-box rounded-2 p-1"><?php echo  $error['both']; ?></p>
-                        <?php endif; ?>
-                        <div class="form-group my-3">
-                            <label for="identifiant">Entrez votre pseudo ou votre email</label>
-                            <input type="text" class="form-control" name="identifiant" id="identifiant" value="<?php if (isset($identifiant)) echo $identifiant; ?>">
-                            <?php if (isset($error['identifiant'])) : ?>
-                                <p class="error-box rounded-2 p-1"><?php echo  $error['identifiant']; ?></p>
-                            <?php endif; ?>
-                        </div>
-                        <div class="form-group my-3">
-                            <label for="identifiant">Entrez votre mot de passe</label>
-                            <input type="password" class="form-control" name="password" id="password">
-                            <?php if (isset($error['password'])) : ?>
-                                <p class="error-box rounded-2 p-1"><?php echo  $error['password']; ?></p>
-                            <?php endif; ?>
-                        </div>
-                        <input type="submit" name="login" value="Se connecter" class="btn btn-primary my-2">
-                    </form>
-                
+    <div class="d-flex bg-light justify-content-evenly p-2 shodow-bottom fixed-top">
+        <a class="" href="./../"><i class="h2 fa fa-hand-holding-medical text-dark"></i></a>
+        <p>HealthPlus | Page de connexion utilisateur</p>
+    </div>
+    <div class="container-fluid d-flex flex-column justify-content-center bg-gray" style="position:relative;min-height:100vh;">
+        <h1 class="text-center text-light">Connectez-vous</h1>
+        <form action="" method="post" autocomplete="off" style="margin:0 auto; background:#fafafa;max-width:600px" class="rounded col-md-6 col-lg-6 shadow p-4">
+            <?php if (isset($error['both'])) : ?>
+                <p class="error-box rounded-2 p-1"><?php echo  $error['both']; ?></p>
+            <?php endif; ?>
+            <div class="form-group my-3">
+                <label for="identifiant">Entrez votre pseudo ou votre email</label>
+                <input type="text" class="form-control" name="identifiant" id="identifiant" value="<?php if (isset($identifiant)) echo $identifiant; ?>">
+                <?php if (isset($error['identifiant'])) : ?>
+                    <p class="error-box rounded-2 p-1"><?php echo  $error['identifiant']; ?></p>
+                <?php endif; ?>
             </div>
-            <!-- /.container-fluid -->
+            <div class="form-group my-3">
+                <label for="identifiant">Entrez votre mot de passe</label>
+                <input type="password" class="form-control" name="password" id="password">
+                <?php if (isset($error['password'])) : ?>
+                    <p class="error-box rounded-2 p-1"><?php echo  $error['password']; ?></p>
+                <?php endif; ?>
+            </div>
+            <input type="submit" name="login" value="Se connecter" class="btn btn-primary my-2">
+        </form>
+
+    </div>
+    <!-- /.container-fluid -->
 </body>
 <script src="./../js/bootstrap.min.js"></script>
 

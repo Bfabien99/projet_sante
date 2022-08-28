@@ -18,6 +18,7 @@
                         $query = "SELECT * FROM roles";
                         $select_all_roles = mysqli_query($db, $query);
 
+                        if($select_all_roles){
                         while ($row = $select_all_roles->fetch_assoc()) {
                         ?>
                             <tr>
@@ -28,7 +29,10 @@
                                     <a href="?delete=<?php echo $row['id'] ?>" class="btn btn-danger">Supprimer</a>
                                 </td>
                             </tr>
-                        <?php }
+                        <?php }}
+                        else{
+                            echo "<h2 class='text-center text-muted'>Aucun service enregistré pour l'instant</h2>";
+                        }
                         ?>
                     </tbody>
                 </table>

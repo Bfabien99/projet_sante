@@ -39,6 +39,7 @@
         <?php } ?>
     <?php } else { ?>
         <p class="h4 text-muted">Aucun patient consulté</p>
+        <a href="./" class="btn btn-primary">Retour</a>
     <?php } ?>
 </div>
 <script>

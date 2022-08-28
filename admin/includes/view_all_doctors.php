@@ -35,7 +35,7 @@
                             
                             <?php } ?>
                         <?php } else { ?>
-                            <p class="h4 text-muted">Aucun docteur</p>
+                            <h2 class="text-center text-muted">Aucun docteur enregistré pour l'instant</h2>
                         <?php } ?>
                     </tbody>
                 </table>

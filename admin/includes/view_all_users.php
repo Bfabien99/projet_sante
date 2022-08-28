@@ -36,7 +36,7 @@
                                 </tr>
                             <?php } ?>
                         <?php } else { ?>
-                            <p class="h4 text-muted">Aucun utilisateur</p>
+                            <h2 class="text-center text-muted">Aucun utilisateur enregistré pour l'instant</h2>
                         <?php } ?>
                     </tbody>
                 </table>

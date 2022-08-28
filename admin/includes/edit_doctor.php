@@ -107,8 +107,8 @@ if (isset($_POST['update_category'])) {
 }
 ?>
 <?php if (!$doctor) : ?>
-    <p class="error-box">Error: Entrée incorrecte</p>
-    <a href="./" class="btn btn-primary">Retour</a>
+    echo "<div class=''><h1 class='error-box'>404, PAGE NOT FOUND</h1>";
+    echo "<p><a class='btn btn-danger' href='./'>Retour</a></p></div>";
 <?php else : ?>
 <?php if (!$success) : ?>
     <h1 class="text-center">Modifier les informations du docteur</h1>

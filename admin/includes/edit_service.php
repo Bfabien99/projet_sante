@@ -71,6 +71,6 @@ if (isset($_POST['update_category'])) {
         } ?>
     </form>
 <?php else : ?>
-    <h1 class="text-center alert-success"> Modification éffectuée</h1>
+    <h1 class="text-center success-box"> Modification éffectuée</h1>
     <a href="./services.php" class="btn btn-primary">Retour</a>
 <?php endif ?>

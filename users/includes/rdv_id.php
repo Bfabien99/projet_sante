@@ -20,8 +20,7 @@
 
         if (empty($_POST['time'])) {
             $error['time'] = "Veuillez donnez l'heure du rendez-vous";
-        } 
-        else {
+        } else {
             $time = escapeString($_POST['time']);
         }
 
@@ -35,12 +34,12 @@
 
             $timeUnix = time();
 
-            if($fulldate <= $timeUnix){
+            if ($fulldate <= $timeUnix) {
                 $error['time'] = "L'heure n'est pas valide";
-            }else{
-                if(setRdv($user['id'], $doctor['id'], $objet, $_fulldate)){
+            } else {
+                if (setRdv($user['id'], $doctor['id'], $objet, $_fulldate)) {
                     $success = true;
-                    sendMail('Rendez-vous','Notifications pour un rendez-vous le '.date('Y-m-d',strtotime($_fulldate)),$doctor['email']);
+                    sendMail('Rendez-vous', 'Notifications pour un rendez-vous le ' . date('Y-m-d', strtotime($_fulldate)), $doctor['email']);
                 }
             }
             // echo "date = $date </br>";
@@ -108,6 +107,9 @@
             <?php endif; ?>
         </div>
     <?php } else { ?>
-        <p class="h4 text-muted">Docteur inconnu</p>
+        <div class=''>
+            <h1 class='error-box'>404, PAGE NOT FOUND</h1>
+            <p><a class='btn btn-danger' href='./'>Retour</a></p>
+        </div>
     <?php } ?>
 </div>

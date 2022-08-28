@@ -27,13 +27,13 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
                             <p class="mb-2 pb-1 text-primary text-uppercase fst-italic" style="color: #2b2a2a;"><?php echo $doctor['fonction']; ?></p>
                             <p class="mb-2 pb-1 text-secondary" style="height: 100px;overflow: hidden;"><?php echo $doctor['description']; ?></p>
                             <hr>
-                            <h5>Objet : <?php echo $rdv['objet']; ?></h5> 
+                            <h5>Objet : <?php echo $rdv['objet']; ?></h5>
                             <hr>
                             <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
-                               <p>Contact 1: <?php echo $doctor['contact1']; ?></p>
+                                <p>Contact 1: <?php echo $doctor['contact1']; ?></p>
                             </div>
                             <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
-                               <p>Contact 2: <?php echo $doctor['contact2']; ?></p>
+                                <p>Contact 2: <?php echo $doctor['contact2']; ?></p>
                             </div>
                         </div>
                     </div>

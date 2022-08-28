@@ -1,7 +1,7 @@
 <?php
 if (!$user) {
-    echo "<h4 class='error-box'>404, PAGE NOT FOUND</h4>";
-    echo "<p><a class='btn btn-danger' href='./'>Retour</a></p>";
+    echo "<div class=''><h1 class='error-box'>404, PAGE NOT FOUND</h1>";
+    echo "<p><a class='btn btn-danger' href='./'>Retour</a></p></div>";
 } else {
     $carnets = getUserCarnet($user['id']);
     if(!$carnets){

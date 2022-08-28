@@ -115,7 +115,7 @@ $carnets = getDoctorCarnet($doctor['id']);
     <?php if($carnets):?>
     <?php foreach ($carnets as $carnet) : ?>
         <?php $user = getUserbyId($carnet['user_id']); ?>
-        <div class="col-md-12 col-lg-3 bg-white shadow rounded border-top border-3 border-secondary" style="max-width:300px">
+        <div class="col-md-12 col-lg-3 bg-white shadow rounded border-top border-3 border-success" style="max-width:300px">
             <div class="rounded">
                 <p class="text-center text-muted"><i class="fa fa-file-medical-alt"></i> Résultats du <?php echo date("Y-m-d",strtotime($carnet['date'])); ?></p>
                 <hr>

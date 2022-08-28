@@ -2,8 +2,8 @@
 $doctor = getDoctorbyId($_GET["d_id"]);
 
 if (!$doctor) {
-    echo "<h4 class='alert alert-warning'>Le Docteur n'est pas reconnu</h4>";
-    echo "<p><a class='btn btn-secondary' href='./doctor.php'>Retour</a></p>";
+    echo "<div class=''><h1 class='error-box'>404, PAGE NOT FOUND</h1>";
+    echo "<p><a class='btn btn-danger' href='./'>Retour</a></p></div>";
 } else {
 ?>
     <div class="row flex-lg-nowrap">

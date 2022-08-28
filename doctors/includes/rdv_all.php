@@ -2,6 +2,7 @@
 $rdvs = getDoctorRdv($doctor['id']);
 foreach ($rdvs as $rd) {
     if (strtotime($rd['date_rdv']) <= time()) {
+        // supprime le rendez-vous si la date est passée
         cancelRdv($rd['rdv_id']);
     }
 }

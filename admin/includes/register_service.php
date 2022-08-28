@@ -51,6 +51,6 @@ if (isset($_POST['submit'])) {
                 </div>
     </form>
 <?php else : ?>
-    <h1 class="text-center alert-success"> Enregistrement éffectué</h1>
+    <h1 class="text-center success-box"> Enregistrement éffectué</h1>
     <a href="./services.php" class="btn btn-primary">Retour</a>
 <?php endif ?>

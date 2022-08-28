@@ -2,8 +2,8 @@
 $carnet = getCarnet(escapeString($_GET["c_id"]));
 
 if (!$carnet) {
-    echo "<h4 class='error-box'>Erreur, nous ne pouvons donner suite à votre requête</h4>";
-    echo "<p><a class='btn btn-danger' href='./'>Retour</a></p>";
+    echo "<div class=''><h1 class='error-box'>404, PAGE NOT FOUND</h1>";
+    echo "<p><a class='btn btn-danger' href='./'>Retour</a></p></div>";
 } else {
     $doctor = getDoctorbyId($carnet['doctor_id']);
     if(!verifyCarnet($carnet['id'],$user['id'])){

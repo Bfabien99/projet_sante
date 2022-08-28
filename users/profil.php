@@ -23,8 +23,8 @@ if ($user) {
     $created = $user['created'];
 }
 
-$_sexes = ['Homme' => 'Masculin','Femme' => 'Feminin','Autre' => 'Autre'];
-$_bloods = ['A','B','AB','O'];
+$_sexes = ['Homme' => 'Masculin', 'Femme' => 'Feminin', 'Autre' => 'Autre'];
+$_bloods = ['A', 'B', 'AB', 'O'];
 $_statuts = ['Célibataire', 'Mariée', 'Veuve', 'Divorcée'];
 $success = false;
 $error = [];
@@ -210,35 +210,35 @@ if (isset($_POST['register'])) {
 }
 ?>
 <div class="row flex-lg-nowrap">
-<?php if (!$success) : ?>
-    <div class="col">
-        <div class="row">
-            <div class="col mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="e-profile">
-                            <div class="row">
-                                <div class="col-12 col-sm-auto mb-3">
-                                    <div class="mx-auto" style="width: 140px;">
-                                        <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <img src="./../profiles/<?php echo $picture ?>" alt="" class="rounded-circle img-fluid" style="width: 140px;height:140px;object-fit:contain;">
+    <?php if (!$success) : ?>
+        <div class="col">
+            <div class="row">
+                <div class="col mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="e-profile">
+                                <div class="row">
+                                    <div class="col-12 col-sm-auto mb-3">
+                                        <div class="mx-auto" style="width: 140px;">
+                                            <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                                                <img src="./../profiles/<?php echo $picture ?>" alt="" class="rounded-circle img-fluid" style="width: 140px;height:140px;object-fit:contain;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                        <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap text-capitalize"><?php echo $fname . " " . $lname ?></h4>
+                                            <p class="mb-0">@<?php echo $pseudo ?></p>
+                                            <div class="text-muted"><small><?php echo $marital ?> - <?php echo $blood ?></small></div>
+                                        </div>
+                                        <div class="text-center text-sm-right">
+                                            <div class="text-muted"><small>Inscrit le <?php echo date('d M Y', strtotime($created)) ?></small></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                                    <div class="text-center text-sm-left mb-2 mb-sm-0">
-                                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap text-capitalize"><?php echo $fname . " " . $lname ?></h4>
-                                        <p class="mb-0">@<?php echo $pseudo ?></p>
-                                        <div class="text-muted"><small><?php echo $marital ?> - <?php echo $blood ?></small></div>
-                                    </div>
-                                    <div class="text-center text-sm-right">
-                                        <div class="text-muted"><small>Inscrit le <?php echo date('d M Y',strtotime($created) )?></small></div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="tab-content pt-3">
-                                <div class="tab-pane active">
+                                <div class="tab-content pt-3">
+                                    <div class="tab-pane active">
                                         <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                                             <label for="profile">Changer d'image</label>
                                             <input class="btn btn-primary" type="file" name="profile" id="profile">
@@ -277,13 +277,13 @@ if (isset($_POST['register'])) {
                                                         <div class="col form-group">
                                                             <label for="sexe">Genre</label>
                                                             <select name="sexe" id="sexe" class="form-control">
-                                                            <?php foreach ($_sexes as $key => $_sexe):?>
-                                                                <?php if($sexe == $key):?>
-                                                                <option selected value="<?php echo $key?>"><?php echo $_sexe?></option>
-                                                                <?php else:?>
-                                                                    <option value="<?php echo $_sexe?>"><?php echo $_sexe?></option>
-                                                                <?php endif;?>
-                                                            <?php endforeach; ?>
+                                                                <?php foreach ($_sexes as $key => $_sexe) : ?>
+                                                                    <?php if ($sexe == $key) : ?>
+                                                                        <option selected value="<?php echo $key ?>"><?php echo $_sexe ?></option>
+                                                                    <?php else : ?>
+                                                                        <option value="<?php echo $_sexe ?>"><?php echo $_sexe ?></option>
+                                                                    <?php endif; ?>
+                                                                <?php endforeach; ?>
                                                             </select>
                                                             <?php if (isset($error['sexe'])) : ?>
                                                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['sexe']; ?></p>
@@ -338,13 +338,13 @@ if (isset($_POST['register'])) {
                                                         <div class="col form-group">
                                                             <label for="marital_status">Situation matrimonial</label>
                                                             <select name="marital_status" id="marital_status" class="form-control">
-                                                            <?php foreach ($_statuts as $_statut):?>
-                                                                <?php if($marital == $_statut):?>
-                                                                <option selected value="<?php echo $_statut?>"><?php echo $_statut?></option>
-                                                                <?php else:?>
-                                                                    <option value="<?php echo $_statut?>"><?php echo $_statut?></option>
-                                                                <?php endif;?>
-                                                            <?php endforeach; ?>
+                                                                <?php foreach ($_statuts as $_statut) : ?>
+                                                                    <?php if ($marital == $_statut) : ?>
+                                                                        <option selected value="<?php echo $_statut ?>"><?php echo $_statut ?></option>
+                                                                    <?php else : ?>
+                                                                        <option value="<?php echo $_statut ?>"><?php echo $_statut ?></option>
+                                                                    <?php endif; ?>
+                                                                <?php endforeach; ?>
                                                             </select>
                                                             <?php if (isset($error['marital_status'])) : ?>
                                                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['marital_status']; ?></p>
@@ -380,12 +380,12 @@ if (isset($_POST['register'])) {
                                                     <div class="col form-group">
                                                         <label for="blood">Groupe sanguin</label>
                                                         <select name="blood" id="blood" class="form-control">
-                                                            <?php foreach ($_bloods as $_blood):?>
-                                                                <?php if($blood == $_blood):?>
-                                                                <option selected value="<?php echo $_blood?>"><?php echo $_blood?></option>
-                                                                <?php else:?>
-                                                                    <option value="<?php echo $_blood?>"><?php echo $_blood?></option>
-                                                                <?php endif;?>
+                                                            <?php foreach ($_bloods as $_blood) : ?>
+                                                                <?php if ($blood == $_blood) : ?>
+                                                                    <option selected value="<?php echo $_blood ?>"><?php echo $_blood ?></option>
+                                                                <?php else : ?>
+                                                                    <option value="<?php echo $_blood ?>"><?php echo $_blood ?></option>
+                                                                <?php endif; ?>
                                                             <?php endforeach; ?>
                                                         </select>
                                                         <?php if (isset($error['blood'])) : ?>
@@ -413,15 +413,15 @@ if (isset($_POST['register'])) {
 
                                             <input type="submit" class="btn btn-success mb-2" name="register" value="Modifier">
                                         </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
     <?php else : ?>
         <p class="success-box"> Modification éffectuée</p>
         <p><a href="./" class="btn btn-primary">Retour</a></p>

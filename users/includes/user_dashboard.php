@@ -4,7 +4,6 @@ $rdvs = getUserRdvLimit($user['id']);
 $userlogin = getUserLogin($user['id']);
 $loginTotal = TotalUserLogin();
 $carnets = getUserCarnetLimit($user['id']);
-           
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="row d-flex justify-content-around">
@@ -136,9 +135,6 @@ $carnets = getUserCarnetLimit($user['id']);
             <p>Aucun résultat pour l'instant</p>
         </div>
     <?php endif?>
-
-
-
 </div>
 
 

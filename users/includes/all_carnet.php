@@ -10,7 +10,7 @@ if (!$user) {
     }else{
 ?>
     <h3 class="text-center text-uppercase my-4">Liste des consultations effectuées</h3>
-    <div class="row gap-4">
+    <div class="row g-4">
         <?php foreach($carnets as $carnet):?>
             <?php $doctor = getDoctorbyId($carnet['doctor_id']); ?>
         <div class="col-md-12 col-lg-3 bg-white shadow rounded border-top border-3 border-primary" style="max-width:300px">

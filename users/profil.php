@@ -62,8 +62,9 @@ if (isset($_POST['register'])) {
     if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         $error['email'] = 'Veuillez entrer une adresse email valide';
     } elseif ($_POST['email'] != $email) {
+        $email="";
         if (emailExists($_POST['email'])) {
-            $error['email'] = "Cet email existe déja, veuillez en choisr un autre";
+            $error['email'] = "Cet email existe déja, veuillez en choisir un autre";
         } else {
             $email = escapeString($_POST['email']);
             $_SESSION['hp_user_email'] = $email;

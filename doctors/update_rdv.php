@@ -12,36 +12,37 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
 
     $rdv = getRdv($_POST['input']);
 
-    if($rdv){
+    if ($rdv) {
         $user = getUserbyId($rdv['user_id']);
         $docteur = getDoctorbyId($rdv['doctor_id']);
-    
-    if($_POST['type'] == "remove"){
-        if(undoRdv(escapeString($_POST['input']))){
-            sendMail('Rendez-vous Annulé','Votre rendez-vous du '.date('d/m/Y - H:i',strtotime($rdv['date']))." vient d'être annulé car le docteur ".strtoupper($docteur['first_name'])." ".strtoupper($docteur['last_name'])." sera indisponible",$user['email']);
-        };
-        return true;
-    }
-    if($_POST['type'] == "confirm"){
-        if(confirmRdv(escapeString($_POST['input']))){
-            sendMail('Rendez-vous Confirmé','Votre rendez-vous du '.date('d/m/Y - H:i',strtotime($rdv['date']))." vient d'être confirmé par le docteur ".strtoupper($docteur['first_name'])." ".strtoupper($docteur['last_name']),$user['email']);
-        };
-        return true;
-    }
-    if($_POST['type'] == "done"){
-        if(confirmConsultation(escapeString($_POST['doctor']),escapeString($_POST['user']))){
-            if(cancelRdv(escapeString($_POST['input']))){
-                sendMail('Rendez-vous effectué',"Merci d'être passé voir le Docteur ".strtoupper($docteur['first_name']) . " " . strtoupper($docteur['last_name']), $user['email']);
-            };
-            return true;
-        }else{
-            return false;
-        }
-        
-    }
-}else{
-    return false;
-}
 
+        if ($_POST['type'] == "remove") {
+            undoRdv(escapeString($_POST['input']));
+            $objet = "RENDEZ-VOUS ANNULE";
+            $message = "Votre rendez-vous du <strong>".date('d/m/Y - H:i', strtotime($rdv['date_rdv'])) . "</strong> vient d'être annulé car <strong> Dr ".strtoupper($docteur['first_name'])." ".strtoupper($docteur['last_name'])." sera indisponible</strong>
+            ";
+            sendMail($objet,$message,$user['email']);
+            return true;
+        }
+        if ($_POST['type'] == "confirm") {
+            confirmRdv(escapeString($_POST['input']));
+            $objet = "RENDEZ-VOUS CONFIRME";
+            $message = "Votre rendez-vous du <strong>". date('d/m/Y - H:i', strtotime($rdv['date_rdv'])) . "</strong> avec <strong>Dr ".strtoupper($docteur['first_name'])." ".strtoupper($docteur['last_name'])." vient d'être confirmé </strong>";
+            sendMail($objet,$message, $user['email']);
+            return true;
+        }
+        if ($_POST['type'] == "done") {
+            if (confirmConsultation(escapeString($_POST['doctor']), escapeString($_POST['user']))) {
+                cancelRdv(escapeString($_POST['input']));
+                $objet = "MERCI D'ÊTRE PASSE";
+                $message = "Merci d'être passé voir <strong>Dr ".strtoupper($docteur['first_name'])." ".strtoupper($docteur['last_name'])."</strong>";
+                sendMail($objet,$message, $user['email']);
+                return true;
+            } else {
+                return false;
+            }
+        }
+    } else {
+        return false;
+    }
 }
-?>

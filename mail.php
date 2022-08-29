@@ -9,7 +9,7 @@ function sendMail($objet,$message,$to){
 
         // Create a message
         $message = (new Swift_Message($objet))// Objet
-            ->setFrom(['fabienbrou99@gmail.com' => 'healhplus'])// Le nom
+            ->setFrom(['fabienbrou99@gmail.com' => 'HEALTHPLUS'])// Le nom
             ->setTo([$to])
             ->setBody($message)
             ->setContentType("text/html");

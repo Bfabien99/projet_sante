@@ -678,6 +678,18 @@ function verifyCarnet($id,$user_id){
     }
 }
 
+function deleteCarnet($id)
+{
+    global $db;
+    $sql = "DELETE FROM carnets WHERE id = '$id'";
+
+    if ($db->query($sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 
 ##########################

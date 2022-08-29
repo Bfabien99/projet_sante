@@ -6,6 +6,11 @@ if (!$carnet) {
     echo "<p><a class='btn btn-danger' href='./'>Retour</a></p></div>";
 } else {
     $user = getuserbyId($carnet['user_id']);
+    if (!$user) {
+        deleteCarnet($carnet['id']);
+        echo "<div class=''><h1 class='error-box'>Utilisateur inconnu</h1>";
+    echo "<p><a class='btn btn-danger' href='./'>Retour</a></p></div>";
+    }else{
     if (!verifyCarnet_doctor($carnet['id'], $user['id'], $doctor['id'])) {
         echo "<h4 class='error-box'>Carnet inconnu</h4>";
         echo "<p><a class='btn btn-danger' href='./user.php?p_id=" . $user['id'] . "'>Retour</a></p>";
@@ -47,4 +52,4 @@ if (!$carnet) {
             </div>
         </div>
 <?php }
-} ?>
+}} ?>

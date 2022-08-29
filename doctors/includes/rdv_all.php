@@ -15,7 +15,7 @@ foreach ($rdvs as $rd) {
                 <?php if ($rdv['status'] == 'confirm') : ?>
                     <div class="card border-success my-1">
                         <div class="card-body">
-                            <?php echo date('D M,jS Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                            <?php echo date('d-m-Y', strtotime($rdv['date_rdv'])) . " à " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                             <span><i class="d-inline text-success rounded fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'cancel')"></i></span>
                         </div>
                     </div>
@@ -31,7 +31,7 @@ foreach ($rdvs as $rd) {
                 <?php if ($rdv['status'] == 'wait') : ?>
                     <div class="card border-warning my-1">
                         <div class="card-body">
-                            <?php echo date('D M,jS Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                            <?php echo date('d-m-Y', strtotime($rdv['date_rdv'])) . " à " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                             <span><i class="d-inline text-warning rounded fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'confirm')"></i></span>
                         </div>
                     </div>
@@ -47,7 +47,7 @@ foreach ($rdvs as $rd) {
                 <?php if ($rdv['status'] == 'undo') : ?>
                     <div class="card border-danger my-1">
                         <div class="card-body">
-                            <?php echo date('D M,jS Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                            <?php echo date('d-m-Y', strtotime($rdv['date_rdv'])) . " à " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                             <span><i class="d-inline text-danger rounded fa fa-eye" onclick="see(<?php echo $rdv['rdv_id'] ?>,'undo')"></i></span>
                         </div>
                     </div>

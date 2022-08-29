@@ -1,9 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 shadow border-top border-5 border-primary">
     <a href="profil.php" class="navbar-brand d-flex align-items-center">
-
         <img class="rounded-circle" src="./../profiles/<?php echo $user['picture'] ?>" alt="<?php echo $user['pseudo'] ?>" style="width: 50px;height:50px;object-fit:cover;>
-
-        <h5><?php echo $user['pseudo'] ?></h5>
+        <span><?php echo $user['first_name'] ?></span>
     </a>
     <button type=" button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>

@@ -12,9 +12,9 @@ if (!$user) {
     } else {
 ?>
         <h3 class="text-center text-uppercase my-4">Liste des consultations effectuées</h3>
-        <div class="row g-4">
+        <div class="row g-2 d-flex justify-content-center">
             <?php foreach ($carnets as $carnet) : ?>
-                <div class="col-md-12 col-lg-3 bg-white shadow rounded border-top border-3 border-primary" style="max-width:300px">
+                <div class="col-md-12 col-lg-4 bg-white shadow rounded border-top border-3 border-primary m-1" style="max-width:300px">
                     <div class="rounded">
                         <p class="text-center text-muted"><i class="fa fa-file-medical-alt"></i> Résultats du <?php echo date("Y-m-d", strtotime($carnet['date'])); ?></p>
                         <hr>
@@ -26,8 +26,10 @@ if (!$user) {
                             </div>
                         </div>
                         <a class="btn btn-primary m-2" href="./carnet.php?c_id=<?php echo $carnet['id'] ?>">Voir</a>
-                    <?php endforeach; ?>
+                    
                     </div>
+                    </div>
+            <?php endforeach; ?>
 
             <?php }
     } ?>

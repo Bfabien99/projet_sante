@@ -233,7 +233,7 @@ if (isset($_POST['register'])) {
                                             <div class="text-muted"><small><?php echo $marital ?> - <?php echo $blood ?></small></div>
                                         </div>
                                         <div class="text-center text-sm-right">
-                                            <div class="text-muted"><small>Inscrit le <?php echo date('d M Y', strtotime($created)) ?></small></div>
+                                            <div class="text-muted"><small>Inscrit le <?php echo date('d-m-Y', strtotime($created)) ?></small></div>
                                         </div>
                                     </div>
                                 </div>

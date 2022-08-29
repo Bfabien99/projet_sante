@@ -189,7 +189,7 @@ if (isset($_POST['register'])) {
                                             <p class="mb-0">@<?php echo $pseudo ?></p>
                                         </div>
                                         <div class="text-center text-sm-right">
-                                            <div class="text-muted"><small>Inscrit le <?php echo date('d M Y', strtotime($doctor['created'])) ?></small></div>
+                                            <div class="text-muted"><small>Inscrit le <?php echo date('d-m-Y', strtotime($doctor['created'])) ?></small></div>
                                         </div>
                                     </div>
                                 </div>

@@ -28,113 +28,127 @@ $carnets = getUserCarnetLimit($user['id']);
     </div>
 </div>
 <hr>
-<h4 class="text-center fst-italic text-secondary my-5"><i class="fa fa-calendar fs-3"></i> Détails Rendez-vous</h4> 
+<h4 class="text-center fst-italic text-secondary my-5"><i class="fa fa-calendar fs-3"></i> Détails Rendez-vous</h4>
 <div class="row d-flex justify-content-center g-2">
-        <?php if ($rdvs) : ?>
-            <div class="col-md-12 col-lg-4 p-2 text-center overflow-auto" style="max-height:210px"> 
+    <?php if ($rdvs) : ?>
+        <div class="col-md-12 col-lg-4 p-2 text-center overflow-auto" style="max-height:210px">
             <span class="badge rounded-pill bg-warning">rdv en attente</span>
             <?php foreach ($rdvs as $rdv) : ?>
-                <?php $doctor = getDoctorbyId($rdv['doctor_id'])?>
+                <?php $doctor = getDoctorbyId($rdv['doctor_id']); ?>
                 <?php if ($rdv['status'] == 'wait') : ?>
+                    <?php if (!$doctor) {
+                        cancelRdv($rdv['rdv_id']);
+                    } ?>
                     <div class="card border-secondary my-1 shadow">
                         <div class="card-body">
                             <div>
                                 <span class="badge rounded-pill bg-warning">en attente</span>
-                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                                <?php echo date('d-m-Y', strtotime($rdv['date_rdv'])) . " à " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                             </div>
                             <hr>
                             <div class="row">
-                                <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture']?>" style="max-width:100px;max-height:100px">
+                                <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture'] ?>" style="max-width:100px;max-height:100px">
                                 <div class="col d-flex flex-column justify-content-evenly">
-                                    <h3 class="text-secondary text-uppercase"><?php echo $doctor['first_name'] . " ". $doctor['last_name']?></h3>
-                                    <p class="fst-italic text-primary"><?php echo $doctor['fonction']?></p>
+                                    <h5 class="text-secondary text-uppercase"><?php echo $doctor['first_name'] . " " . $doctor['last_name'] ?></h5>
+                                    <p class="fst-italic text-primary"><?php echo $doctor['fonction'] ?></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
-            </div>
-            
-            <div class="col-md-12 col-lg-4 p-2 text-center overflow-auto" style="max-height:210px">
-            <span class="badge rounded-pill bg-success">rdv confirmé</span> 
+        </div>
+
+        <div class="col-md-12 col-lg-4 p-2 text-center overflow-auto" style="max-height:210px">
+            <span class="badge rounded-pill bg-success">rdv confirmé</span>
             <?php foreach ($rdvs as $rdv) : ?>
-            <?php if ($rdv['status'] == 'confirm') : ?>
+                <?php $doctor = getDoctorbyId($rdv['doctor_id']); ?>
+                <?php if ($rdv['status'] == 'confirm') : ?>
+                    <?php if (!$doctor) {
+                        cancelRdv($rdv['rdv_id']);
+                    } ?>
                     <div class="card border-secondary my-1 shadow">
                         <div class="card-body">
                             <div>
                                 <span class="badge rounded-pill bg-success">confirmé</span>
-                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                                <?php echo date('d-m-Y', strtotime($rdv['date_rdv'])) . " à " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                             </div>
                             <hr>
                             <div class="row">
-                                <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture']?>" style="max-width:100px;max-height:100px">
+                                <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture'] ?>" style="max-width:100px;max-height:100px">
                                 <div class="col d-flex flex-column justify-content-evenly">
-                                    <h3 class="text-secondary text-uppercase"><?php echo $doctor['first_name'] . " ". $doctor['last_name']?></h3>
-                                    <p class="fst-italic text-primary"><?php echo $doctor['fonction']?></p>
+                                    <h5 class="text-secondary text-uppercase"><?php echo $doctor['first_name'] . " " . $doctor['last_name'] ?></h5>
+                                    <p class="fst-italic text-primary"><?php echo $doctor['fonction'] ?></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
-            </div>
+        </div>
 
-            <div class="col-md-12 col-lg-4 p-2 text-center overflow-auto" style="max-height:210px">
-            <span class="badge rounded-pill bg-danger">rdv annulé</span> 
+        <div class="col-md-12 col-lg-4 p-2 text-center overflow-auto" style="max-height:210px">
+            <span class="badge rounded-pill bg-danger">rdv annulé</span>
             <?php foreach ($rdvs as $rdv) : ?>
+                <?php $doctor = getDoctorbyId($rdv['doctor_id']); ?>
                 <?php if ($rdv['status'] == 'undo') : ?>
+                    <?php if (!$doctor) {
+                        cancelRdv($rdv['rdv_id']);
+                    } ?>
                     <div class="card border-secondary my-1 shadow">
                         <div class="card-body">
                             <div>
                                 <span class="badge rounded-pill bg-danger">annulé</span>
-                            <?php echo date('l F,j Y', strtotime($rdv['date_rdv'])) . " at " . date('H:i', strtotime($rdv['date_rdv'])); ?>
+                                <?php echo date('d-m-Y', strtotime($rdv['date_rdv'])) . " à " . date('H:i', strtotime($rdv['date_rdv'])); ?>
                             </div>
                             <hr>
                             <div class="row">
-                                <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture']?>" style="max-width:100px;max-height:100px">
+                                <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture'] ?>" style="max-width:100px;max-height:100px">
                                 <div class="col d-flex flex-column justify-content-evenly">
-                                    <h3 class="text-secondary text-uppercase"><?php echo $doctor['first_name'] . " ". $doctor['last_name']?></h3>
-                                    <p class="fst-italic text-primary"><?php echo $doctor['fonction']?></p>
+                                    <h5 class="text-secondary text-uppercase"><?php echo $doctor['first_name'] . " " . $doctor['last_name'] ?></h5>
+                                    <p class="fst-italic text-primary"><?php echo $doctor['fonction'] ?></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
-            </div>
-        <?php else : ?>
-            <hr>
-            Aucun rendez-vous pris
-        <?php endif; ?>
+        </div>
+    <?php else : ?>
+        <hr>
+        Aucun rendez-vous pris
+    <?php endif; ?>
 </div>
 <hr>
 <h4 class="text-center fst-italic text-secondary my-5"><i class="fa fa-file-medical fs-3"></i> Consultations effectuées</h4>
 <div class="row gap-4 d-flex justify-content-center">
-    
-    <?php if($carnets):?>
-    <?php foreach ($carnets as $carnet) : ?>
-        <?php $doctor = getDoctorbyId($carnet['doctor_id']); ?>
-        <div class="col-md-12 col-lg-3 bg-white shadow rounded border-top border-3 border-secondary" style="max-width:300px">
-            <div class="rounded">
-                <p class="text-center text-muted"><i class="fa fa-file-medical-alt"></i> Résultats du <?php echo date("Y-m-d",strtotime($carnet['date'])); ?></p>
-                <hr>
-                <div class="row">
-                                <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture']?>" style="max-width:100px;max-height:100px">
-                                <div class="col d-flex flex-column justify-content-evenly">
-                                    <h5 class="text-uppercase"><?php echo $doctor['first_name'] . " ". $doctor['last_name']?></h5>
-                                    <p class="fst-italic text-primary"><?php echo $doctor['fonction']?></p>
-                                </div>
-                            </div>
-                <a class="btn btn-secondary m-2" href="./carnet.php?c_id=<?php echo $carnet['id']?>">Voir</a>
+
+    <?php if ($carnets) : ?>
+        <?php foreach ($carnets as $carnet) : ?>
+            <?php $doctor = getDoctorbyId($carnet['doctor_id']); ?>
+            <?php if (!$doctor) {
+                deleteCarnet($carnet['id']);
+            } ?>
+            <div class="col-md-12 col-lg-3 bg-white shadow rounded border-top border-3 border-secondary" style="max-width:300px">
+                <div class="rounded">
+                    <p class="text-center text-muted"><i class="fa fa-file-medical-alt"></i> Résultats du <?php echo date("Y-m-d", strtotime($carnet['date'])); ?></p>
+                    <hr>
+                    <div class="row">
+                        <img class="col img-fluid rounded" src="./../profiles/<?php echo $doctor['picture'] ?>" style="max-width:100px;max-height:100px">
+                        <div class="col d-flex flex-column justify-content-evenly">
+                            <h5 class="text-uppercase"><?php echo $doctor['first_name'] . " " . $doctor['last_name'] ?></h5>
+                            <p class="fst-italic text-primary"><?php echo $doctor['fonction'] ?></p>
+                        </div>
+                    </div>
+                    <a class="btn btn-secondary m-2" href="./carnet.php?c_id=<?php echo $carnet['id'] ?>">Voir</a>
+                </div>
             </div>
-        </div>
-    <?php endforeach; ?>
-    <?php else:?>
+        <?php endforeach; ?>
+    <?php else : ?>
         <div class="col-md-12 col-lg-6">
             <p>Aucun résultat pour l'instant</p>
         </div>
-    <?php endif?>
+    <?php endif ?>
 </div>
 
 
@@ -158,7 +172,7 @@ $carnets = getUserCarnetLimit($user['id']);
                                 backgroundColor: 'green',
                                 borderColor: 'green'
                             },
-                            <?php elseif ($rdv['status'] == 'undo') : ?> {
+                        <?php elseif ($rdv['status'] == 'undo') : ?> {
                                 start: '<?php echo $rdv['date_rdv'] ?>',
                                 backgroundColor: 'red',
                                 borderColor: 'red'

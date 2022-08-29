@@ -155,6 +155,19 @@ function userUpdate(
     }
 }
 
+function updateUserPass($pseudo, $email, $birth, $password){
+        global $db;
+        $sql = "UPDATE users SET ";
+        $sql .= "password = '{$password}' ";
+        $sql .= " WHERE pseudo = '{$pseudo}' AND email = '{$email}' AND birth = '{$birth}' ";
+        if ($db->query($sql)) {
+            return true;
+        } else {
+            return false;
+            //rereturn false;
+        }
+}
+
 /** personal function to verify if user pseudo doesn't exist
  * @return bool
  */

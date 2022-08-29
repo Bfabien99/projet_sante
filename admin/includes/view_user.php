@@ -47,8 +47,12 @@ if(!$user){
                     <p><?php echo $user['contact']?></p>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-5">
             
+            <div class="col-md-12 col-lg-5">
+            <div class="form-group">
+                    <h5>Née le </h5>
+                    <p><?php echo $user['birth']?></p>
+                </div>
             <div class="form-group">
                     <h5>Profession</h5>
                     <p><?php echo $user['profession']?></p>

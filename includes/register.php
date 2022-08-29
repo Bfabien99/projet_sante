@@ -354,6 +354,17 @@ include('includes/navigation.php');
         <?php endif; ?>
     </div>
 </div>
+<script>
+
+    $('#password').on('dblclick', function(){
+        if($('#password').attr('type') == "password"){
+           $('#password').attr('type','text'); 
+        }else{
+            $('#password').attr('type','password');
+        }
+        
+    })
+</script>
 <?php
 include('includes/footer.php');
 ?>

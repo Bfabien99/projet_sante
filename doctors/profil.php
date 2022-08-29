@@ -342,7 +342,17 @@ if (isset($_POST['register'])) {
         <p><a href="./" class="btn btn-primary">Retour</a></p>
     <?php endif; ?>
 </div>
+<script>
 
+    $('#password').on('dblclick', function(){
+        if($('#password').attr('type') == "password"){
+           $('#password').attr('type','text'); 
+        }else{
+            $('#password').attr('type','password');
+        }
+        
+    })
+</script>
 <?php
 include('includes/footer.php');
 ?>

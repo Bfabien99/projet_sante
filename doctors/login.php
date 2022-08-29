@@ -135,5 +135,15 @@ if (isset($_POST['login'])) {
     </div>
 </body>
 <script src="./../js/bootstrap.min.js"></script>
+<script>
 
+    $('#password').on('dblclick', function(){
+        if($('#password').attr('type') == "password"){
+           $('#password').attr('type','text'); 
+        }else{
+            $('#password').attr('type','password');
+        }
+        
+    })
+</script>
 </html>

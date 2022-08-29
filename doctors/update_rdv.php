@@ -32,15 +32,12 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
             return true;
         }
         if ($_POST['type'] == "done") {
-            if (confirmConsultation(escapeString($_POST['doctor']), escapeString($_POST['user']))) {
+                confirmConsultation(escapeString($_POST['doctor']), escapeString($_POST['user']));
                 cancelRdv(escapeString($_POST['input']));
                 $objet = "MERCI D'ÊTRE PASSE";
                 $message = "Merci d'être passé voir <strong>Dr ".strtoupper($docteur['first_name'])." ".strtoupper($docteur['last_name'])."</strong>";
                 sendMail($objet,$message, $user['email']);
                 return true;
-            } else {
-                return false;
-            }
         }
     } else {
         return false;

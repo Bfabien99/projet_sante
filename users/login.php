@@ -105,6 +105,7 @@ if (isset($_POST['login'])) {
                 <?php if (isset($error['password'])) : ?>
                     <p class="error-box rounded-2 p-1"><?php echo  $error['password']; ?></p>
                 <?php endif; ?>
+                <a href="./forget.php" class="link text-secondary">Mot de passe oublié ?</a>
             </div>
             <input type="submit" name="login" value="Se connecter" class="btn btn-primary my-2">
         </form>

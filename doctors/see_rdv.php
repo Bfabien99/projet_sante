@@ -20,7 +20,7 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
         <div class="col col-md-9 col-lg-7 col-xl-5" data-aos="fade-down">
             <div class="card" style="border-radius: 15px;">
                 <div class="card-body p-4">
-                    <div class="d-flex text-black">
+                    <div class="row d-flex text-black text-center">
                         <div class="col-md-12 flex-shrink-0 d-flex justify-content-center">
                             <img src="./../profiles/<?php echo $user['picture']; ?>" alt="<?php echo $user['first_name'] . "_" . $user['last_name']; ?>" class="img-fluid" style="width: 180px; border-radius: 10px;">
                         </div>

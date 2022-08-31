@@ -6,7 +6,7 @@
     if ($users) {
         foreach ($users as $user) {
     ?>
-            <div class="col-md-6 col-lg-3" style="margin:2em 0;">
+            <div class="col-md-6 col-lg-3" style="margin:2em 0;" data-aos="fade-up">
                 <div class="card shadow">
                     <h3 class="badge round-pill bg-danger text-uppercase">Groupe sanguin: <?php echo $user['blood']; ?></h3>
                     <div class="bg-image hover-overlay ripple p-2 d-flex justify-content-center" data-mdb-ripple-color="light">

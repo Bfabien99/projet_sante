@@ -71,7 +71,7 @@
             <legend class="text-center">Prendre un rendez-vous</legend>
             <hr>
             <?php if (!$success) : ?>
-                <form action="" method="post">
+                <form action="" method="post" data-aos="fade-left">
                     <div class="form-group p-1">
                         <label for="">Rendez-vous demandez par:</label>
                         <input disabled class="form-control text-uppercase" type="text" value="<?php echo $user['first_name'] . " " . $user['last_name'] ?>">

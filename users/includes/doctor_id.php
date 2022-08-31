@@ -8,7 +8,7 @@ if (!$doctor) {
 ?>
     <div class="row flex-lg-nowrap">
         <div class="col">
-            <div class="row">
+            <div class="row" data-aos="fade-down">
                 <div class="col mb-3">
                     <div class="card">
                         <div class="card-body">

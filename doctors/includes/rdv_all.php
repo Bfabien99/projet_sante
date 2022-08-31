@@ -8,7 +8,7 @@ foreach ($rdvs as $rd) {
 }
 ?>
 <div class="row d-flex justify-content-evenly g-2">
-    <div class="col-md-12 col-lg-3 p-2 text-center border-top border-3 border-secondary rounded">
+    <div class="col-md-12 col-lg-3 p-2 text-center border-top border-3 border-secondary rounded" data-aos="fade-up">
         <span class="badge rounded-pill bg-success"><i class="fa fa-check"></i> Rendez-vous confirmé</span>
         <div class="col p-2" style="max-height:200px; overflow: auto;">
             <?php foreach ($rdvs as $rdv) : ?>
@@ -24,7 +24,7 @@ foreach ($rdvs as $rd) {
         </div>
     </div>
 
-    <div class="col-md-12 col-lg-3 p-2 text-center border-top border-3 border-secondary rounded">
+    <div class="col-md-12 col-lg-3 p-2 text-center border-top border-3 border-secondary rounded" data-aos="fade-up">
         <span class="badge rounded-pill bg-warning"><i class="fa fa-exclamation"></i> Rendez-vous en attente de confirmation</span>
         <div class="col p-2" style="max-height:200px; overflow: auto;">
             <?php foreach ($rdvs as $rdv) : ?>
@@ -40,7 +40,7 @@ foreach ($rdvs as $rd) {
         </div>
     </div>
 
-    <div class="col-md-12 col-lg-3 p-2 text-center border-top border-3 border-secondary rounded">
+    <div class="col-md-12 col-lg-3 p-2 text-center border-top border-3 border-secondary rounded" data-aos="fade-up">
         <span class="badge rounded-pill bg-danger"><i class="fa fa-close"></i> Rendez-vous annuler</span>
         <div class="col p-2" style="max-height:200px; overflow: auto;">
             <?php foreach ($rdvs as $rdv) : ?>

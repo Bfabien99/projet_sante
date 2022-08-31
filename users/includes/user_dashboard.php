@@ -7,7 +7,7 @@ $carnets = getUserCarnetLimit($user['id']);
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="row d-flex justify-content-around">
-    <div class="col-md-12 col-lg-5 overflow-hidden" style="max-height:400px">
+    <div class="col-md-12 col-lg-5 overflow-hidden" style="max-height:400px" data-aos="fade-left">
         <div class="card">
             <div class="card-body">
                 <!-- <h4 class="box-title">Chandler</h4> -->
@@ -18,7 +18,7 @@ $carnets = getUserCarnetLimit($user['id']);
         </div><!-- /.card -->
     </div>
 
-    <div class="col-md-12 col-lg-5" style="max-height:400px">
+    <div class="col-md-12 col-lg-5" style="max-height:400px" data-aos="fade-right">
         <div class="card bg-white">
             <div class="card-body shadow">
                 <canvas id="myChart" style="max-height:300px"></canvas>
@@ -29,7 +29,7 @@ $carnets = getUserCarnetLimit($user['id']);
 </div>
 <hr>
 <h4 class="text-center fst-italic text-secondary my-5"><i class="fa fa-calendar fs-3"></i> Détails Rendez-vous</h4>
-<div class="row d-flex justify-content-center g-2">
+<div class="row d-flex justify-content-center g-2" data-aos="fade-up">
     <?php if ($rdvs) : ?>
         <div class="col-md-12 col-lg-4 p-2 text-center overflow-auto" style="max-height:210px">
             <span class="badge rounded-pill bg-warning">rdv en attente</span>
@@ -113,14 +113,13 @@ $carnets = getUserCarnetLimit($user['id']);
 <hr>
 <h4 class="text-center fst-italic text-secondary my-5"><i class="fa fa-file-medical fs-3"></i> Consultations effectuées</h4>
 <div class="row gap-4 d-flex justify-content-center">
-
     <?php if ($carnets) : ?>
         <?php foreach ($carnets as $carnet) : ?>
             <?php $doctor = getDoctorbyId($carnet['doctor_id']); ?>
             <?php if (!$doctor) {
                 deleteCarnet($carnet['id']);
             } ?>
-            <div class="col-md-12 col-lg-3 bg-white shadow rounded border-top border-3 border-secondary" style="max-width:300px">
+            <div class="col-md-12 col-lg-3 bg-white shadow rounded border-top border-3 border-secondary" style="max-width:300px" data-aos="fade-down">
                 <div class="rounded">
                     <p class="text-center text-muted"><i class="fa fa-file-medical-alt"></i> Résultats du <?php echo date("Y-m-d", strtotime($carnet['date'])); ?></p>
                     <hr>

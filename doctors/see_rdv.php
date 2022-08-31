@@ -17,7 +17,7 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
         $doctor = getDoctorbyId($rdv['doctor_id']);
         $user = getUserbyId($rdv['user_id']);
 ?>
-        <div class="col col-md-9 col-lg-7 col-xl-5">
+        <div class="col col-md-9 col-lg-7 col-xl-5" data-aos="fade-down">
             <div class="card" style="border-radius: 15px;">
                 <div class="card-body p-4">
                     <div class="d-flex text-black">

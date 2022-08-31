@@ -14,7 +14,7 @@ if (!$carnet) {
         <h3 class="text-uppercase text-center"><?php echo $doctor['first_name'] . " " . $doctor['last_name'] ?></h3>
         <hr>
         <div class="row d-flex justify-content-around">
-            <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px">
+            <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px" data-aos="fade-up">
                 <h5 class="text-center text-secondary text-uppercase">Analyse</h5>
                 <hr>
                 <blockquote class="text-center text-capitalize">
@@ -22,7 +22,7 @@ if (!$carnet) {
                 </blockquote>
             </div>
 
-            <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px">
+            <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px" data-aos="fade-up">
                 <h5 class="text-center text-secondary text-uppercase">Resultats</h5>
                 <hr>
                 <blockquote class="text-center text-capitalize">
@@ -30,7 +30,7 @@ if (!$carnet) {
                 </blockquote>
             </div>
 
-            <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px">
+            <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px" data-aos="fade-up">
                 <h5 class="text-center text-secondary text-uppercase">Avis</h5>
                 <hr>
                 <blockquote class="text-center text-capitalize">
@@ -38,7 +38,7 @@ if (!$carnet) {
                 </blockquote>
             </div>
 
-            <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px">
+            <div class="col-md-12 col-lg-3 shadow border-bottom border-2 border-secondary p-2" style="max-width:300px" data-aos="fade-up">
                 <h5 class="text-center text-secondary text-uppercase">Ordonnance</h5>
                 <hr>
                 <blockquote class="text-center text-capitalize">

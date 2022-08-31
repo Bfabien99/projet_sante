@@ -17,7 +17,7 @@ if (isset($_POST['input'])) {
     if ($result->num_rows > 0) {
         while ($doctor = $result->fetch_assoc()) {
 ?>
-            <div class="col-md-6 col-lg-3" style="margin:2em 0;">
+            <div class="col-md-6 col-lg-3" style="margin:2em 0;" data-aos="fade-down">
                 <div class="card shadow">
                     <h3 class="alert alert-info text-center text-uppercase border-top border-2 border-primary"><?php echo $doctor['fonction']; ?></h3>
                     <div class="bg-image hover-overlay ripple p-2 d-flex justify-content-center" data-mdb-ripple-color="light">

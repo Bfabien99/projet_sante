@@ -6,7 +6,7 @@ foreach ($rdvs as $rd) {
     }
 }
 ?>
-<div class="row d-flex justify-content-evenly g-2">
+<div class="row d-flex justify-content-evenly g-2" data-aos="fade-up">
     <div class="col-md-12 col-lg-3 p-2 text-center border-top border-3 border-secondary rounded">
         <span class="badge rounded-pill bg-success"><i class="fa fa-check"></i> Rendez-vous confirmé</span>
         <div class="col p-2" style="max-height:200px; overflow: auto;">

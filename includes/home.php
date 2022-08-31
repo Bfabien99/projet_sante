@@ -92,83 +92,55 @@ include('includes/navigation.php');
             </div>
             <div class="col-lg-4 col-sm-6">
                 <a class="portfolio-box" href="https://cdn.pixabay.com/photo/2019/07/09/12/57/retractable-belt-stanchion-4326819__480.png" alt="..." />
-                    <div class="portfolio-box-caption" title="Project Name">
+                <div class="portfolio-box-caption" title="Project Name">
                     <img class="img-fluid" src="https://cdn.pixabay.com/photo/2019/07/09/12/57/retractable-belt-stanchion-4326819__480.png" alt="..." />
                     <div class="portfolio-box-caption">
                         <div class="project-category text-white-50">Finis les files d'attente</div>
                         <div class="project-name">Plus de file d'attente interminable pour une consultation ou pour prendre ses résultats</div>
                     </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Call to action-->
-<!-- Contact-->
-<section class="page-section" id="contact">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-lg-8 col-xl-6 text-center">
-                <h2 class="mt-0">Let's Get In Touch!</h2>
-                <hr class="divider" />
-                <p class="text-muted mb-5">Ready to start your next project with us? Send us a messages and we will get back to you as soon as possible!</p>
+    <!-- Call to action-->
+    <!-- Contact-->
+    <section class="page-section" id="contact">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6 text-center">
+                    <h2 class="mt-0">Contactez Nous</h2>
+                    <hr class="divider" />
+                    <p class="text-muted mb-5">Besoin de plus d'informations? Avez-vous des suggestions? Contactez-nous!</p>
+                </div>
             </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-            <div class="col-lg-6">
-        
-                <form id="contactForm" >
-                    <!-- Name input-->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." required  />
-                        <label for="name">Full name</label>
-                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                    </div>
-                    <!-- Email address input-->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="email" type="email" placeholder="name@example.com" required />
-                        <label for="email">Email address</label>
-                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                    </div>
-                    <!-- Phone number input-->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" required  />
-                        <label for="phone">Phone number</label>
-                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                    </div>
-                    <!-- Message input-->
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" required ></textarea>
-                        <label for="message">Message</label>
-                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                    </div>
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+            <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+                <div class="col-lg-6">
+                    <section id="contactForm" class="d-flex flex-column align-items-center">
+                        <div class="phone">
+                            <h4 class="mt-0 text-center">Téléphone</h4>
+                            <hr class="divider" />
+                            <p><i class="fa fa-phone"></i> (00225) 00-00-00-00-01</p>
+                            <p><i class="fa fa-phone"></i> (00225) 00-00-00-00-02</p>
+                            <p><i class="fa fa-phone"></i> (00225) 00-00-00-00-03</p>
                         </div>
-                    </div>
-                    <!-- Submit error message-->
-                    <!---->
-                    <!-- This is what your users will see when there is-->
-                    <!-- an error submitting the form-->
-                    <div class="d-none" id="submitErrorMessage">
-                        <div class="text-center text-danger mb-3">Error sending message!</div>
-                    </div>
-                    <!-- Submit Button-->
-                    <div class="d-grid"><button class="btn btn-primary btn-xl " id="submitButton" type="submit">Submit</button></div>
-                </form>
+                        <div class="mail">
+                            <h4 class="mt-0 text-center">Email</h4>
+                            <hr class="divider" />
+                            <p><i class="fa fa-envelope"></i> heathplusnan@gmail.com</p>
+                            <p><i class="fa fa-envelope"></i> fabienbrou99@gmail.com</p>
+                        </div>
+                        <div class="address">
+                            <h4 class="mt-0 text-center">Adresse</h4>
+                            <hr class="divider" />
+                            <p class="text-center">08 ABIDJAN BP 1XXXX</p>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15888.404754718258!2d-3.9629846!3d5.4015527!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa13e690552d16e30!2sNaN%20Digital%20Academy!5e0!3m2!1sfr!2sci!4v1661940045848!5m2!1sfr!2sci" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </section>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<?php
-include('includes/footer.php');
-?>
+    </section>
+    <?php
+    include('includes/footer.php');
+    ?>

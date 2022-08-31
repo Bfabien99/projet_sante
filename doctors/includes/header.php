@@ -46,6 +46,9 @@ if (isset($_GET['logout'])) {
 
     <!-- Custom Fonts -->
     <link href="./../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&family=Roboto:wght@100;400;500;900&display=swap" rel="stylesheet"> 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -54,8 +57,12 @@ if (isset($_GET['logout'])) {
     <![endif]-->
     <title>Docteur</title>
     <style>
+        html{
+            scroll-behavior:smooth;
+        }
         body {
             background-color: #fff;
+            font-family:'Poppins','Roboto',cursive;
         }
 
         .success-box {

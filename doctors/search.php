@@ -21,7 +21,7 @@ if (isset($_POST['input'])) {
                 <div class="card shadow">
                     <h3 class="badge round-pill bg-danger text-uppercase">Groupe sanguin: <?php echo $user['blood']; ?></h3>
                     <div class="bg-image hover-overlay ripple p-2 d-flex justify-content-center" data-mdb-ripple-color="light">
-                        <img src="./../profiles/<?php echo $user['picture']; ?>" class="img-fluid" alt="<?php echo $user['first_name'] . "_" . $user['last_name']; ?>" style="width:140px;object-fit:cover;" />
+                        <img src="./../profiles/<?php echo $user['picture']; ?>" class="rounded-circle img-fluid" alt="<?php echo $user['first_name'] . "_" . $user['last_name']; ?>" style="width:140px;height:140px;object-fit:cover;" />
                         <a href="#!">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                         </a>

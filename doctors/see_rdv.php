@@ -21,10 +21,10 @@ if (isset($_POST['input']) && isset($_POST['type'])) {
             <div class="card" style="border-radius: 15px;">
                 <div class="card-body p-4">
                     <div class="d-flex text-black">
-                        <div class="flex-shrink-0">
+                        <div class="col-md-12 flex-shrink-0 d-flex justify-content-center">
                             <img src="./../profiles/<?php echo $user['picture']; ?>" alt="<?php echo $user['first_name'] . "_" . $user['last_name']; ?>" class="img-fluid" style="width: 180px; border-radius: 10px;">
                         </div>
-                        <div class="flex-grow-1 ms-3">
+                        <div class="col-md-12 flex-grow-1 ms-3">
                             <h5 class="mb-1 text-uppercase"><?php echo $user['first_name'] . " " . $user['last_name']; ?></h5>
                             <p class="mb-2 pb-1" style="color: #2b2a2a;"><?php echo $user['profession']; ?></p>
                             <hr>

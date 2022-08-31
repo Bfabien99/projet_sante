@@ -62,15 +62,6 @@
                     sendMail('Rendez-vous', 'Notifications pour un rendez-vous le ' . date('Y-m-d', strtotime($_fulldate)). " avec ".strtoupper($user['first_name']) . " " .strtoupper($user['last_name']), $doctor['email']);
                 }
             }
-            // echo "date = $date </br>";
-            // echo "fulltime = ".strtotime($fulldate)."</br>";
-            // echo "newdate = ".date('Y-m-d', strtotime($fulldate))."</br>";
-            // echo "newtime = ".date('H:i:s', strtotime($fulldate))."</br>";
-            // echo "date = ".strtotime($date)."</br>";
-            // echo "time = ".strtotime($time)."</br>";
-            // echo "realtime = ".time()."</br>";
-            // echo "objet = $objet </br>";
-            // die();
         }
     }
 

@@ -36,9 +36,6 @@ $carnets = getDoctorCarnet($doctor['id']);
             <?php foreach ($rdvs as $rdv) : ?>
                 <?php $user = getUserbyId($rdv['user_id']) ?>
                 <?php if ($rdv['status'] == 'wait') : ?>
-                    <?php if (!$user) {
-                        cancelRdv($rdv['rdv_id']);
-                    } ?>
                     <div class="card border-secondary my-1 shadow">
                         <div class="card-body">
                             <div>
@@ -64,9 +61,6 @@ $carnets = getDoctorCarnet($doctor['id']);
             <?php foreach ($rdvs as $rdv) : ?>
                 <?php $user = getUserbyId($rdv['user_id']) ?>
                 <?php if ($rdv['status'] == 'confirm') : ?>
-                    <?php if (!$user) {
-                        cancelRdv($rdv['rdv_id']);
-                    } ?>
                     <div class="card border-secondary my-1 shadow">
                         <div class="card-body">
                             <div>
@@ -92,9 +86,6 @@ $carnets = getDoctorCarnet($doctor['id']);
             <?php foreach ($rdvs as $rdv) : ?>
                 <?php $user = getUserbyId($rdv['user_id']) ?>
                 <?php if ($rdv['status'] == 'undo') : ?>
-                    <?php if (!$user) {
-                        cancelRdv($rdv['rdv_id']);
-                    } ?>
                     <div class="card border-secondary my-1 shadow">
                         <div class="card-body">
                             <div>

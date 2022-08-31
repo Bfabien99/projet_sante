@@ -26,10 +26,10 @@ if (!$user) {
                             </div>
                         </div>
                         <a class="btn btn-primary m-2" href="./carnet.php?c_id=<?php echo $carnet['id'] ?>">Voir</a>
-                    
+
                     </div>
-                    </div>
+                </div>
             <?php endforeach; ?>
 
-            <?php }
-    } ?>
+    <?php }
+} ?>

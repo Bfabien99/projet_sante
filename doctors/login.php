@@ -10,19 +10,19 @@ $db = connect(
 );
 $error = [];
 if (isset($_POST['login'])) {
-    if (empty($_POST['identifiant'])) {
+    if (empty(trim($_POST['identifiant']))) {
         $error['identifiant'] = 'Veuillez entrer votre pseudo ou votre email';
     } else {
         $identifiant = escapeString($_POST['identifiant']);
     }
 
-    if (empty($_POST['password'])) {
+    if (empty(trim($_POST['password']))) {
         $error['password'] = 'Veuillez entrer votre mot de passe';
     } else {
         $password = pass_crypt($_POST['password']);
     }
 
-    if (!empty($_POST['code'])) {
+    if (!empty(trim($_POST['code']))) {
         $code = escapeString($_POST['code']);
     } else {
         $error['code'] = "Veuillez votre code d'accès";

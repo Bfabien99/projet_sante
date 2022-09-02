@@ -51,6 +51,4 @@ if (isset($_POST['input'])) {
     } else {
         echo "<h6 class='text-danger text-center mt-3'>Aucune correspondance</h6>";
     }
-} else {
-    header('location:./');
 } ?>

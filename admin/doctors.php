@@ -1,6 +1,5 @@
 <?php
 include('includes/header.php');
-include('../mail.php');
 if (isset($_GET['d_id'])) {
     include "includes/view_doctor.php";
 } elseif (isset($_GET['edit'])) {

@@ -11,25 +11,25 @@ $db = connect(
 $error = [];
 $success = false;
 if (isset($_POST['update'])) {
-    if (empty($_POST['pseudo'])) {
+    if (empty(trim($_POST['pseudo']))) {
         $error['pseudo'] = 'Veuillez entrer votre pseudo';
     } else {
         $pseudo = escapeString($_POST['pseudo']);
     }
 
-    if (empty($_POST['email'])) {
+    if (empty(trim($_POST['email']))) {
         $error['email'] = 'Veuillez entrer votre email';
     } else {
         $email = escapeString($_POST['email']);
     }
 
-    if (empty($_POST['birth'])) {
+    if (empty(trim($_POST['birth']))) {
         $error['birth'] = 'Veuillez entrer votre date de naissance';
     } else {
         $birth = escapeString($_POST['birth']);
     }
 
-    if (empty($_POST['password'])) {
+    if (empty(trim($_POST['password']))) {
         $error['password'] = 'Veuillez entrer votre mot de passe';
     } else {
         $password = pass_crypt($_POST['password']);

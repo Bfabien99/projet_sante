@@ -43,15 +43,20 @@ if (isset($_POST['editinfo'])) {
 }
 
 if (isset($_POST['editcode'])) {
-    if (empty($_POST['code']) || strlen($_POST['code']) < 6) {
+    if (empty(trim($_POST['code'])) || strlen($_POST['code']) < 6) {
         $error['code'] = "Veuillez entrer un code valide d'au moins 6 caractères";
         $code = "";
     } else {
         $code = escapeString($_POST['code']);
     }
 
-    if (!empty($code)) {
+    if (!empty(trim($code))) {
         if (updateCode($code)) {
+            $message ="Le nouveau code d'accèss est ".$_POST['code'];
+            $doctors = getAllDoctor();
+            foreach ($doctors as $doctor){
+                sendmail("CODE D'ACCESS",$message,$doctor['email']); // Envoie le nouveau code d'accès à chaque doctor
+            }
             $success2 = true;
         }
     }
@@ -90,7 +95,7 @@ if (isset($_POST['editcode'])) {
                 <label for="password">
                     Entrer votre Mot de passe
                 </label>
-                <input class="form-control" type="password" name="password">
+                <input class="form-control" type="password" name="password" id="password">
                 <?php if (isset($error['password'])) : ?>
                     <p class="error-box rounded-2 p-1"><?php echo  $error['password']; ?></p>
                 <?php endif; ?>
@@ -108,7 +113,7 @@ if (isset($_POST['editcode'])) {
                 <label for="code">
                     Modifer le code d'accès
                 </label>
-                <input class="form-control" type="code" name="code" value="<?php if (isset($code)) echo $code; ?>">
+                <input class="form-control" type="password" name="code"  id="code" value="<?php if (isset($code)) echo $code; ?>">
                 <?php if (isset($error['code'])) : ?>
                     <p class="error-box rounded-2 p-1"><?php echo  $error['code']; ?></p>
                 <?php endif; ?>
@@ -124,6 +129,15 @@ if (isset($_POST['editcode'])) {
            $('#password').attr('type','text'); 
         }else{
             $('#password').attr('type','password');
+        }
+        
+    })
+
+    $('#code').on('dblclick', function(){
+        if($('#code').attr('type') == "password"){
+           $('#code').attr('type','text'); 
+        }else{
+            $('#code').attr('type','password');
         }
         
     })

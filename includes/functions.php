@@ -1,7 +1,7 @@
 <?php
 function pass_crypt($string)
 {
-    $string = md5($string);
+    $string = md5(trim($string));
     $string = sha1($string);
     $string = hash('gost', $string);
     return $string;
@@ -29,7 +29,7 @@ function connect($dbHost, $dbUsername, $dbPassword, $dbName)
 function escapeString($string)
 {
     global $db;
-    $new_string = mysqli_real_escape_string($db, trim(strtolower($string)));
+    $new_string = mysqli_real_escape_string($db, trim(mb_strtolower($string)));
     return $new_string;
 }
 

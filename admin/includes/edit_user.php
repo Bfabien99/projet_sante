@@ -6,27 +6,27 @@ $user = getUserbyId($_GET["edit"]);
 $_sexes = ['Homme' => 'Masculin', 'Femme' => 'Feminin', 'Autre' => 'Autre'];
 
 if (isset($_POST['update_category'])) {
-    if (empty($_POST['first_name'])) {
+    if (empty(trim($_POST['first_name']))) {
         $error['first_name'] = 'Veuillez entrer votre nom';
     } else {
         $fname = escapeString($_POST['first_name']);
     }
 
-    if (empty($_POST['last_name'])) {
+    if (empty(trim($_POST['last_name']))) {
         $error['last_name'] = 'Veuillez entrer votre prénom';
     } else {
         $lname = escapeString($_POST['last_name']);
     }
 
-    if (empty($_POST['birth'])) {
+    if (empty(trim($_POST['birth']))) {
         $error['birth'] = 'Veuillez entrer votre date de naissance';
     } else {
         $birth = escapeString($_POST['birth']);
     }
 
-    if (empty($_POST['sexe'])) {
+    if (empty(trim($_POST['sexe']))) {
         $error['sexe'] = 'Faîtes un choix';
-    } elseif (!empty($_POST['sexe']) && empty($picture)) {
+    } elseif (!empty(trim($_POST['sexe'])) && empty($picture)) {
         if ($_POST['sexe'] == "Femme") {
             $picture = "patient.png";
         } else {
@@ -35,19 +35,19 @@ if (isset($_POST['update_category'])) {
         $sexe = escapeString($_POST['sexe']);
     }
 
-    if (empty($_POST['fonction'])) {
+    if (empty(trim($_POST['fonction']))) {
         $error['fonction'] = 'Veuillez choisir votre service';
     } else {
         $fonction = escapeString($_POST['fonction']);
     }
 
-    if (empty($_POST['description'])) {
+    if (empty(trim($_POST['description']))) {
         $error['description'] = 'Veuillez remplir ce champs';
     } else {
         $description = escapeString($_POST['description']);
     }
 
-    if (empty($_POST['experience'])) {
+    if (empty(trim($_POST['experience']))) {
         $error['experience'] = 'Veuillez remplir ce champs';
     } elseif ($_POST['experience'] < 0) {
         $error['experience'] = 'Entrez un nombre valide';
@@ -55,13 +55,13 @@ if (isset($_POST['update_category'])) {
         $experience = escapeString($_POST['experience']);
     }
 
-    if (empty($_POST['contact'])) {
+    if (empty(trim($_POST['contact']))) {
         $error['contact'] = 'Veuillez entrer un contact valide';
     } else {
         $contact = escapeString(filter_var($_POST['contact'], FILTER_SANITIZE_NUMBER_INT));
     }
 
-    if (empty($_POST['emergency'])) {
+    if (empty(trim($_POST['emergency']))) {
         $error['emergency'] = 'Veuillez entrer un contact valide';
     } else {
         $emergency = escapeString(filter_var($_POST['emergency'], FILTER_SANITIZE_NUMBER_INT));

@@ -11,25 +11,25 @@ if (!$user) {
 
     if(isset($_POST['submit'])){
 
-        if(empty($_POST['analyse'])){
+        if(empty(trim($_POST['analyse']))){
             $error['analyse'] = 'Veuillez renseigner ce champs';
         }else{
             $analyse = escapeString($_POST['analyse']);
         }
 
-        if(empty($_POST['resultats'])){
+        if(empty(trim($_POST['resultats']))){
             $error['resultats'] = 'Veuillez renseigner ce champs';
         }else{
             $resultats = escapeString($_POST['resultats']);
         }
 
-        if(empty($_POST['avis'])){
+        if(empty(trim($_POST['avis']))){
             $error['avis'] = 'Veuillez renseigner ce champs';
         }else{
             $avis = escapeString($_POST['avis']);
         }
 
-        if(empty($_POST['ordonnance'])){
+        if(empty(trim($_POST['ordonnance']))){
             $error['ordonnance'] = 'Veuillez renseigner ce champs';
         }else{
             $ordonnance = escapeString($_POST['ordonnance']);

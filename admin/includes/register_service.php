@@ -4,19 +4,19 @@ $success = false;
 $error = [];
 
 if (isset($_POST['submit'])) {
-    if(empty($_POST['title']) || strlen($_POST['title']) < 4){
+    if(empty(trim($_POST['title'])) || strlen($_POST['title']) < 4){
         $error['title'] = "Veuillez entrer un titre d'au moins 4 caractères" ;
     }else{
         $title = escapeString($_POST['title']);
     }
 
-    if(empty($_POST['details']) || strlen($_POST['details']) < 10){
+    if(empty(trim($_POST['details'])) || strlen($_POST['details']) < 10){
         $error['details'] = "Veuillez entrer un text d'au moins 10 caractères" ;
     }else {
         $details = escapeString($_POST['details']);
     }
     
-    if(!empty($title) && !empty($details)){
+    if(!empty(trim($title)) && !empty(trim($details)) ){
         $sql = "INSERT INTO roles (titre,details) VALUES ('{$title}','{$details}')";
         $result = $db->query($sql);
         if($result){

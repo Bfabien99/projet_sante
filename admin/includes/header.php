@@ -2,6 +2,7 @@
 session_start();
 include('../includes/config.php');
 include('../includes/functions.php');
+include('../mail.php');
 $db = connect(
     DB_HOST,
     DB_USERNAME,

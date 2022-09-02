@@ -9,7 +9,7 @@ function sendMail($objet,$message,$to){
 
         // Create a message
         $message = (new Swift_Message($objet))// Objet
-            ->setFrom(['fabienbrou99@gmail.com' => 'HEALTHPLUS'])// Le nom
+            ->setFrom(['fabienbrou99@gmail.com' => 'HEALTHPLUSNAN'])// Le nom
             ->setTo([$to])
             ->setBody($message)
             ->setContentType("text/html");
@@ -19,6 +19,6 @@ function sendMail($objet,$message,$to){
             return $result;
         } 
         catch(Exception $e) {
-            echo $e->getMessage();
+            return $e->getMessage();
         }
     }

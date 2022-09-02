@@ -6,27 +6,27 @@ $error = [];
 $doctor = getDoctorbyId($_GET["edit"]); 
 
 if (isset($_POST['update_category'])) {
-    if (empty($_POST['first_name'])) {
+    if (empty(trim($_POST['first_name']))) {
         $error['first_name'] = 'Veuillez entrer votre nom';
     } else {
         $fname = escapeString($_POST['first_name']);
     }
 
-    if (empty($_POST['last_name'])) {
+    if (empty(trim($_POST['last_name']))) {
         $error['last_name'] = 'Veuillez entrer votre prénom';
     } else {
         $lname = escapeString($_POST['last_name']);
     }
 
-    if (empty($_POST['birth'])) {
+    if (empty(trim($_POST['birth']))) {
         $error['birth'] = 'Veuillez entrer votre date de naissance';
     } else {
         $birth = escapeString($_POST['birth']);
     }
 
-    if (empty($_POST['sexe'])) {
+    if (empty(trim($_POST['sexe']))) {
         $error['sexe'] = 'Faîtes un choix';
-    } elseif(!empty($_POST['sexe']) && empty($picture)){
+    } elseif(!empty(trim($_POST['sexe'])) && empty($picture)){
         if ($_POST['sexe'] == "Femme") {
             $picture = "docteurf.png";
         } else {
@@ -237,7 +237,7 @@ if (isset($_POST['update_category'])) {
                         </div>
                         <div class="form-group">
                             <label for="experience">Année d'Expérience</label>
-                            <input class="form-control" type="number" name="experience" id="experience" value="<?php if (isset($experience)) echo $experience; ?>">
+                            <input class="form-control" type="number" name="experience" id="experience" value="<?php if (isset($experience)) echo $experience; ?>" min="0">
                             <?php if (isset($error['experience'])) : ?>
                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['experience']; ?></p>
                             <?php endif; ?>

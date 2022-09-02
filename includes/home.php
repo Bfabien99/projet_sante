@@ -115,29 +115,26 @@ include('includes/navigation.php');
                 </div>
             </div>
             <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-                <div class="col-lg-6">
-                    <section id="contactForm" class="d-flex flex-column align-items-center">
-                        <div class="phone">
-                            <h4 class="mt-0 text-center">Téléphone</h4>
-                            <hr class="divider" />
-                            <p><i class="fa fa-phone"></i> (00225) 00-00-00-00-01</p>
-                            <p><i class="fa fa-phone"></i> (00225) 00-00-00-00-02</p>
-                            <p><i class="fa fa-phone"></i> (00225) 00-00-00-00-03</p>
-                        </div>
-                        <div class="mail">
-                            <h4 class="mt-0 text-center">Email</h4>
-                            <hr class="divider" />
-                            <p><i class="fa fa-envelope"></i> heathplusnan@gmail.com</p>
-                            <p><i class="fa fa-envelope"></i> fabienbrou99@gmail.com</p>
-                        </div>
-                        <div class="address">
-                            <h4 class="mt-0 text-center">Adresse</h4>
-                            <hr class="divider" />
-                            <p class="text-center">08 ABIDJAN BP 1XXXX</p>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15888.404754718258!2d-3.9629846!3d5.4015527!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa13e690552d16e30!2sNaN%20Digital%20Academy!5e0!3m2!1sfr!2sci!4v1661940045848!5m2!1sfr!2sci" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </section>
-                </div>
+                
+                    <div class="phone col-md-12 col-lg-4 text-center">
+                        <h4 class="mt-0 text-center">Téléphone</h4>
+                        <hr class="divider" />
+                        <p><i class="fa fa-phone"></i> (00225) 00-00-00-00-01</p>
+                        <p><i class="fa fa-phone"></i> (00225) 00-00-00-00-02</p>
+                        <p><i class="fa fa-phone"></i> (00225) 00-00-00-00-03</p>
+                    </div>
+                    <div class="address col-md-12 col-lg-4 text-center">
+                        <h4 class="mt-0 text-center">Adresse</h4>
+                        <hr class="divider" />
+                        <p class="text-center">08 ABIDJAN BP 1XXXX</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15888.404754718258!2d-3.9629846!3d5.4015527!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa13e690552d16e30!2sNaN%20Digital%20Academy!5e0!3m2!1sfr!2sci!4v1661940045848!5m2!1sfr!2sci" style="border:0;width:100%;height:300px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="mail col-md-12 col-lg-4 text-center">
+                        <h4 class="mt-0 text-center">Email</h4>
+                        <hr class="divider" />
+                        <p><i class="fa fa-envelope"></i> heathplusnan@gmail.com</p>
+                        <p><i class="fa fa-envelope"></i> fabienbrou99@gmail.com</p>
+                    </div>   
             </div>
         </div>
     </section>

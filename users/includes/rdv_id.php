@@ -20,13 +20,13 @@
             $objet = escapeString($_POST['objet']);
         }
 
-        if (empty($_POST['date'])) {
+        if (empty(trim($_POST['date']))) {
             $error['date'] = "Veuillez entre la date du rendez-vous";
         } else {
             $date = escapeString($_POST['date']);
         }
 
-        if (empty($_POST['time'])) {
+        if (empty(trim($_POST['time']))) {
             $error['time'] = "Veuillez donnez l'heure du rendez-vous";
         } else {
             $time = escapeString($_POST['time']);

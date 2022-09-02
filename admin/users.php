@@ -1,6 +1,5 @@
 <?php
 include('includes/header.php');
-include('../mail.php');
 if (isset($_GET['p_id'])) {
     include "includes/view_user.php";
 } elseif (isset($_GET['delete'])) {

@@ -5,37 +5,37 @@ include('mail.php');
 $success = false;
 $error = [];
 if (isset($_POST['register'])) {
-    if (empty($_POST['first_name'])) {
+    if (empty(trim($_POST['first_name']))) {
         $error['first_name'] = 'Veuillez entrer votre nom';
     } else {
         $fname = escapeString($_POST['first_name']);
     }
 
-    if (empty($_POST['last_name'])) {
+    if (empty(trim($_POST['last_name']))) {
         $error['last_name'] = 'Veuillez entrer un Prénom';
     } else {
         $lname = escapeString($_POST['last_name']);
     }
 
-    if (empty($_POST['birth'])) {
+    if (empty(trim($_POST['birth']))) {
         $error['birth'] = 'Veuillez entrer votre date de naissance';
     } else {
         $birth = escapeString($_POST['birth']);
     }
 
-    if (empty($_POST['contact'])) {
+    if (empty(trim($_POST['contact']))) {
         $error['contact'] = 'Veuillez entrer un contact valide';
     } else {
         $contact = escapeString(filter_var($_POST['contact'], FILTER_SANITIZE_NUMBER_INT));
     }
 
-    if (empty($_POST['emergency_contact'])) {
+    if (empty(trim($_POST['emergency_contact']))) {
         $error['emergency_contact'] = 'Veuillez entrer un contact valide';
     } else {
         $emergency = escapeString(filter_var($_POST['emergency_contact'], FILTER_SANITIZE_NUMBER_INT));
     }
 
-    if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    if (empty(trim($_POST['email'])) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         $error['email'] = 'Veuillez entrer une adresse email valide';
     } elseif (emailExists($_POST['email'])) {
         $error['email'] = "Cet email existe déja, veuillez en choisr un autre";
@@ -43,7 +43,7 @@ if (isset($_POST['register'])) {
         $email = escapeString($_POST['email']);
     }
 
-    if (empty($_POST['sexe'])) {
+    if (empty(trim($_POST['sexe']))) {
         $error['sexe'] = 'Faîtes un choix';
     } else {
         if ($_POST['sexe'] == "Femme") {
@@ -70,19 +70,19 @@ if (isset($_POST['register'])) {
         $height = escapeString($_POST['height']);
     }
 
-    if (empty($_POST['blood'])) {
+    if (empty(trim($_POST['blood']))) {
         $error['blood'] = 'Veuillez choisir votre groupe sanguin';
     } else {
         $blood = escapeString($_POST['blood']);
     }
 
-    if (empty($_POST['allergy'])) {
+    if (empty(trim($_POST['allergy']))) {
         $error['allergy'] = 'Veuillez remplir ce champ';
     } else {
         $allergy = escapeString($_POST['allergy']);
     }
 
-    if (empty($_POST['medical_background'])) {
+    if (empty(trim($_POST['medical_background']))) {
         $error['medical_background'] = 'Veuillez remplir ce champ';
     } else {
         $antecedant = escapeString($_POST['medical_background']);
@@ -96,19 +96,19 @@ if (isset($_POST['register'])) {
         $children = escapeString($_POST['children']);
     }
 
-    if (empty($_POST['marital_status'])) {
+    if (empty(trim($_POST['marital_status']))) {
         $error['marital_status'] = 'Faîtes un choix';
     } else {
         $marital = escapeString($_POST['marital_status']);
     }
 
-    if (empty($_POST['profession'])) {
+    if (empty(trim($_POST['profession']))) {
         $error['profession'] = 'Veuillez entrer votre profession';
     } else {
         $profession = escapeString($_POST['profession']);
     }
 
-    if (empty($_POST['pseudo']) || strlen($_POST['pseudo']) < 4) {
+    if (empty(trim($_POST['pseudo'])) || strlen($_POST['pseudo']) < 4) {
         $error['pseudo'] = "Veuillez entrer un pseudo d'au moins 4 caractères";
     } elseif (pseudoExists($_POST['pseudo'])) {
         $error['pseudo'] = "Cet pseudo existe déja, veuillez en choisr un autre";
@@ -116,7 +116,7 @@ if (isset($_POST['register'])) {
         $pseudo = escapeString($_POST['pseudo']);
     }
 
-    if (empty($_POST['password']) || strlen($_POST['password']) < 6) {
+    if (empty(trim($_POST['password'])) || strlen($_POST['password']) < 6) {
         $error['password'] = "Veuillez entrer un mot de passe d'au moins 6 caractères";
     } else {
         $password = pass_crypt($_POST['password']);
@@ -330,7 +330,7 @@ include('includes/navigation.php');
                         </div>
                         <div class="col form-group">
                             <label for="allergy">Allergie</label>
-                            <small>Veuillez notez toutes vos allergies, si vous n'en avez pas renseigner "Aucun"</small>
+                            <small class="text-muted">Veuillez notez toutes vos allergies chacunes séparées d'une virgule, si vous n'en avez pas renseigner "Aucun"</small>
                             <textarea class="form-control" type="text" name="allergy" id="allergy"><?php if (isset($allergy)) echo $allergy; ?></textarea>
                             <?php if (isset($error['allergy'])) : ?>
                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['allergy']; ?></p>
@@ -338,7 +338,7 @@ include('includes/navigation.php');
                         </div>
                         <div class="col form-group">
                             <label for="medical_background">Antécédants médicales</label>
-                            <small>Veuillez notez tous vos antécédants, si vous n'en avez pas renseigner "Aucun"</small>
+                            <small class="text-muted">Veuillez notez tous vos antécédants chacuns séparés d'une virgule, si vous n'en avez pas renseigner "Aucun"</small>
                             <textarea class="form-control" type="text" name="medical_background" id="medical_background"><?php if (isset($antecedant)) echo $antecedant; ?></textarea>
                             <?php if (isset($error['medical_background'])) : ?>
                                 <p class="alert-danger rounded-2 p-1"><?php echo  $error['medical_background']; ?></p>

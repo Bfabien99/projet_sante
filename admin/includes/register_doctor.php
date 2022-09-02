@@ -4,25 +4,25 @@ $success = false;
 $error = [];
 
 if (isset($_POST['register'])) {
-    if (empty($_POST['first_name'])) {
+    if (empty(trim($_POST['first_name']))) {
         $error['first_name'] = 'Veuillez entrer votre nom';
     } else {
         $fname = escapeString($_POST['first_name']);
     }
 
-    if (empty($_POST['last_name'])) {
+    if (empty(trim($_POST['last_name']))) {
         $error['last_name'] = 'Veuillez entrer votre prénom';
     } else {
         $lname = escapeString($_POST['last_name']);
     }
 
-    if (empty($_POST['birth'])) {
+    if (empty(trim($_POST['birth']))) {
         $error['birth'] = 'Veuillez entrer votre date de naissance';
     } else {
         $birth = escapeString($_POST['birth']);
     }
 
-    if (empty($_POST['sexe'])) {
+    if (empty(trim($_POST['sexe']))) {
         $error['sexe'] = 'Faîtes un choix';
     } else {
         if($_POST['sexe'] == "Femme"){
@@ -33,19 +33,19 @@ if (isset($_POST['register'])) {
         $sexe = escapeString($_POST['sexe']); 
     }
 
-    if (empty($_POST['fonction'])) {
+    if (empty(trim($_POST['fonction']))) {
         $error['fonction'] = 'Veuillez choisir votre service';
     } else {
         $fonction = escapeString($_POST['fonction']);
     }
 
-    if (empty($_POST['description'])) {
+    if (empty(trim($_POST['description']))) {
         $error['description'] = 'Veuillez remplir ce champs';
     } else {
         $description = escapeString($_POST['description']);
     }
 
-    if (empty($_POST['experience'])) {
+    if (empty(trim($_POST['experience']))) {
         $error['experience'] = 'Veuillez remplir ce champs';
     } elseif ($_POST['experience'] < 0) {
         $error['experience'] = 'Entrez un nombre valide';
@@ -53,19 +53,19 @@ if (isset($_POST['register'])) {
         $experience = escapeString($_POST['experience']);
     }
 
-    if (empty($_POST['contact1'])) {
+    if (empty(trim($_POST['contact1']))) {
         $error['contact1'] = 'Veuillez entrer un contact valide';
     } else {
         $contact1 = escapeString(filter_var($_POST['contact1'], FILTER_SANITIZE_NUMBER_INT));
     }
 
-    if (empty($_POST['contact2'])) {
+    if (empty(trim($_POST['contact2']))) {
         $error['contact2'] = 'Veuillez entrer un contact valide';
     } else {
         $contact2 = escapeString(filter_var($_POST['contact2'], FILTER_SANITIZE_NUMBER_INT));
     }
 
-    if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    if (empty(trim($_POST['email'])) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         $error['email'] = 'Veuillez entrer une adresse email valide';
     } elseif (emailExist($_POST['email'])) {
         $error['email'] = "Cet email existe déja, veuillez en choisr un autre";
@@ -73,13 +73,13 @@ if (isset($_POST['register'])) {
         $email = escapeString($_POST['email']);
     }
 
-    if (empty($_POST['sexe'])) {
+    if (empty(trim($_POST['sexe']))) {
         $error['sexe'] = 'Faîtes un choix';
     } else {
         $sexe = escapeString($_POST['sexe']);
     }
 
-    if (empty($_POST['pseudo']) || strlen($_POST['pseudo']) < 4) {
+    if (empty(trim($_POST['pseudo'])) || strlen($_POST['pseudo']) < 4) {
         $error['pseudo'] = "Veuillez entrer un pseudo d'au moins 4 caractères";
     } elseif (pseudoExist($_POST['pseudo'])) {
         $error['pseudo'] = "Cet pseudo existe déja, veuillez en choisr un autre";
@@ -87,7 +87,7 @@ if (isset($_POST['register'])) {
         $pseudo = escapeString($_POST['pseudo']);
     }
 
-    if (empty($_POST['password'])) {
+    if (empty(trim($_POST['password']))) {
         $_POST['password']="good_doctor";
         $password = pass_crypt($_POST['password']);
     } else {
@@ -241,7 +241,7 @@ if (isset($_POST['register'])) {
                 </div>
                 <div class="form-group">
                     <label for="experience">Année d'Expérience</label>
-                    <input class="form-control" type="number" name="experience" id="experience" value="<?php if (isset($experience)) echo $experience; ?>">
+                    <input class="form-control" type="number" name="experience" id="experience" value="<?php if (isset($experience)) echo $experience; ?>" min="0">
                     <?php if (isset($error['experience'])) : ?>
                         <p class="alert-danger rounded-2 p-1"><?php echo  $error['experience']; ?></p>
                     <?php endif; ?>
@@ -255,3 +255,14 @@ if (isset($_POST['register'])) {
     <h1 class="text-center success-box"> Enregistrement éffectué</h1>
     <a href="./doctors.php" class="btn btn-primary">Retour</a>
 <?php endif; ?>
+<script>
+
+    $('#password').on('dblclick', function(){
+        if($('#password').attr('type') == "password"){
+           $('#password').attr('type','text'); 
+        }else{
+            $('#password').attr('type','password');
+        }
+        
+    })
+</script>

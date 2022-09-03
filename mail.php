@@ -4,7 +4,7 @@ function sendMail($objet,$message,$to){
         try{
         $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587,'tls'))
         ->setUsername('fabienbrou99@gmail.com')
-        ->setPassword('lniqyotkabbjnkut');
+        ->setPassword('trrursxiujswvodt');
         $mailer = new Swift_Mailer($transport);
 
         // Create a message
@@ -19,6 +19,6 @@ function sendMail($objet,$message,$to){
             return $result;
         } 
         catch(Exception $e) {
-            return $e->getMessage();
+            echo $e->getMessage();
         }
     }
